@@ -1,120 +1,90 @@
 import {
-  generateDatasetType,
-  getCatalogDataSetsByKeyword,
+  IPackageConfig,
+  generateDatasetTypeByKeyword,
+  getDatasetData,
+  getDatasetMeta,
   getDatasetTypeInterfaceName,
-  getIdFromDatasetIdentifier,
   setConfig,
+  type IDataGovCatalogDataset,
 } from '@thelocalnetwork/cms-data-tools';
-import { outputFileSync } from 'fs-extra';
+import { outputFile, outputJson } from 'fs-extra';
 import path from 'node:path';
+import pLimit from 'p-limit';
 
 // const cmsDataTools = new CmsDataTools({
 //   enableLocalCache: true,
 // });
 
-const main = async () => {
-  setConfig({
-    cache: {
-      cacheDirectory: path.resolve(`./.cache-cms-data-tools`),
-    },
+const CMS_KEYWORD = `Medical Suppliers & Equipment`;
+const CACHE_DIRECTORY = path.resolve(`./.cache-cms-data-tools`);
+const CMS_TOOLS_CONFIG: IPackageConfig = {
+  cache: { cacheDirectory: CACHE_DIRECTORY },
+};
+
+export const sleep = (ms = 0) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+export const generateTypes = async () => {
+  return generateDatasetTypeByKeyword(CMS_KEYWORD).then(
+    (datasetTypesByKeyword) => {
+      return Promise.all(datasetTypesByKeyword.map((item) => writeType(item)));
+    }
+  );
+};
+
+const writeType = async (item: {
+  dataset: IDataGovCatalogDataset;
+  typeInterface: string;
+}) => {
+  const interfaceName = getDatasetTypeInterfaceName(item.dataset.title);
+  const fileName = `${interfaceName}.ts`;
+  const filePath = path.resolve(process.cwd(), `__generated`, fileName);
+  const fileContent = item.typeInterface;
+
+  console.log(`Writing generated type`, {
+    id: item.dataset.id,
+    title: item.dataset.title,
+    interfaceName,
+    filePath,
+    fileContent: fileContent.length,
   });
 
-  // const catalog: IDataGovCatalog = await getDataCatalog();
-  // console.log(
-  //   `🚀 ~ file: download.ts:12 ~ main ~ catalog:`,
-  //   catalog.dataset.length
-  // );
+  return outputFile(filePath, fileContent);
+};
 
-  // const datasetById = await getCatalogDataSetById(
-  //   `86b4807a-d63a-44be-bfdf-ffd398d5e623`
-  // );
-  // console.log(`datasetById`, { datasetById });
+const main = async () => {
+  setConfig(CMS_TOOLS_CONFIG);
 
-  const datasetsByKeyword = await getCatalogDataSetsByKeyword(
-    `Medical Suppliers & Equipment`
+  await generateTypes();
+
+  const id = 'f8603e5b-9c47-4c52-9b47-a4ef92dfada4';
+  const size = 5_000;
+  // const offset = 0;
+
+  const dataSetMeta = await getDatasetMeta(id);
+
+  const numRequests = Math.ceil(dataSetMeta.total_rows / size);
+  const offsets = Array.from({ length: numRequests }, (_, i) => i).map(
+    (i) => i * size
   );
 
-  console.log(
-    `datasetsByKeyword`,
-    datasetsByKeyword.length,
-    datasetsByKeyword.map((d) => ({
-      title: d.title,
-      identifier: d.identifier,
-    }))
-  );
+  console.log({
+    offset: dataSetMeta.offset,
+    total_rows: dataSetMeta.total_rows,
+    size: dataSetMeta.size,
+    numRequests,
+    offsets,
+  });
+
+  const limit = pLimit(4);
 
   await Promise.allSettled(
-    datasetsByKeyword.map(async (dataset) => {
-      const id = getIdFromDatasetIdentifier(dataset.identifier);
-      console.log(
-        `🚀 ~ file: download.ts:37 ~ datasetsByKeyword.map ~ id:`,
-        id
-      );
-
-      if (!id) return Promise.reject(`No id found in ${dataset.identifier}`);
-
-      return generateDatasetType(id).then((typeInterface) => ({
-        id,
-        dataset,
-        typeInterface,
-      }));
-    })
-  ).then((settled) => {
-    console.log(
-      `settled`,
-      settled.map((item, settledIndex) => {
-        if (item.status === 'rejected') {
-          const dataset = datasetsByKeyword[settledIndex];
-          const id = getIdFromDatasetIdentifier(dataset?.identifier ?? '');
-
-          return {
-            status: item.status,
-            reason: item.reason.message,
-            id,
-            dataset: dataset?.title,
-          };
-        }
-
-        const name = getDatasetTypeInterfaceName(item.value.dataset.title);
-
-        outputFileSync(
-          `./_generated/${name}.ts`,
-          `${item.value.typeInterface}`
-        );
-
-        return {
-          status: item.status,
-          id: item.value.id,
-          title: item.value.dataset.title,
-          typeInterface: item.value.typeInterface.length,
-        };
-      })
-    );
-  });
-
-  // const typeInterface = await generateDatasetType(
-  //   `86b4807a-d63a-44be-bfdf-ffd398d5e623`,
-  //   `I${upperFirst(camelCase(datasetById?.title))}`
-  // );
-
-  // console.log(`🚀 ~ file: download.ts:11 ~ typeInterface:`, typeInterface);
-
-  // const size = 5_000;
-  // const offset = 0;
-  // const dataSetResponse = await cmsDataTools.retrieveData<
-  //   IDataGovDataset<{ a: string }>
-  // >(
-  //   `data-api/v1/dataset/86b4807a-d63a-44be-bfdf-ffd398d5e623/data-viewer?size=${size}&offset=${offset}`
-  // );
-  // const result = dataSetResponse.data;
-  // const { data, meta } = result;
-
-  // console.log({
-  //   offset: meta.offset,
-  //   total_rows: meta.total_rows,
-  //   size: meta.size,
-  //   data: data.length,
-  // });
+    offsets.map((offset) =>
+      limit(() => getDatasetData(id, offset, size)).then((data) =>
+        outputJson(`./.data/${id}_${offset}.json`, data)
+      )
+    )
+  );
 };
 
 main();

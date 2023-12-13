@@ -7,28 +7,34 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cms:download": "node -r @swc-node/register ./src/scripts/cms/download.ts"
+    "tsnode": "node -r @swc-node/register ",
+    "cms:download": "npm run tsnode -- ./src/scripts/cms/download.ts"
   },
   "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "fs-extra": "^11.2.0",
     "lodash": "^4.17.21",
     "next": "14.0.3",
+    "p-limit": "3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@swc-node/register": "^1.6.8",
+    "@thelocalnetwork/cms-data-tools": "file:../cms-data-tools",
     "@tsconfig/recommended": "^1.0.3",
     "@tsconfig/strictest": "^2.0.2",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.54.0",
+    "eslint": "^8.55.0",
     "eslint-config-next": "14.0.3",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.31",
-    "prettier": "^3.1.0",
+    "prettier": "^3.1.1",
     "tailwindcss": "^3.3.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
