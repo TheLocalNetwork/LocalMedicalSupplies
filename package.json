@@ -11,10 +11,13 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run typecheck && npm run lint",
     "cms:types": "npm run tsnode -- ./src/scripts/cms/generate-types.ts",
-    "cms:download": "npm run tsnode -- ./src/scripts/cms/download.ts"
+    "cms:download": "npm run tsnode -- ./src/scripts/cms/download.ts",
+    "cms:loaddata": "npm run tsnode -- ./src/scripts/cms/loaddata.ts"
   },
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.8",
     "@types/fs-extra": "^11.0.4",
+    "better-sqlite3": "^9.2.2",
     "fs-extra": "^11.2.0",
     "lodash": "^4.17.21",
     "next": "^14.0.4",
