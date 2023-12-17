@@ -14,7 +14,7 @@ export interface IMedicarePartDSpendingByDrug {
  * ```
  */
 
-Brnd_Name: string;
+brnd_name: string;
 
 
 /**
@@ -31,7 +31,7 @@ Brnd_Name: string;
  * ```
  */
 
-Gnrc_Name: string;
+gnrc_name: string;
 
 
 /**
@@ -48,7 +48,7 @@ Gnrc_Name: string;
  * ```
  */
 
-Tot_Mftr: number;
+tot_mftr: number;
 
 
 /**
@@ -65,7 +65,7 @@ Tot_Mftr: number;
  * ```
  */
 
-Mftr_Name: string;
+mftr_name: string;
 
 
 /**
@@ -82,7 +82,7 @@ Mftr_Name: string;
  * ```
  */
 
-Tot_Spndng_2017: number;
+tot_spndng_2017: number;
 
 
 /**
@@ -99,7 +99,7 @@ Tot_Spndng_2017: number;
  * ```
  */
 
-Tot_Dsg_Unts_2017: number;
+tot_dsg_unts_2017: number;
 
 
 /**
@@ -116,7 +116,7 @@ Tot_Dsg_Unts_2017: number;
  * ```
  */
 
-Tot_Clms_2017: number;
+tot_clms_2017: number;
 
 
 /**
@@ -133,7 +133,7 @@ Tot_Clms_2017: number;
  * ```
  */
 
-Tot_Benes_2017: number;
+tot_benes_2017: number;
 
 
 /**
@@ -150,7 +150,7 @@ Tot_Benes_2017: number;
  * ```
  */
 
-Avg_Spnd_Per_Dsg_Unt_Wghtd_2017: number;
+avg_spnd_per_dsg_unt_wghtd_2017: number;
 
 
 /**
@@ -167,7 +167,7 @@ Avg_Spnd_Per_Dsg_Unt_Wghtd_2017: number;
  * ```
  */
 
-Avg_Spnd_Per_Clm_2017: number;
+avg_spnd_per_clm_2017: number;
 
 
 /**
@@ -184,7 +184,7 @@ Avg_Spnd_Per_Clm_2017: number;
  * ```
  */
 
-Avg_Spnd_Per_Bene_2017: number;
+avg_spnd_per_bene_2017: number;
 
 
 /**
@@ -201,7 +201,7 @@ Avg_Spnd_Per_Bene_2017: number;
  * ```
  */
 
-Outlier_Flag_2017: string;
+outlier_flag_2017: string;
 
 
 /**
@@ -218,7 +218,7 @@ Outlier_Flag_2017: string;
  * ```
  */
 
-Tot_Spndng_2018: number;
+tot_spndng_2018: number;
 
 
 /**
@@ -235,7 +235,7 @@ Tot_Spndng_2018: number;
  * ```
  */
 
-Tot_Dsg_Unts_2018: number;
+tot_dsg_unts_2018: number;
 
 
 /**
@@ -252,7 +252,7 @@ Tot_Dsg_Unts_2018: number;
  * ```
  */
 
-Tot_Clms_2018: number;
+tot_clms_2018: number;
 
 
 /**
@@ -269,7 +269,7 @@ Tot_Clms_2018: number;
  * ```
  */
 
-Tot_Benes_2018: number;
+tot_benes_2018: number;
 
 
 /**
@@ -286,7 +286,7 @@ Tot_Benes_2018: number;
  * ```
  */
 
-Avg_Spnd_Per_Dsg_Unt_Wghtd_2018: number;
+avg_spnd_per_dsg_unt_wghtd_2018: number;
 
 
 /**
@@ -303,7 +303,7 @@ Avg_Spnd_Per_Dsg_Unt_Wghtd_2018: number;
  * ```
  */
 
-Avg_Spnd_Per_Clm_2018: number;
+avg_spnd_per_clm_2018: number;
 
 
 /**
@@ -320,7 +320,7 @@ Avg_Spnd_Per_Clm_2018: number;
  * ```
  */
 
-Avg_Spnd_Per_Bene_2018: number;
+avg_spnd_per_bene_2018: number;
 
 
 /**
@@ -337,7 +337,7 @@ Avg_Spnd_Per_Bene_2018: number;
  * ```
  */
 
-Outlier_Flag_2018: string;
+outlier_flag_2018: string;
 
 
 /**
@@ -354,7 +354,7 @@ Outlier_Flag_2018: string;
  * ```
  */
 
-Tot_Spndng_2019: number;
+tot_spndng_2019: number;
 
 
 /**
@@ -371,7 +371,7 @@ Tot_Spndng_2019: number;
  * ```
  */
 
-Tot_Dsg_Unts_2019: number;
+tot_dsg_unts_2019: number;
 
 
 /**
@@ -388,7 +388,7 @@ Tot_Dsg_Unts_2019: number;
  * ```
  */
 
-Tot_Clms_2019: number;
+tot_clms_2019: number;
 
 
 /**
@@ -405,7 +405,7 @@ Tot_Clms_2019: number;
  * ```
  */
 
-Tot_Benes_2019: number;
+tot_benes_2019: number;
 
 
 /**
@@ -422,7 +422,7 @@ Tot_Benes_2019: number;
  * ```
  */
 
-Avg_Spnd_Per_Dsg_Unt_Wghtd_2019: number;
+avg_spnd_per_dsg_unt_wghtd_2019: number;
 
 
 /**
@@ -439,7 +439,7 @@ Avg_Spnd_Per_Dsg_Unt_Wghtd_2019: number;
  * ```
  */
 
-Avg_Spnd_Per_Clm_2019: number;
+avg_spnd_per_clm_2019: number;
 
 
 /**
@@ -456,7 +456,7 @@ Avg_Spnd_Per_Clm_2019: number;
  * ```
  */
 
-Avg_Spnd_Per_Bene_2019: number;
+avg_spnd_per_bene_2019: number;
 
 
 /**
@@ -473,7 +473,7 @@ Avg_Spnd_Per_Bene_2019: number;
  * ```
  */
 
-Outlier_Flag_2019: string;
+outlier_flag_2019: string;
 
 
 /**
@@ -490,7 +490,7 @@ Outlier_Flag_2019: string;
  * ```
  */
 
-Tot_Spndng_2020: number;
+tot_spndng_2020: number;
 
 
 /**
@@ -507,7 +507,7 @@ Tot_Spndng_2020: number;
  * ```
  */
 
-Tot_Dsg_Unts_2020: number;
+tot_dsg_unts_2020: number;
 
 
 /**
@@ -524,7 +524,7 @@ Tot_Dsg_Unts_2020: number;
  * ```
  */
 
-Tot_Clms_2020: number;
+tot_clms_2020: number;
 
 
 /**
@@ -541,7 +541,7 @@ Tot_Clms_2020: number;
  * ```
  */
 
-Tot_Benes_2020: number;
+tot_benes_2020: number;
 
 
 /**
@@ -558,7 +558,7 @@ Tot_Benes_2020: number;
  * ```
  */
 
-Avg_Spnd_Per_Dsg_Unt_Wghtd_2020: number;
+avg_spnd_per_dsg_unt_wghtd_2020: number;
 
 
 /**
@@ -575,7 +575,7 @@ Avg_Spnd_Per_Dsg_Unt_Wghtd_2020: number;
  * ```
  */
 
-Avg_Spnd_Per_Clm_2020: number;
+avg_spnd_per_clm_2020: number;
 
 
 /**
@@ -592,7 +592,7 @@ Avg_Spnd_Per_Clm_2020: number;
  * ```
  */
 
-Avg_Spnd_Per_Bene_2020: number;
+avg_spnd_per_bene_2020: number;
 
 
 /**
@@ -609,7 +609,7 @@ Avg_Spnd_Per_Bene_2020: number;
  * ```
  */
 
-Outlier_Flag_2020: number;
+outlier_flag_2020: number;
 
 
 /**
@@ -626,7 +626,7 @@ Outlier_Flag_2020: number;
  * ```
  */
 
-Tot_Spndng_2021: number;
+tot_spndng_2021: number;
 
 
 /**
@@ -643,7 +643,7 @@ Tot_Spndng_2021: number;
  * ```
  */
 
-Tot_Dsg_Unts_2021: number;
+tot_dsg_unts_2021: number;
 
 
 /**
@@ -660,7 +660,7 @@ Tot_Dsg_Unts_2021: number;
  * ```
  */
 
-Tot_Clms_2021: number;
+tot_clms_2021: number;
 
 
 /**
@@ -677,7 +677,7 @@ Tot_Clms_2021: number;
  * ```
  */
 
-Tot_Benes_2021: number;
+tot_benes_2021: number;
 
 
 /**
@@ -694,7 +694,7 @@ Tot_Benes_2021: number;
  * ```
  */
 
-Avg_Spnd_Per_Dsg_Unt_Wghtd_2021: number;
+avg_spnd_per_dsg_unt_wghtd_2021: number;
 
 
 /**
@@ -711,7 +711,7 @@ Avg_Spnd_Per_Dsg_Unt_Wghtd_2021: number;
  * ```
  */
 
-Avg_Spnd_Per_Clm_2021: number;
+avg_spnd_per_clm_2021: number;
 
 
 /**
@@ -728,7 +728,7 @@ Avg_Spnd_Per_Clm_2021: number;
  * ```
  */
 
-Avg_Spnd_Per_Bene_2021: number;
+avg_spnd_per_bene_2021: number;
 
 
 /**
@@ -745,7 +745,7 @@ Avg_Spnd_Per_Bene_2021: number;
  * ```
  */
 
-Outlier_Flag_2021: number;
+outlier_flag_2021: number;
 
 
 /**
@@ -762,7 +762,7 @@ Outlier_Flag_2021: number;
  * ```
  */
 
-Chg_Avg_Spnd_Per_Dsg_Unt_20_21: number;
+chg_avg_spnd_per_dsg_unt_20_21: number;
 
 
 /**
@@ -779,6 +779,6 @@ Chg_Avg_Spnd_Per_Dsg_Unt_20_21: number;
  * ```
  */
 
-CAGR_Avg_Spnd_Per_Dsg_Unt_17_21: number;
+cagr_avg_spnd_per_dsg_unt_17_21: number;
 
 }

@@ -14,7 +14,7 @@ export interface IMedicareDurableMedicalEquipmentDevicesSuppliesByReferringProvi
  * ```
  */
 
-Rfrg_NPI: string;
+rfrg_npi: string;
 
 
 /**
@@ -31,7 +31,7 @@ Rfrg_NPI: string;
  * ```
  */
 
-Rfrg_Prvdr_Last_Name_Org: string;
+rfrg_prvdr_last_name_org: string;
 
 
 /**
@@ -48,7 +48,7 @@ Rfrg_Prvdr_Last_Name_Org: string;
  * ```
  */
 
-Rfrg_Prvdr_First_Name: string;
+rfrg_prvdr_first_name: string;
 
 
 /**
@@ -65,7 +65,7 @@ Rfrg_Prvdr_First_Name: string;
  * ```
  */
 
-Rfrg_Prvdr_MI: string;
+rfrg_prvdr_mi: string;
 
 
 /**
@@ -82,7 +82,7 @@ Rfrg_Prvdr_MI: string;
  * ```
  */
 
-Rfrg_Prvdr_Crdntls: string;
+rfrg_prvdr_crdntls: string;
 
 
 /**
@@ -99,7 +99,7 @@ Rfrg_Prvdr_Crdntls: string;
  * ```
  */
 
-Rfrg_Prvdr_Gndr: string;
+rfrg_prvdr_gndr: string;
 
 
 /**
@@ -116,7 +116,7 @@ Rfrg_Prvdr_Gndr: string;
  * ```
  */
 
-Rfrg_Prvdr_Ent_Cd: string;
+rfrg_prvdr_ent_cd: string;
 
 
 /**
@@ -133,7 +133,7 @@ Rfrg_Prvdr_Ent_Cd: string;
  * ```
  */
 
-Rfrg_Prvdr_St1: string;
+rfrg_prvdr_st_1: string;
 
 
 /**
@@ -150,7 +150,7 @@ Rfrg_Prvdr_St1: string;
  * ```
  */
 
-Rfrg_Prvdr_St2: string;
+rfrg_prvdr_st_2: string;
 
 
 /**
@@ -167,7 +167,7 @@ Rfrg_Prvdr_St2: string;
  * ```
  */
 
-Rfrg_Prvdr_City: string;
+rfrg_prvdr_city: string;
 
 
 /**
@@ -184,7 +184,7 @@ Rfrg_Prvdr_City: string;
  * ```
  */
 
-Rfrg_Prvdr_State_Abrvtn: string;
+rfrg_prvdr_state_abrvtn: string;
 
 
 /**
@@ -201,7 +201,7 @@ Rfrg_Prvdr_State_Abrvtn: string;
  * ```
  */
 
-Rfrg_Prvdr_State_FIPS: number;
+rfrg_prvdr_state_fips: number;
 
 
 /**
@@ -218,7 +218,7 @@ Rfrg_Prvdr_State_FIPS: number;
  * ```
  */
 
-Rfrg_Prvdr_Zip5: string;
+rfrg_prvdr_zip_5: string;
 
 
 /**
@@ -235,7 +235,7 @@ Rfrg_Prvdr_Zip5: string;
  * ```
  */
 
-Rfrg_Prvdr_RUCA: string;
+rfrg_prvdr_ruca: string;
 
 
 /**
@@ -252,7 +252,7 @@ Rfrg_Prvdr_RUCA: string;
  * ```
  */
 
-Rfrg_Prvdr_RUCA_Desc: string;
+rfrg_prvdr_ruca_desc: string;
 
 
 /**
@@ -269,7 +269,7 @@ Rfrg_Prvdr_RUCA_Desc: string;
  * ```
  */
 
-Rfrg_Prvdr_Cntry: string;
+rfrg_prvdr_cntry: string;
 
 
 /**
@@ -286,7 +286,7 @@ Rfrg_Prvdr_Cntry: string;
  * ```
  */
 
-Rfrg_Prvdr_Type: string;
+rfrg_prvdr_type: string;
 
 
 /**
@@ -303,7 +303,7 @@ Rfrg_Prvdr_Type: string;
  * ```
  */
 
-Rfrg_Prvdr_Type_Flag: string;
+rfrg_prvdr_type_flag: string;
 
 
 /**
@@ -320,7 +320,7 @@ Rfrg_Prvdr_Type_Flag: string;
  * ```
  */
 
-Tot_Suplrs: number;
+tot_suplrs: number;
 
 
 /**
@@ -337,7 +337,7 @@ Tot_Suplrs: number;
  * ```
  */
 
-Tot_Suplr_HCPCS_Cds: number;
+tot_suplr_hcpcs_cds: number;
 
 
 /**
@@ -354,7 +354,7 @@ Tot_Suplr_HCPCS_Cds: number;
  * ```
  */
 
-Tot_Suplr_Benes: number;
+tot_suplr_benes: number;
 
 
 /**
@@ -371,7 +371,7 @@ Tot_Suplr_Benes: number;
  * ```
  */
 
-Tot_Suplr_Clms: number;
+tot_suplr_clms: number;
 
 
 /**
@@ -388,7 +388,7 @@ Tot_Suplr_Clms: number;
  * ```
  */
 
-Tot_Suplr_Srvcs: number;
+tot_suplr_srvcs: number;
 
 
 /**
@@ -405,7 +405,7 @@ Tot_Suplr_Srvcs: number;
  * ```
  */
 
-Suplr_Sbmtd_Chrgs: number;
+suplr_sbmtd_chrgs: number;
 
 
 /**
@@ -422,7 +422,7 @@ Suplr_Sbmtd_Chrgs: number;
  * ```
  */
 
-Suplr_Mdcr_Alowd_Amt: number;
+suplr_mdcr_alowd_amt: number;
 
 
 /**
@@ -439,7 +439,7 @@ Suplr_Mdcr_Alowd_Amt: number;
  * ```
  */
 
-Suplr_Mdcr_Pymt_Amt: number;
+suplr_mdcr_pymt_amt: number;
 
 
 /**
@@ -456,7 +456,7 @@ Suplr_Mdcr_Pymt_Amt: number;
  * ```
  */
 
-Suplr_Mdcr_Stdzd_Pymt_Amt: number;
+suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
@@ -473,7 +473,7 @@ Suplr_Mdcr_Stdzd_Pymt_Amt: number;
  * ```
  */
 
-DME_Sprsn_Ind: string;
+dme_sprsn_ind: string;
 
 
 /**
@@ -490,7 +490,7 @@ DME_Sprsn_Ind: string;
  * ```
  */
 
-DME_Tot_Suplrs: number;
+dme_tot_suplrs: number;
 
 
 /**
@@ -507,7 +507,7 @@ DME_Tot_Suplrs: number;
  * ```
  */
 
-DME_Tot_Suplr_HCPCS_Cds: number;
+dme_tot_suplr_hcpcs_cds: number;
 
 
 /**
@@ -524,7 +524,7 @@ DME_Tot_Suplr_HCPCS_Cds: number;
  * ```
  */
 
-DME_Tot_Suplr_Benes: number;
+dme_tot_suplr_benes: number;
 
 
 /**
@@ -541,7 +541,7 @@ DME_Tot_Suplr_Benes: number;
  * ```
  */
 
-DME_Tot_Suplr_Clms: number;
+dme_tot_suplr_clms: number;
 
 
 /**
@@ -558,7 +558,7 @@ DME_Tot_Suplr_Clms: number;
  * ```
  */
 
-DME_Tot_Suplr_Srvcs: number;
+dme_tot_suplr_srvcs: number;
 
 
 /**
@@ -575,7 +575,7 @@ DME_Tot_Suplr_Srvcs: number;
  * ```
  */
 
-DME_Suplr_Sbmtd_Chrgs: number;
+dme_suplr_sbmtd_chrgs: number;
 
 
 /**
@@ -592,7 +592,7 @@ DME_Suplr_Sbmtd_Chrgs: number;
  * ```
  */
 
-DME_Suplr_Mdcr_Alowd_Amt: number;
+dme_suplr_mdcr_alowd_amt: number;
 
 
 /**
@@ -609,7 +609,7 @@ DME_Suplr_Mdcr_Alowd_Amt: number;
  * ```
  */
 
-DME_Suplr_Mdcr_Pymt_Amt: number;
+dme_suplr_mdcr_pymt_amt: number;
 
 
 /**
@@ -626,7 +626,7 @@ DME_Suplr_Mdcr_Pymt_Amt: number;
  * ```
  */
 
-DME_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
+dme_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
@@ -643,7 +643,7 @@ DME_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
  * ```
  */
 
-POS_Sprsn_Ind: string;
+pos_sprsn_ind: string;
 
 
 /**
@@ -660,7 +660,7 @@ POS_Sprsn_Ind: string;
  * ```
  */
 
-POS_Tot_Suplrs: number;
+pos_tot_suplrs: number;
 
 
 /**
@@ -677,7 +677,7 @@ POS_Tot_Suplrs: number;
  * ```
  */
 
-POS_Tot_Suplr_HCPCS_Cds: number;
+pos_tot_suplr_hcpcs_cds: number;
 
 
 /**
@@ -694,7 +694,7 @@ POS_Tot_Suplr_HCPCS_Cds: number;
  * ```
  */
 
-POS_Tot_Suplr_Benes: number;
+pos_tot_suplr_benes: number;
 
 
 /**
@@ -711,7 +711,7 @@ POS_Tot_Suplr_Benes: number;
  * ```
  */
 
-POS_Tot_Suplr_Clms: number;
+pos_tot_suplr_clms: number;
 
 
 /**
@@ -728,7 +728,7 @@ POS_Tot_Suplr_Clms: number;
  * ```
  */
 
-POS_Tot_Suplr_Srvcs: number;
+pos_tot_suplr_srvcs: number;
 
 
 /**
@@ -745,7 +745,7 @@ POS_Tot_Suplr_Srvcs: number;
  * ```
  */
 
-POS_Suplr_Sbmtd_Chrgs: number;
+pos_suplr_sbmtd_chrgs: number;
 
 
 /**
@@ -762,7 +762,7 @@ POS_Suplr_Sbmtd_Chrgs: number;
  * ```
  */
 
-POS_Suplr_Mdcr_Alowd_Amt: number;
+pos_suplr_mdcr_alowd_amt: number;
 
 
 /**
@@ -779,7 +779,7 @@ POS_Suplr_Mdcr_Alowd_Amt: number;
  * ```
  */
 
-POS_Suplr_Mdcr_Pymt_Amt: number;
+pos_suplr_mdcr_pymt_amt: number;
 
 
 /**
@@ -796,7 +796,7 @@ POS_Suplr_Mdcr_Pymt_Amt: number;
  * ```
  */
 
-POS_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
+pos_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
@@ -813,7 +813,7 @@ POS_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
  * ```
  */
 
-Drug_Sprsn_Ind: string;
+drug_sprsn_ind: string;
 
 
 /**
@@ -830,7 +830,7 @@ Drug_Sprsn_Ind: string;
  * ```
  */
 
-Drug_Tot_Suplrs: number;
+drug_tot_suplrs: number;
 
 
 /**
@@ -847,7 +847,7 @@ Drug_Tot_Suplrs: number;
  * ```
  */
 
-Drug_Tot_Suplr_HCPCS_Cds: number;
+drug_tot_suplr_hcpcs_cds: number;
 
 
 /**
@@ -864,7 +864,7 @@ Drug_Tot_Suplr_HCPCS_Cds: number;
  * ```
  */
 
-Drug_Tot_Suplr_Benes: number;
+drug_tot_suplr_benes: number;
 
 
 /**
@@ -881,7 +881,7 @@ Drug_Tot_Suplr_Benes: number;
  * ```
  */
 
-Drug_Tot_Suplr_Clms: number;
+drug_tot_suplr_clms: number;
 
 
 /**
@@ -898,7 +898,7 @@ Drug_Tot_Suplr_Clms: number;
  * ```
  */
 
-Drug_Tot_Suplr_Srvcs: number;
+drug_tot_suplr_srvcs: number;
 
 
 /**
@@ -915,7 +915,7 @@ Drug_Tot_Suplr_Srvcs: number;
  * ```
  */
 
-Drug_Suplr_Sbmtd_Chrgs: number;
+drug_suplr_sbmtd_chrgs: number;
 
 
 /**
@@ -932,7 +932,7 @@ Drug_Suplr_Sbmtd_Chrgs: number;
  * ```
  */
 
-Drug_Suplr_Mdcr_Alowd_Amt: number;
+drug_suplr_mdcr_alowd_amt: number;
 
 
 /**
@@ -949,7 +949,7 @@ Drug_Suplr_Mdcr_Alowd_Amt: number;
  * ```
  */
 
-Drug_Suplr_Mdcr_Pymt_Amt: number;
+drug_suplr_mdcr_pymt_amt: number;
 
 
 /**
@@ -966,7 +966,7 @@ Drug_Suplr_Mdcr_Pymt_Amt: number;
  * ```
  */
 
-Drug_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
+drug_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
@@ -983,7 +983,7 @@ Drug_Suplr_Mdcr_Stdzd_Pymt_Amt: number;
  * ```
  */
 
-Bene_Avg_Age: number;
+bene_avg_age: number;
 
 
 /**
@@ -1000,7 +1000,7 @@ Bene_Avg_Age: number;
  * ```
  */
 
-Bene_Age_LT_65_Cnt: number;
+bene_age_lt_65_cnt: number;
 
 
 /**
@@ -1017,7 +1017,7 @@ Bene_Age_LT_65_Cnt: number;
  * ```
  */
 
-Bene_Age_65_74_Cnt: number;
+bene_age_65_74_cnt: number;
 
 
 /**
@@ -1034,7 +1034,7 @@ Bene_Age_65_74_Cnt: number;
  * ```
  */
 
-Bene_Age_75_84_Cnt: number;
+bene_age_75_84_cnt: number;
 
 
 /**
@@ -1051,7 +1051,7 @@ Bene_Age_75_84_Cnt: number;
  * ```
  */
 
-Bene_Age_GT_84_Cnt: number;
+bene_age_gt_84_cnt: number;
 
 
 /**
@@ -1068,7 +1068,7 @@ Bene_Age_GT_84_Cnt: number;
  * ```
  */
 
-Bene_Feml_Cnt: number;
+bene_feml_cnt: number;
 
 
 /**
@@ -1085,7 +1085,7 @@ Bene_Feml_Cnt: number;
  * ```
  */
 
-Bene_Male_Cnt: number;
+bene_male_cnt: number;
 
 
 /**
@@ -1102,7 +1102,7 @@ Bene_Male_Cnt: number;
  * ```
  */
 
-Bene_Race_Wht_Cnt: number;
+bene_race_wht_cnt: number;
 
 
 /**
@@ -1119,7 +1119,7 @@ Bene_Race_Wht_Cnt: number;
  * ```
  */
 
-Bene_Race_Black_Cnt: number;
+bene_race_black_cnt: number;
 
 
 /**
@@ -1136,7 +1136,7 @@ Bene_Race_Black_Cnt: number;
  * ```
  */
 
-Bene_Race_Api_Cnt: number;
+bene_race_api_cnt: number;
 
 
 /**
@@ -1153,7 +1153,7 @@ Bene_Race_Api_Cnt: number;
  * ```
  */
 
-Bene_Race_Hspnc_Cnt: number;
+bene_race_hspnc_cnt: number;
 
 
 /**
@@ -1170,7 +1170,7 @@ Bene_Race_Hspnc_Cnt: number;
  * ```
  */
 
-Bene_Race_Natind_Cnt: number;
+bene_race_natind_cnt: number;
 
 
 /**
@@ -1187,7 +1187,7 @@ Bene_Race_Natind_Cnt: number;
  * ```
  */
 
-Bene_Race_Othr_Cnt: number;
+bene_race_othr_cnt: number;
 
 
 /**
@@ -1204,7 +1204,7 @@ Bene_Race_Othr_Cnt: number;
  * ```
  */
 
-Bene_Ndual_Cnt: number;
+bene_ndual_cnt: number;
 
 
 /**
@@ -1221,7 +1221,7 @@ Bene_Ndual_Cnt: number;
  * ```
  */
 
-Bene_Dual_Cnt: number;
+bene_dual_cnt: number;
 
 
 /**
@@ -1238,7 +1238,7 @@ Bene_Dual_Cnt: number;
  * ```
  */
 
-Bene_CC_AF_Pct: number;
+bene_cc_af_pct: number;
 
 
 /**
@@ -1255,7 +1255,7 @@ Bene_CC_AF_Pct: number;
  * ```
  */
 
-Bene_CC_Alzhmr_Pct: number;
+bene_cc_alzhmr_pct: number;
 
 
 /**
@@ -1272,7 +1272,7 @@ Bene_CC_Alzhmr_Pct: number;
  * ```
  */
 
-Bene_CC_Asthma_Pct: number;
+bene_cc_asthma_pct: number;
 
 
 /**
@@ -1289,7 +1289,7 @@ Bene_CC_Asthma_Pct: number;
  * ```
  */
 
-Bene_CC_Cncr_Pct: number;
+bene_cc_cncr_pct: number;
 
 
 /**
@@ -1306,7 +1306,7 @@ Bene_CC_Cncr_Pct: number;
  * ```
  */
 
-Bene_CC_CHF_Pct: number;
+bene_cc_chf_pct: number;
 
 
 /**
@@ -1323,7 +1323,7 @@ Bene_CC_CHF_Pct: number;
  * ```
  */
 
-Bene_CC_CKD_Pct: number;
+bene_cc_ckd_pct: number;
 
 
 /**
@@ -1340,7 +1340,7 @@ Bene_CC_CKD_Pct: number;
  * ```
  */
 
-Bene_CC_COPD_Pct: number;
+bene_cc_copd_pct: number;
 
 
 /**
@@ -1357,7 +1357,7 @@ Bene_CC_COPD_Pct: number;
  * ```
  */
 
-Bene_CC_Dprssn_Pct: number;
+bene_cc_dprssn_pct: number;
 
 
 /**
@@ -1374,7 +1374,7 @@ Bene_CC_Dprssn_Pct: number;
  * ```
  */
 
-Bene_CC_Dbts_Pct: number;
+bene_cc_dbts_pct: number;
 
 
 /**
@@ -1391,7 +1391,7 @@ Bene_CC_Dbts_Pct: number;
  * ```
  */
 
-Bene_CC_Hyplpdma_Pct: number;
+bene_cc_hyplpdma_pct: number;
 
 
 /**
@@ -1408,7 +1408,7 @@ Bene_CC_Hyplpdma_Pct: number;
  * ```
  */
 
-Bene_CC_Hyprtnsn_Pct: number;
+bene_cc_hyprtnsn_pct: number;
 
 
 /**
@@ -1425,7 +1425,7 @@ Bene_CC_Hyprtnsn_Pct: number;
  * ```
  */
 
-Bene_CC_IHD_Pct: number;
+bene_cc_ihd_pct: number;
 
 
 /**
@@ -1442,7 +1442,7 @@ Bene_CC_IHD_Pct: number;
  * ```
  */
 
-Bene_CC_Opo_Pct: number;
+bene_cc_opo_pct: number;
 
 
 /**
@@ -1459,7 +1459,7 @@ Bene_CC_Opo_Pct: number;
  * ```
  */
 
-Bene_CC_RAOA_Pct: number;
+bene_cc_raoa_pct: number;
 
 
 /**
@@ -1476,7 +1476,7 @@ Bene_CC_RAOA_Pct: number;
  * ```
  */
 
-Bene_CC_Sz_Pct: number;
+bene_cc_sz_pct: number;
 
 
 /**
@@ -1493,7 +1493,7 @@ Bene_CC_Sz_Pct: number;
  * ```
  */
 
-Bene_CC_Strok_Pct: number;
+bene_cc_strok_pct: number;
 
 
 /**
@@ -1510,6 +1510,6 @@ Bene_CC_Strok_Pct: number;
  * ```
  */
 
-Bene_Avg_Risk_Scre: number;
+bene_avg_risk_scre: number;
 
 }

@@ -14,7 +14,7 @@ export interface IMedicareDurableMedicalEquipmentDevicesSuppliesByReferringProvi
  * ```
  */
 
-Rfrg_NPI: number;
+rfrg_npi: number;
 
 
 /**
@@ -30,7 +30,7 @@ Rfrg_NPI: number;
  * ```
  */
 
-Rfrg_Prvdr_Last_Name_Org: string;
+rfrg_prvdr_last_name_org: string;
 
 
 /**
@@ -47,7 +47,7 @@ Rfrg_Prvdr_Last_Name_Org: string;
  * ```
  */
 
-Rfrg_Prvdr_First_Name: string;
+rfrg_prvdr_first_name: string;
 
 
 /**
@@ -64,7 +64,7 @@ Rfrg_Prvdr_First_Name: string;
  * ```
  */
 
-Rfrg_Prvdr_MI: string;
+rfrg_prvdr_mi: string;
 
 
 /**
@@ -81,7 +81,7 @@ Rfrg_Prvdr_MI: string;
  * ```
  */
 
-Rfrg_Prvdr_Crdntls: string;
+rfrg_prvdr_crdntls: string;
 
 
 /**
@@ -98,7 +98,7 @@ Rfrg_Prvdr_Crdntls: string;
  * ```
  */
 
-Rfrg_Prvdr_Gndr: string;
+rfrg_prvdr_gndr: string;
 
 
 /**
@@ -115,7 +115,7 @@ Rfrg_Prvdr_Gndr: string;
  * ```
  */
 
-Rfrg_Prvdr_Ent_Cd: string;
+rfrg_prvdr_ent_cd: string;
 
 
 /**
@@ -132,7 +132,7 @@ Rfrg_Prvdr_Ent_Cd: string;
  * ```
  */
 
-Rfrg_Prvdr_St1: string;
+rfrg_prvdr_st_1: string;
 
 
 /**
@@ -149,7 +149,7 @@ Rfrg_Prvdr_St1: string;
  * ```
  */
 
-Rfrg_Prvdr_St2: string;
+rfrg_prvdr_st_2: string;
 
 
 /**
@@ -166,7 +166,7 @@ Rfrg_Prvdr_St2: string;
  * ```
  */
 
-Rfrg_Prvdr_City: string;
+rfrg_prvdr_city: string;
 
 
 /**
@@ -183,7 +183,7 @@ Rfrg_Prvdr_City: string;
  * ```
  */
 
-Rfrg_Prvdr_State_Abrvtn: string;
+rfrg_prvdr_state_abrvtn: string;
 
 
 /**
@@ -200,7 +200,7 @@ Rfrg_Prvdr_State_Abrvtn: string;
  * ```
  */
 
-Rfrg_Prvdr_State_FIPS: number;
+rfrg_prvdr_state_fips: number;
 
 
 /**
@@ -217,7 +217,7 @@ Rfrg_Prvdr_State_FIPS: number;
  * ```
  */
 
-Rfrg_Prvdr_Zip5: number;
+rfrg_prvdr_zip_5: number;
 
 
 /**
@@ -233,7 +233,7 @@ Rfrg_Prvdr_Zip5: number;
  * ```
  */
 
-Rfrg_Prvdr_RUCA_CAT: string;
+rfrg_prvdr_ruca_cat: string;
 
 
 /**
@@ -250,7 +250,7 @@ Rfrg_Prvdr_RUCA_CAT: string;
  * ```
  */
 
-Rfrg_Prvdr_RUCA: number;
+rfrg_prvdr_ruca: number;
 
 
 /**
@@ -266,7 +266,7 @@ Rfrg_Prvdr_RUCA: number;
  * ```
  */
 
-Rfrg_Prvdr_RUCA_Desc: string;
+rfrg_prvdr_ruca_desc: string;
 
 
 /**
@@ -283,7 +283,7 @@ Rfrg_Prvdr_RUCA_Desc: string;
  * ```
  */
 
-Rfrg_Prvdr_Cntry: string;
+rfrg_prvdr_cntry: string;
 
 
 /**
@@ -299,7 +299,7 @@ Rfrg_Prvdr_Cntry: string;
  * ```
  */
 
-Rfrg_Prvdr_Type_cd: string;
+rfrg_prvdr_type_cd: string;
 
 
 /**
@@ -316,7 +316,7 @@ Rfrg_Prvdr_Type_cd: string;
  * ```
  */
 
-Rfrg_Prvdr_Type: string;
+rfrg_prvdr_type: string;
 
 
 /**
@@ -333,7 +333,7 @@ Rfrg_Prvdr_Type: string;
  * ```
  */
 
-Rfrg_Prvdr_Type_Flag: string;
+rfrg_prvdr_type_flag: string;
 
 
 /**
@@ -350,7 +350,7 @@ Rfrg_Prvdr_Type_Flag: string;
  * ```
  */
 
-BETOS_Lvl: string;
+betos_lvl: string;
 
 
 /**
@@ -366,7 +366,7 @@ BETOS_Lvl: string;
  * ```
  */
 
-BETOS_Cd: string;
+betos_cd: string;
 
 
 /**
@@ -383,7 +383,7 @@ BETOS_Cd: string;
  * ```
  */
 
-BETOS_Desc: string;
+betos_desc: string;
 
 
 /**
@@ -399,7 +399,7 @@ BETOS_Desc: string;
  * ```
  */
 
-HCPCS_CD: string;
+hcpcs_cd: string;
 
 
 /**
@@ -416,7 +416,7 @@ HCPCS_CD: string;
  * ```
  */
 
-HCPCS_Desc: string;
+hcpcs_desc: string;
 
 
 /**
@@ -433,7 +433,7 @@ HCPCS_Desc: string;
  * ```
  */
 
-Suplr_Rentl_Ind: string;
+suplr_rentl_ind: string;
 
 
 /**
@@ -450,7 +450,7 @@ Suplr_Rentl_Ind: string;
  * ```
  */
 
-Tot_Suplrs: number;
+tot_suplrs: number;
 
 
 /**
@@ -467,7 +467,7 @@ Tot_Suplrs: number;
  * ```
  */
 
-Tot_Suplr_Benes: number;
+tot_suplr_benes: number;
 
 
 /**
@@ -484,7 +484,7 @@ Tot_Suplr_Benes: number;
  * ```
  */
 
-Tot_Suplr_Clms: number;
+tot_suplr_clms: number;
 
 
 /**
@@ -501,7 +501,7 @@ Tot_Suplr_Clms: number;
  * ```
  */
 
-Tot_Suplr_Srvcs: number;
+tot_suplr_srvcs: number;
 
 
 /**
@@ -518,7 +518,7 @@ Tot_Suplr_Srvcs: number;
  * ```
  */
 
-Avg_Suplr_Sbmtd_Chrg: number;
+avg_suplr_sbmtd_chrg: number;
 
 
 /**
@@ -535,7 +535,7 @@ Avg_Suplr_Sbmtd_Chrg: number;
  * ```
  */
 
-Avg_Suplr_Mdcr_Alowd_Amt: number;
+avg_suplr_mdcr_alowd_amt: number;
 
 
 /**
@@ -552,7 +552,7 @@ Avg_Suplr_Mdcr_Alowd_Amt: number;
  * ```
  */
 
-Avg_Suplr_Mdcr_Pymt_Amt: number;
+avg_suplr_mdcr_pymt_amt: number;
 
 
 /**
@@ -569,6 +569,6 @@ Avg_Suplr_Mdcr_Pymt_Amt: number;
  * ```
  */
 
-Avg_Suplr_Mdcr_Stdzd_Amt: number;
+avg_suplr_mdcr_stdzd_amt: number;
 
 }

@@ -14,7 +14,7 @@ export interface IRestructuredBetosClassificationSystem {
  * ```
  */
 
-HCPCS_Cd: string;
+hcpcs_cd: string;
 
 
 /**
@@ -31,7 +31,7 @@ HCPCS_Cd: string;
  * ```
  */
 
-RBCS_ID: string;
+rbcs_id: string;
 
 
 /**
@@ -48,7 +48,7 @@ RBCS_ID: string;
  * ```
  */
 
-RBCS_Cat: string;
+rbcs_cat: string;
 
 
 /**
@@ -65,7 +65,7 @@ RBCS_Cat: string;
  * ```
  */
 
-RBCS_Cat_Desc: string;
+rbcs_cat_desc: string;
 
 
 /**
@@ -82,7 +82,7 @@ RBCS_Cat_Desc: string;
  * ```
  */
 
-RBCS_Cat_Subcat: string;
+rbcs_cat_subcat: string;
 
 
 /**
@@ -99,7 +99,7 @@ RBCS_Cat_Subcat: string;
  * ```
  */
 
-RBCS_Subcat_Desc: string;
+rbcs_subcat_desc: string;
 
 
 /**
@@ -116,7 +116,7 @@ RBCS_Subcat_Desc: string;
  * ```
  */
 
-RBCS_FamNumb: string;
+rbcs_fam_numb: string;
 
 
 /**
@@ -133,7 +133,7 @@ RBCS_FamNumb: string;
  * ```
  */
 
-RBCS_Family_Desc: string;
+rbcs_family_desc: string;
 
 
 /**
@@ -150,7 +150,7 @@ RBCS_Family_Desc: string;
  * ```
  */
 
-RBCS_Major_Ind: string;
+rbcs_major_ind: string;
 
 
 /**
@@ -167,7 +167,7 @@ RBCS_Major_Ind: string;
  * ```
  */
 
-HCPCS_Cd_Add_Dt: string;
+hcpcs_cd_add_dt: string;
 
 
 /**
@@ -184,7 +184,7 @@ HCPCS_Cd_Add_Dt: string;
  * ```
  */
 
-HCPCS_Cd_End_Dt: string;
+hcpcs_cd_end_dt: string;
 
 
 /**
@@ -201,6 +201,6 @@ HCPCS_Cd_End_Dt: string;
  * ```
  */
 
-RBCS_Assignment_Eff_Dt: string;
+rbcs_assignment_eff_dt: string;
 
 }

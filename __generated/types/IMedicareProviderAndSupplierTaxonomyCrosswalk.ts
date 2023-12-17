@@ -13,7 +13,7 @@ export interface IMedicareProviderAndSupplierTaxonomyCrosswalk {
  * ```
  */
 
-MEDICARE SPECIALTY CODE: string;
+medicare_specialty_code: string;
 
 
 /**
@@ -29,7 +29,7 @@ MEDICARE SPECIALTY CODE: string;
  * ```
  */
 
-MEDICARE PROVIDER/SUPPLIER TYPE: string;
+medicare_provider_supplier_type: string;
 
 
 /**
@@ -45,7 +45,7 @@ MEDICARE PROVIDER/SUPPLIER TYPE: string;
  * ```
  */
 
-PROVIDER TAXONOMY CODE: string;
+provider_taxonomy_code: string;
 
 
 /**
@@ -61,6 +61,6 @@ PROVIDER TAXONOMY CODE: string;
  * ```
  */
 
-PROVIDER TAXONOMY DESCRIPTION: TYPE CLASSIFICATION SPECIALIZATION: string;
+provider_taxonomy_description_type_classification_specialization: string;
 
 }
