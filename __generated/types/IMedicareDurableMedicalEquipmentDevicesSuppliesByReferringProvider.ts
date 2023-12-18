@@ -1,7 +1,125 @@
+/**
+ * @name IMedicareDurableMedicalEquipmentDevicesSuppliesByReferringProvider
+ * @summary Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider 
+ * @property {string} rfrg_npi
+ * @property {string} rfrg_prvdr_last_name_org
+ * @property {string} rfrg_prvdr_first_name
+ * @property {string} rfrg_prvdr_mi
+ * @property {string} rfrg_prvdr_crdntls
+ * @property {string} rfrg_prvdr_gndr
+ * @property {string} rfrg_prvdr_ent_cd
+ * @property {string} rfrg_prvdr_st_1
+ * @property {string} rfrg_prvdr_st_2
+ * @property {string} rfrg_prvdr_city
+ * @property {string} rfrg_prvdr_state_abrvtn
+ * @property {number} rfrg_prvdr_state_fips
+ * @property {string} rfrg_prvdr_zip_5
+ * @property {string} rfrg_prvdr_ruca
+ * @property {string} rfrg_prvdr_ruca_desc
+ * @property {string} rfrg_prvdr_cntry
+ * @property {string} rfrg_prvdr_type
+ * @property {string} rfrg_prvdr_type_flag
+ * @property {number} tot_suplrs
+ * @property {number} tot_suplr_hcpcs_cds
+ * @property {number} tot_suplr_benes
+ * @property {number} tot_suplr_clms
+ * @property {number} tot_suplr_srvcs
+ * @property {number} suplr_sbmtd_chrgs
+ * @property {number} suplr_mdcr_alowd_amt
+ * @property {number} suplr_mdcr_pymt_amt
+ * @property {number} suplr_mdcr_stdzd_pymt_amt
+ * @property {string} dme_sprsn_ind
+ * @property {number} dme_tot_suplrs
+ * @property {number} dme_tot_suplr_hcpcs_cds
+ * @property {number} dme_tot_suplr_benes
+ * @property {number} dme_tot_suplr_clms
+ * @property {number} dme_tot_suplr_srvcs
+ * @property {number} dme_suplr_sbmtd_chrgs
+ * @property {number} dme_suplr_mdcr_alowd_amt
+ * @property {number} dme_suplr_mdcr_pymt_amt
+ * @property {number} dme_suplr_mdcr_stdzd_pymt_amt
+ * @property {string} pos_sprsn_ind
+ * @property {number} pos_tot_suplrs
+ * @property {number} pos_tot_suplr_hcpcs_cds
+ * @property {number} pos_tot_suplr_benes
+ * @property {number} pos_tot_suplr_clms
+ * @property {number} pos_tot_suplr_srvcs
+ * @property {number} pos_suplr_sbmtd_chrgs
+ * @property {number} pos_suplr_mdcr_alowd_amt
+ * @property {number} pos_suplr_mdcr_pymt_amt
+ * @property {number} pos_suplr_mdcr_stdzd_pymt_amt
+ * @property {string} drug_sprsn_ind
+ * @property {number} drug_tot_suplrs
+ * @property {number} drug_tot_suplr_hcpcs_cds
+ * @property {number} drug_tot_suplr_benes
+ * @property {number} drug_tot_suplr_clms
+ * @property {number} drug_tot_suplr_srvcs
+ * @property {number} drug_suplr_sbmtd_chrgs
+ * @property {number} drug_suplr_mdcr_alowd_amt
+ * @property {number} drug_suplr_mdcr_pymt_amt
+ * @property {number} drug_suplr_mdcr_stdzd_pymt_amt
+ * @property {number} bene_avg_age
+ * @property {number} bene_age_lt_65_cnt
+ * @property {number} bene_age_65_74_cnt
+ * @property {number} bene_age_75_84_cnt
+ * @property {number} bene_age_gt_84_cnt
+ * @property {number} bene_feml_cnt
+ * @property {number} bene_male_cnt
+ * @property {number} bene_race_wht_cnt
+ * @property {number} bene_race_black_cnt
+ * @property {number} bene_race_api_cnt
+ * @property {number} bene_race_hspnc_cnt
+ * @property {number} bene_race_natind_cnt
+ * @property {number} bene_race_othr_cnt
+ * @property {number} bene_ndual_cnt
+ * @property {number} bene_dual_cnt
+ * @property {number} bene_cc_af_pct
+ * @property {number} bene_cc_alzhmr_pct
+ * @property {number} bene_cc_asthma_pct
+ * @property {number} bene_cc_cncr_pct
+ * @property {number} bene_cc_chf_pct
+ * @property {number} bene_cc_ckd_pct
+ * @property {number} bene_cc_copd_pct
+ * @property {number} bene_cc_dprssn_pct
+ * @property {number} bene_cc_dbts_pct
+ * @property {number} bene_cc_hyplpdma_pct
+ * @property {number} bene_cc_hyprtnsn_pct
+ * @property {number} bene_cc_ihd_pct
+ * @property {number} bene_cc_opo_pct
+ * @property {number} bene_cc_raoa_pct
+ * @property {number} bene_cc_sz_pct
+ * @property {number} bene_cc_strok_pct
+ * @property {number} bene_avg_risk_scre
+ * @description The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider dataset contains information on usage, payments, submitted charges and beneficiary demographic and health characteristics organized by National Provider Identifier (NPI).
+ * ```
+ * "@type": "dcat:Dataset"
+ * "accessLevel": "public"
+ * "accrualPeriodicity": "R/P1Y"
+ * "bureauCode": ["009:38"]
+ * "contactPoint": {"@type":"vcard:Contact","fn":"Medicare Provider Data - OEDA","hasEmail":"mailto:IPAG_Data_Products@cms.hhs.gov"}
+ * "describedBy": "https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-referring-provider-data-dictionary"
+ * "dataQuality": true
+ * "description": "The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider dataset contains information on usage, payments, submitted charges and beneficiary demographic and health characteristics organized by National Provider Identifier (NPI)."
+ * "distribution": []
+ * "identifier": "https://data.cms.gov/data-api/v1/dataset/f8603e5b-9c47-4c52-9b47-a4ef92dfada4/data-viewer"
+ * "keyword": ["Medicare","Original Medicare","Physicians & Practitioners","Medical Suppliers & Equipment","Health Care Use & Payments","Health Equity"]
+ * "landingPage": "https://data.cms.gov/provider-summary-by-type-of-service/medicare-durable-medical-equipment-devices-supplies/medicare-durable-medical-equipment-devices-supplies-by-referring-provider"
+ * "language": ["en-US"]
+ * "license": "https://www.usa.gov/government-works"
+ * "modified": "2023-05-10"
+ * "programCode": ["009:000"]
+ * "publisher": {"@type":"org:Organization","name":"Centers for Medicare & Medicaid Services"}
+ * "references": ["https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology"]
+ * "temporal": "2013-01-01/2021-12-31"
+ * "theme": ["Medicare"]
+ * "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider "
+ * "id": "f8603e5b-9c47-4c52-9b47-a4ef92dfada4"
+ * ```
+ */
 export interface IMedicareDurableMedicalEquipmentDevicesSuppliesByReferringProvider {
 
 /**
- * @name Rfrg_NPI
+ * @name rfrg_npi
  * @type {string}
  * @description
  * ```
@@ -18,7 +136,7 @@ rfrg_npi: string;
 
 
 /**
- * @name Rfrg_Prvdr_Last_Name_Org
+ * @name rfrg_prvdr_last_name_org
  * @type {string}
  * @description
  * ```
@@ -35,7 +153,7 @@ rfrg_prvdr_last_name_org: string;
 
 
 /**
- * @name Rfrg_Prvdr_First_Name
+ * @name rfrg_prvdr_first_name
  * @type {string}
  * @description
  * ```
@@ -52,7 +170,7 @@ rfrg_prvdr_first_name: string;
 
 
 /**
- * @name Rfrg_Prvdr_MI
+ * @name rfrg_prvdr_mi
  * @type {string}
  * @description
  * ```
@@ -69,7 +187,7 @@ rfrg_prvdr_mi: string;
 
 
 /**
- * @name Rfrg_Prvdr_Crdntls
+ * @name rfrg_prvdr_crdntls
  * @type {string}
  * @description
  * ```
@@ -86,7 +204,7 @@ rfrg_prvdr_crdntls: string;
 
 
 /**
- * @name Rfrg_Prvdr_Gndr
+ * @name rfrg_prvdr_gndr
  * @type {string}
  * @description
  * ```
@@ -103,7 +221,7 @@ rfrg_prvdr_gndr: string;
 
 
 /**
- * @name Rfrg_Prvdr_Ent_Cd
+ * @name rfrg_prvdr_ent_cd
  * @type {string}
  * @description
  * ```
@@ -120,7 +238,7 @@ rfrg_prvdr_ent_cd: string;
 
 
 /**
- * @name Rfrg_Prvdr_St1
+ * @name rfrg_prvdr_st_1
  * @type {string}
  * @description
  * ```
@@ -137,7 +255,7 @@ rfrg_prvdr_st_1: string;
 
 
 /**
- * @name Rfrg_Prvdr_St2
+ * @name rfrg_prvdr_st_2
  * @type {string}
  * @description
  * ```
@@ -154,7 +272,7 @@ rfrg_prvdr_st_2: string;
 
 
 /**
- * @name Rfrg_Prvdr_City
+ * @name rfrg_prvdr_city
  * @type {string}
  * @description
  * ```
@@ -171,7 +289,7 @@ rfrg_prvdr_city: string;
 
 
 /**
- * @name Rfrg_Prvdr_State_Abrvtn
+ * @name rfrg_prvdr_state_abrvtn
  * @type {string}
  * @description
  * ```
@@ -188,7 +306,7 @@ rfrg_prvdr_state_abrvtn: string;
 
 
 /**
- * @name Rfrg_Prvdr_State_FIPS
+ * @name rfrg_prvdr_state_fips
  * @type {number}
  * @description
  * ```
@@ -205,7 +323,7 @@ rfrg_prvdr_state_fips: number;
 
 
 /**
- * @name Rfrg_Prvdr_Zip5
+ * @name rfrg_prvdr_zip_5
  * @type {string}
  * @description
  * ```
@@ -222,7 +340,7 @@ rfrg_prvdr_zip_5: string;
 
 
 /**
- * @name Rfrg_Prvdr_RUCA
+ * @name rfrg_prvdr_ruca
  * @type {string}
  * @description
  * ```
@@ -239,7 +357,7 @@ rfrg_prvdr_ruca: string;
 
 
 /**
- * @name Rfrg_Prvdr_RUCA_Desc
+ * @name rfrg_prvdr_ruca_desc
  * @type {string}
  * @description
  * ```
@@ -256,7 +374,7 @@ rfrg_prvdr_ruca_desc: string;
 
 
 /**
- * @name Rfrg_Prvdr_Cntry
+ * @name rfrg_prvdr_cntry
  * @type {string}
  * @description
  * ```
@@ -273,7 +391,7 @@ rfrg_prvdr_cntry: string;
 
 
 /**
- * @name Rfrg_Prvdr_Type
+ * @name rfrg_prvdr_type
  * @type {string}
  * @description
  * ```
@@ -290,7 +408,7 @@ rfrg_prvdr_type: string;
 
 
 /**
- * @name Rfrg_Prvdr_Type_Flag
+ * @name rfrg_prvdr_type_flag
  * @type {string}
  * @description
  * ```
@@ -307,7 +425,7 @@ rfrg_prvdr_type_flag: string;
 
 
 /**
- * @name Tot_Suplrs
+ * @name tot_suplrs
  * @type {number}
  * @description
  * ```
@@ -324,7 +442,7 @@ tot_suplrs: number;
 
 
 /**
- * @name Tot_Suplr_HCPCS_Cds
+ * @name tot_suplr_hcpcs_cds
  * @type {number}
  * @description
  * ```
@@ -341,7 +459,7 @@ tot_suplr_hcpcs_cds: number;
 
 
 /**
- * @name Tot_Suplr_Benes
+ * @name tot_suplr_benes
  * @type {number}
  * @description
  * ```
@@ -358,7 +476,7 @@ tot_suplr_benes: number;
 
 
 /**
- * @name Tot_Suplr_Clms
+ * @name tot_suplr_clms
  * @type {number}
  * @description
  * ```
@@ -375,7 +493,7 @@ tot_suplr_clms: number;
 
 
 /**
- * @name Tot_Suplr_Srvcs
+ * @name tot_suplr_srvcs
  * @type {number}
  * @description
  * ```
@@ -392,7 +510,7 @@ tot_suplr_srvcs: number;
 
 
 /**
- * @name Suplr_Sbmtd_Chrgs
+ * @name suplr_sbmtd_chrgs
  * @type {number}
  * @description
  * ```
@@ -409,7 +527,7 @@ suplr_sbmtd_chrgs: number;
 
 
 /**
- * @name Suplr_Mdcr_Alowd_Amt
+ * @name suplr_mdcr_alowd_amt
  * @type {number}
  * @description
  * ```
@@ -426,7 +544,7 @@ suplr_mdcr_alowd_amt: number;
 
 
 /**
- * @name Suplr_Mdcr_Pymt_Amt
+ * @name suplr_mdcr_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -443,7 +561,7 @@ suplr_mdcr_pymt_amt: number;
 
 
 /**
- * @name Suplr_Mdcr_Stdzd_Pymt_Amt
+ * @name suplr_mdcr_stdzd_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -460,7 +578,7 @@ suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
- * @name DME_Sprsn_Ind
+ * @name dme_sprsn_ind
  * @type {string}
  * @description
  * ```
@@ -477,7 +595,7 @@ dme_sprsn_ind: string;
 
 
 /**
- * @name DME_Tot_Suplrs
+ * @name dme_tot_suplrs
  * @type {number}
  * @description
  * ```
@@ -494,7 +612,7 @@ dme_tot_suplrs: number;
 
 
 /**
- * @name DME_Tot_Suplr_HCPCS_Cds
+ * @name dme_tot_suplr_hcpcs_cds
  * @type {number}
  * @description
  * ```
@@ -511,7 +629,7 @@ dme_tot_suplr_hcpcs_cds: number;
 
 
 /**
- * @name DME_Tot_Suplr_Benes
+ * @name dme_tot_suplr_benes
  * @type {number}
  * @description
  * ```
@@ -528,7 +646,7 @@ dme_tot_suplr_benes: number;
 
 
 /**
- * @name DME_Tot_Suplr_Clms
+ * @name dme_tot_suplr_clms
  * @type {number}
  * @description
  * ```
@@ -545,7 +663,7 @@ dme_tot_suplr_clms: number;
 
 
 /**
- * @name DME_Tot_Suplr_Srvcs
+ * @name dme_tot_suplr_srvcs
  * @type {number}
  * @description
  * ```
@@ -562,7 +680,7 @@ dme_tot_suplr_srvcs: number;
 
 
 /**
- * @name DME_Suplr_Sbmtd_Chrgs
+ * @name dme_suplr_sbmtd_chrgs
  * @type {number}
  * @description
  * ```
@@ -579,7 +697,7 @@ dme_suplr_sbmtd_chrgs: number;
 
 
 /**
- * @name DME_Suplr_Mdcr_Alowd_Amt
+ * @name dme_suplr_mdcr_alowd_amt
  * @type {number}
  * @description
  * ```
@@ -596,7 +714,7 @@ dme_suplr_mdcr_alowd_amt: number;
 
 
 /**
- * @name DME_Suplr_Mdcr_Pymt_Amt
+ * @name dme_suplr_mdcr_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -613,7 +731,7 @@ dme_suplr_mdcr_pymt_amt: number;
 
 
 /**
- * @name DME_Suplr_Mdcr_Stdzd_Pymt_Amt
+ * @name dme_suplr_mdcr_stdzd_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -630,7 +748,7 @@ dme_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
- * @name POS_Sprsn_Ind
+ * @name pos_sprsn_ind
  * @type {string}
  * @description
  * ```
@@ -647,7 +765,7 @@ pos_sprsn_ind: string;
 
 
 /**
- * @name POS_Tot_Suplrs
+ * @name pos_tot_suplrs
  * @type {number}
  * @description
  * ```
@@ -664,7 +782,7 @@ pos_tot_suplrs: number;
 
 
 /**
- * @name POS_Tot_Suplr_HCPCS_Cds
+ * @name pos_tot_suplr_hcpcs_cds
  * @type {number}
  * @description
  * ```
@@ -681,7 +799,7 @@ pos_tot_suplr_hcpcs_cds: number;
 
 
 /**
- * @name POS_Tot_Suplr_Benes
+ * @name pos_tot_suplr_benes
  * @type {number}
  * @description
  * ```
@@ -698,7 +816,7 @@ pos_tot_suplr_benes: number;
 
 
 /**
- * @name POS_Tot_Suplr_Clms
+ * @name pos_tot_suplr_clms
  * @type {number}
  * @description
  * ```
@@ -715,7 +833,7 @@ pos_tot_suplr_clms: number;
 
 
 /**
- * @name POS_Tot_Suplr_Srvcs
+ * @name pos_tot_suplr_srvcs
  * @type {number}
  * @description
  * ```
@@ -732,7 +850,7 @@ pos_tot_suplr_srvcs: number;
 
 
 /**
- * @name POS_Suplr_Sbmtd_Chrgs
+ * @name pos_suplr_sbmtd_chrgs
  * @type {number}
  * @description
  * ```
@@ -749,7 +867,7 @@ pos_suplr_sbmtd_chrgs: number;
 
 
 /**
- * @name POS_Suplr_Mdcr_Alowd_Amt
+ * @name pos_suplr_mdcr_alowd_amt
  * @type {number}
  * @description
  * ```
@@ -766,7 +884,7 @@ pos_suplr_mdcr_alowd_amt: number;
 
 
 /**
- * @name POS_Suplr_Mdcr_Pymt_Amt
+ * @name pos_suplr_mdcr_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -783,7 +901,7 @@ pos_suplr_mdcr_pymt_amt: number;
 
 
 /**
- * @name POS_Suplr_Mdcr_Stdzd_Pymt_Amt
+ * @name pos_suplr_mdcr_stdzd_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -800,7 +918,7 @@ pos_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
- * @name Drug_Sprsn_Ind
+ * @name drug_sprsn_ind
  * @type {string}
  * @description
  * ```
@@ -817,7 +935,7 @@ drug_sprsn_ind: string;
 
 
 /**
- * @name Drug_Tot_Suplrs
+ * @name drug_tot_suplrs
  * @type {number}
  * @description
  * ```
@@ -834,7 +952,7 @@ drug_tot_suplrs: number;
 
 
 /**
- * @name Drug_Tot_Suplr_HCPCS_Cds
+ * @name drug_tot_suplr_hcpcs_cds
  * @type {number}
  * @description
  * ```
@@ -851,7 +969,7 @@ drug_tot_suplr_hcpcs_cds: number;
 
 
 /**
- * @name Drug_Tot_Suplr_Benes
+ * @name drug_tot_suplr_benes
  * @type {number}
  * @description
  * ```
@@ -868,7 +986,7 @@ drug_tot_suplr_benes: number;
 
 
 /**
- * @name Drug_Tot_Suplr_Clms
+ * @name drug_tot_suplr_clms
  * @type {number}
  * @description
  * ```
@@ -885,7 +1003,7 @@ drug_tot_suplr_clms: number;
 
 
 /**
- * @name Drug_Tot_Suplr_Srvcs
+ * @name drug_tot_suplr_srvcs
  * @type {number}
  * @description
  * ```
@@ -902,7 +1020,7 @@ drug_tot_suplr_srvcs: number;
 
 
 /**
- * @name Drug_Suplr_Sbmtd_Chrgs
+ * @name drug_suplr_sbmtd_chrgs
  * @type {number}
  * @description
  * ```
@@ -919,7 +1037,7 @@ drug_suplr_sbmtd_chrgs: number;
 
 
 /**
- * @name Drug_Suplr_Mdcr_Alowd_Amt
+ * @name drug_suplr_mdcr_alowd_amt
  * @type {number}
  * @description
  * ```
@@ -936,7 +1054,7 @@ drug_suplr_mdcr_alowd_amt: number;
 
 
 /**
- * @name Drug_Suplr_Mdcr_Pymt_Amt
+ * @name drug_suplr_mdcr_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -953,7 +1071,7 @@ drug_suplr_mdcr_pymt_amt: number;
 
 
 /**
- * @name Drug_Suplr_Mdcr_Stdzd_Pymt_Amt
+ * @name drug_suplr_mdcr_stdzd_pymt_amt
  * @type {number}
  * @description
  * ```
@@ -970,7 +1088,7 @@ drug_suplr_mdcr_stdzd_pymt_amt: number;
 
 
 /**
- * @name Bene_Avg_Age
+ * @name bene_avg_age
  * @type {number}
  * @description
  * ```
@@ -987,7 +1105,7 @@ bene_avg_age: number;
 
 
 /**
- * @name Bene_Age_LT_65_Cnt
+ * @name bene_age_lt_65_cnt
  * @type {number}
  * @description
  * ```
@@ -1004,7 +1122,7 @@ bene_age_lt_65_cnt: number;
 
 
 /**
- * @name Bene_Age_65_74_Cnt
+ * @name bene_age_65_74_cnt
  * @type {number}
  * @description
  * ```
@@ -1021,7 +1139,7 @@ bene_age_65_74_cnt: number;
 
 
 /**
- * @name Bene_Age_75_84_Cnt
+ * @name bene_age_75_84_cnt
  * @type {number}
  * @description
  * ```
@@ -1038,7 +1156,7 @@ bene_age_75_84_cnt: number;
 
 
 /**
- * @name Bene_Age_GT_84_Cnt
+ * @name bene_age_gt_84_cnt
  * @type {number}
  * @description
  * ```
@@ -1055,7 +1173,7 @@ bene_age_gt_84_cnt: number;
 
 
 /**
- * @name Bene_Feml_Cnt
+ * @name bene_feml_cnt
  * @type {number}
  * @description
  * ```
@@ -1072,7 +1190,7 @@ bene_feml_cnt: number;
 
 
 /**
- * @name Bene_Male_Cnt
+ * @name bene_male_cnt
  * @type {number}
  * @description
  * ```
@@ -1089,7 +1207,7 @@ bene_male_cnt: number;
 
 
 /**
- * @name Bene_Race_Wht_Cnt
+ * @name bene_race_wht_cnt
  * @type {number}
  * @description
  * ```
@@ -1106,7 +1224,7 @@ bene_race_wht_cnt: number;
 
 
 /**
- * @name Bene_Race_Black_Cnt
+ * @name bene_race_black_cnt
  * @type {number}
  * @description
  * ```
@@ -1123,7 +1241,7 @@ bene_race_black_cnt: number;
 
 
 /**
- * @name Bene_Race_Api_Cnt
+ * @name bene_race_api_cnt
  * @type {number}
  * @description
  * ```
@@ -1140,7 +1258,7 @@ bene_race_api_cnt: number;
 
 
 /**
- * @name Bene_Race_Hspnc_Cnt
+ * @name bene_race_hspnc_cnt
  * @type {number}
  * @description
  * ```
@@ -1157,7 +1275,7 @@ bene_race_hspnc_cnt: number;
 
 
 /**
- * @name Bene_Race_Natind_Cnt
+ * @name bene_race_natind_cnt
  * @type {number}
  * @description
  * ```
@@ -1174,7 +1292,7 @@ bene_race_natind_cnt: number;
 
 
 /**
- * @name Bene_Race_Othr_Cnt
+ * @name bene_race_othr_cnt
  * @type {number}
  * @description
  * ```
@@ -1191,7 +1309,7 @@ bene_race_othr_cnt: number;
 
 
 /**
- * @name Bene_Ndual_Cnt
+ * @name bene_ndual_cnt
  * @type {number}
  * @description
  * ```
@@ -1208,7 +1326,7 @@ bene_ndual_cnt: number;
 
 
 /**
- * @name Bene_Dual_Cnt
+ * @name bene_dual_cnt
  * @type {number}
  * @description
  * ```
@@ -1225,7 +1343,7 @@ bene_dual_cnt: number;
 
 
 /**
- * @name Bene_CC_AF_Pct
+ * @name bene_cc_af_pct
  * @type {number}
  * @description
  * ```
@@ -1242,7 +1360,7 @@ bene_cc_af_pct: number;
 
 
 /**
- * @name Bene_CC_Alzhmr_Pct
+ * @name bene_cc_alzhmr_pct
  * @type {number}
  * @description
  * ```
@@ -1259,7 +1377,7 @@ bene_cc_alzhmr_pct: number;
 
 
 /**
- * @name Bene_CC_Asthma_Pct
+ * @name bene_cc_asthma_pct
  * @type {number}
  * @description
  * ```
@@ -1276,7 +1394,7 @@ bene_cc_asthma_pct: number;
 
 
 /**
- * @name Bene_CC_Cncr_Pct
+ * @name bene_cc_cncr_pct
  * @type {number}
  * @description
  * ```
@@ -1293,7 +1411,7 @@ bene_cc_cncr_pct: number;
 
 
 /**
- * @name Bene_CC_CHF_Pct
+ * @name bene_cc_chf_pct
  * @type {number}
  * @description
  * ```
@@ -1310,7 +1428,7 @@ bene_cc_chf_pct: number;
 
 
 /**
- * @name Bene_CC_CKD_Pct
+ * @name bene_cc_ckd_pct
  * @type {number}
  * @description
  * ```
@@ -1327,7 +1445,7 @@ bene_cc_ckd_pct: number;
 
 
 /**
- * @name Bene_CC_COPD_Pct
+ * @name bene_cc_copd_pct
  * @type {number}
  * @description
  * ```
@@ -1344,7 +1462,7 @@ bene_cc_copd_pct: number;
 
 
 /**
- * @name Bene_CC_Dprssn_Pct
+ * @name bene_cc_dprssn_pct
  * @type {number}
  * @description
  * ```
@@ -1361,7 +1479,7 @@ bene_cc_dprssn_pct: number;
 
 
 /**
- * @name Bene_CC_Dbts_Pct
+ * @name bene_cc_dbts_pct
  * @type {number}
  * @description
  * ```
@@ -1378,7 +1496,7 @@ bene_cc_dbts_pct: number;
 
 
 /**
- * @name Bene_CC_Hyplpdma_Pct
+ * @name bene_cc_hyplpdma_pct
  * @type {number}
  * @description
  * ```
@@ -1395,7 +1513,7 @@ bene_cc_hyplpdma_pct: number;
 
 
 /**
- * @name Bene_CC_Hyprtnsn_Pct
+ * @name bene_cc_hyprtnsn_pct
  * @type {number}
  * @description
  * ```
@@ -1412,7 +1530,7 @@ bene_cc_hyprtnsn_pct: number;
 
 
 /**
- * @name Bene_CC_IHD_Pct
+ * @name bene_cc_ihd_pct
  * @type {number}
  * @description
  * ```
@@ -1429,7 +1547,7 @@ bene_cc_ihd_pct: number;
 
 
 /**
- * @name Bene_CC_Opo_Pct
+ * @name bene_cc_opo_pct
  * @type {number}
  * @description
  * ```
@@ -1446,7 +1564,7 @@ bene_cc_opo_pct: number;
 
 
 /**
- * @name Bene_CC_RAOA_Pct
+ * @name bene_cc_raoa_pct
  * @type {number}
  * @description
  * ```
@@ -1463,7 +1581,7 @@ bene_cc_raoa_pct: number;
 
 
 /**
- * @name Bene_CC_Sz_Pct
+ * @name bene_cc_sz_pct
  * @type {number}
  * @description
  * ```
@@ -1480,7 +1598,7 @@ bene_cc_sz_pct: number;
 
 
 /**
- * @name Bene_CC_Strok_Pct
+ * @name bene_cc_strok_pct
  * @type {number}
  * @description
  * ```
@@ -1497,7 +1615,7 @@ bene_cc_strok_pct: number;
 
 
 /**
- * @name Bene_Avg_Risk_Scre
+ * @name bene_avg_risk_scre
  * @type {number}
  * @description
  * ```
