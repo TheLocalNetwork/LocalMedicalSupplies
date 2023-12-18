@@ -82,786 +82,739 @@ Drug spending metrics for Part D drugs are based on the gross drug cost, which r
  * ```
  */
 export interface IMedicarePartDSpendingByDrug {
-
-/**
- * @name brnd_name
- * @type {string}
- * @description
- * ```
- * "name": "Brnd_Name"
- * "title": "Brnd_Name"
- * "source_name": "Brnd_Name"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-brnd_name: string;
-
-
-/**
- * @name gnrc_name
- * @type {string}
- * @description
- * ```
- * "name": "Gnrc_Name"
- * "title": "Gnrc_Name"
- * "source_name": "Gnrc_Name"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-gnrc_name: string;
-
-
-/**
- * @name tot_mftr
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Mftr"
- * "title": "Tot_Mftr"
- * "source_name": "Tot_Mftr"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_mftr: number;
-
-
-/**
- * @name mftr_name
- * @type {string}
- * @description
- * ```
- * "name": "Mftr_Name"
- * "title": "Mftr_Name"
- * "source_name": "Mftr_Name"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-mftr_name: string;
-
-
-/**
- * @name tot_spndng_2017
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Spndng_2017"
- * "title": "Tot_Spndng_2017"
- * "source_name": "Tot_Spndng_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-tot_spndng_2017: number;
-
-
-/**
- * @name tot_dsg_unts_2017
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Dsg_Unts_2017"
- * "title": "Tot_Dsg_Unts_2017"
- * "source_name": "Tot_Dsg_Unts_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_dsg_unts_2017: number;
-
-
-/**
- * @name tot_clms_2017
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Clms_2017"
- * "title": "Tot_Clms_2017"
- * "source_name": "Tot_Clms_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_clms_2017: number;
-
-
-/**
- * @name tot_benes_2017
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Benes_2017"
- * "title": "Tot_Benes_2017"
- * "source_name": "Tot_Benes_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_benes_2017: number;
-
-
-/**
- * @name avg_spnd_per_dsg_unt_wghtd_2017
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
- * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
- * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_dsg_unt_wghtd_2017: number;
-
-
-/**
- * @name avg_spnd_per_clm_2017
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Clm_2017"
- * "title": "Avg_Spnd_Per_Clm_2017"
- * "source_name": "Avg_Spnd_Per_Clm_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_clm_2017: number;
-
-
-/**
- * @name avg_spnd_per_bene_2017
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Bene_2017"
- * "title": "Avg_Spnd_Per_Bene_2017"
- * "source_name": "Avg_Spnd_Per_Bene_2017"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_bene_2017: number;
-
-
-/**
- * @name outlier_flag_2017
- * @type {string}
- * @description
- * ```
- * "name": "Outlier_Flag_2017"
- * "title": "Outlier_Flag_2017"
- * "source_name": "Outlier_Flag_2017"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-outlier_flag_2017: string;
-
-
-/**
- * @name tot_spndng_2018
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Spndng_2018"
- * "title": "Tot_Spndng_2018"
- * "source_name": "Tot_Spndng_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-tot_spndng_2018: number;
-
-
-/**
- * @name tot_dsg_unts_2018
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Dsg_Unts_2018"
- * "title": "Tot_Dsg_Unts_2018"
- * "source_name": "Tot_Dsg_Unts_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_dsg_unts_2018: number;
-
-
-/**
- * @name tot_clms_2018
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Clms_2018"
- * "title": "Tot_Clms_2018"
- * "source_name": "Tot_Clms_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_clms_2018: number;
-
-
-/**
- * @name tot_benes_2018
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Benes_2018"
- * "title": "Tot_Benes_2018"
- * "source_name": "Tot_Benes_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_benes_2018: number;
-
-
-/**
- * @name avg_spnd_per_dsg_unt_wghtd_2018
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
- * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
- * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_dsg_unt_wghtd_2018: number;
-
-
-/**
- * @name avg_spnd_per_clm_2018
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Clm_2018"
- * "title": "Avg_Spnd_Per_Clm_2018"
- * "source_name": "Avg_Spnd_Per_Clm_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_clm_2018: number;
-
-
-/**
- * @name avg_spnd_per_bene_2018
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Bene_2018"
- * "title": "Avg_Spnd_Per_Bene_2018"
- * "source_name": "Avg_Spnd_Per_Bene_2018"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_bene_2018: number;
-
-
-/**
- * @name outlier_flag_2018
- * @type {string}
- * @description
- * ```
- * "name": "Outlier_Flag_2018"
- * "title": "Outlier_Flag_2018"
- * "source_name": "Outlier_Flag_2018"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-outlier_flag_2018: string;
-
-
-/**
- * @name tot_spndng_2019
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Spndng_2019"
- * "title": "Tot_Spndng_2019"
- * "source_name": "Tot_Spndng_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-tot_spndng_2019: number;
-
-
-/**
- * @name tot_dsg_unts_2019
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Dsg_Unts_2019"
- * "title": "Tot_Dsg_Unts_2019"
- * "source_name": "Tot_Dsg_Unts_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_dsg_unts_2019: number;
-
-
-/**
- * @name tot_clms_2019
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Clms_2019"
- * "title": "Tot_Clms_2019"
- * "source_name": "Tot_Clms_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_clms_2019: number;
-
-
-/**
- * @name tot_benes_2019
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Benes_2019"
- * "title": "Tot_Benes_2019"
- * "source_name": "Tot_Benes_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_benes_2019: number;
-
-
-/**
- * @name avg_spnd_per_dsg_unt_wghtd_2019
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
- * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
- * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_dsg_unt_wghtd_2019: number;
-
-
-/**
- * @name avg_spnd_per_clm_2019
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Clm_2019"
- * "title": "Avg_Spnd_Per_Clm_2019"
- * "source_name": "Avg_Spnd_Per_Clm_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_clm_2019: number;
-
-
-/**
- * @name avg_spnd_per_bene_2019
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Bene_2019"
- * "title": "Avg_Spnd_Per_Bene_2019"
- * "source_name": "Avg_Spnd_Per_Bene_2019"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_bene_2019: number;
-
-
-/**
- * @name outlier_flag_2019
- * @type {string}
- * @description
- * ```
- * "name": "Outlier_Flag_2019"
- * "title": "Outlier_Flag_2019"
- * "source_name": "Outlier_Flag_2019"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-outlier_flag_2019: string;
-
-
-/**
- * @name tot_spndng_2020
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Spndng_2020"
- * "title": "Tot_Spndng_2020"
- * "source_name": "Tot_Spndng_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-tot_spndng_2020: number;
-
-
-/**
- * @name tot_dsg_unts_2020
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Dsg_Unts_2020"
- * "title": "Tot_Dsg_Unts_2020"
- * "source_name": "Tot_Dsg_Unts_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_dsg_unts_2020: number;
-
-
-/**
- * @name tot_clms_2020
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Clms_2020"
- * "title": "Tot_Clms_2020"
- * "source_name": "Tot_Clms_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_clms_2020: number;
-
-
-/**
- * @name tot_benes_2020
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Benes_2020"
- * "title": "Tot_Benes_2020"
- * "source_name": "Tot_Benes_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_benes_2020: number;
-
-
-/**
- * @name avg_spnd_per_dsg_unt_wghtd_2020
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
- * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
- * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_dsg_unt_wghtd_2020: number;
-
-
-/**
- * @name avg_spnd_per_clm_2020
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Clm_2020"
- * "title": "Avg_Spnd_Per_Clm_2020"
- * "source_name": "Avg_Spnd_Per_Clm_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_clm_2020: number;
-
-
-/**
- * @name avg_spnd_per_bene_2020
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Bene_2020"
- * "title": "Avg_Spnd_Per_Bene_2020"
- * "source_name": "Avg_Spnd_Per_Bene_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_bene_2020: number;
-
-
-/**
- * @name outlier_flag_2020
- * @type {number}
- * @description
- * ```
- * "name": "Outlier_Flag_2020"
- * "title": "Outlier_Flag_2020"
- * "source_name": "Outlier_Flag_2020"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-outlier_flag_2020: number;
-
-
-/**
- * @name tot_spndng_2021
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Spndng_2021"
- * "title": "Tot_Spndng_2021"
- * "source_name": "Tot_Spndng_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-tot_spndng_2021: number;
-
-
-/**
- * @name tot_dsg_unts_2021
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Dsg_Unts_2021"
- * "title": "Tot_Dsg_Unts_2021"
- * "source_name": "Tot_Dsg_Unts_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_dsg_unts_2021: number;
-
-
-/**
- * @name tot_clms_2021
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Clms_2021"
- * "title": "Tot_Clms_2021"
- * "source_name": "Tot_Clms_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_clms_2021: number;
-
-
-/**
- * @name tot_benes_2021
- * @type {number}
- * @description
- * ```
- * "name": "Tot_Benes_2021"
- * "title": "Tot_Benes_2021"
- * "source_name": "Tot_Benes_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-tot_benes_2021: number;
-
-
-/**
- * @name avg_spnd_per_dsg_unt_wghtd_2021
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
- * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
- * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_dsg_unt_wghtd_2021: number;
-
-
-/**
- * @name avg_spnd_per_clm_2021
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Clm_2021"
- * "title": "Avg_Spnd_Per_Clm_2021"
- * "source_name": "Avg_Spnd_Per_Clm_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_clm_2021: number;
-
-
-/**
- * @name avg_spnd_per_bene_2021
- * @type {number}
- * @description
- * ```
- * "name": "Avg_Spnd_Per_Bene_2021"
- * "title": "Avg_Spnd_Per_Bene_2021"
- * "source_name": "Avg_Spnd_Per_Bene_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-avg_spnd_per_bene_2021: number;
-
-
-/**
- * @name outlier_flag_2021
- * @type {number}
- * @description
- * ```
- * "name": "Outlier_Flag_2021"
- * "title": "Outlier_Flag_2021"
- * "source_name": "Outlier_Flag_2021"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
- * ```
- */
-
-outlier_flag_2021: number;
-
-
-/**
- * @name chg_avg_spnd_per_dsg_unt_20_21
- * @type {number}
- * @description
- * ```
- * "name": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
- * "title": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
- * "source_name": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"percentage","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-chg_avg_spnd_per_dsg_unt_20_21: number;
-
-
-/**
- * @name cagr_avg_spnd_per_dsg_unt_17_21
- * @type {number}
- * @description
- * ```
- * "name": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
- * "title": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
- * "source_name": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
- * "type": "number"
- * "format": "default"
- * "display_format": {"alignment":"right","formatting":"percentage","decimal_places":2,"thousand_separator":"comma"}
- * ```
- */
-
-cagr_avg_spnd_per_dsg_unt_17_21: number;
-
+  /**
+   * @name brnd_name
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Brnd_Name"
+   * "title": "Brnd_Name"
+   * "source_name": "Brnd_Name"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  brnd_name: string;
+
+  /**
+   * @name gnrc_name
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Gnrc_Name"
+   * "title": "Gnrc_Name"
+   * "source_name": "Gnrc_Name"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  gnrc_name: string;
+
+  /**
+   * @name tot_mftr
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Mftr"
+   * "title": "Tot_Mftr"
+   * "source_name": "Tot_Mftr"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_mftr: number;
+
+  /**
+   * @name mftr_name
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Mftr_Name"
+   * "title": "Mftr_Name"
+   * "source_name": "Mftr_Name"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  mftr_name: string;
+
+  /**
+   * @name tot_spndng_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Spndng_2017"
+   * "title": "Tot_Spndng_2017"
+   * "source_name": "Tot_Spndng_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_spndng_2017: number;
+
+  /**
+   * @name tot_dsg_unts_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Dsg_Unts_2017"
+   * "title": "Tot_Dsg_Unts_2017"
+   * "source_name": "Tot_Dsg_Unts_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_dsg_unts_2017: number;
+
+  /**
+   * @name tot_clms_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Clms_2017"
+   * "title": "Tot_Clms_2017"
+   * "source_name": "Tot_Clms_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_clms_2017: number;
+
+  /**
+   * @name tot_benes_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Benes_2017"
+   * "title": "Tot_Benes_2017"
+   * "source_name": "Tot_Benes_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_benes_2017: number;
+
+  /**
+   * @name avg_spnd_per_dsg_unt_wghtd_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
+   * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
+   * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_dsg_unt_wghtd_2017: number;
+
+  /**
+   * @name avg_spnd_per_clm_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Clm_2017"
+   * "title": "Avg_Spnd_Per_Clm_2017"
+   * "source_name": "Avg_Spnd_Per_Clm_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_clm_2017: number;
+
+  /**
+   * @name avg_spnd_per_bene_2017
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Bene_2017"
+   * "title": "Avg_Spnd_Per_Bene_2017"
+   * "source_name": "Avg_Spnd_Per_Bene_2017"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_bene_2017: number;
+
+  /**
+   * @name outlier_flag_2017
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Outlier_Flag_2017"
+   * "title": "Outlier_Flag_2017"
+   * "source_name": "Outlier_Flag_2017"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  outlier_flag_2017: string;
+
+  /**
+   * @name tot_spndng_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Spndng_2018"
+   * "title": "Tot_Spndng_2018"
+   * "source_name": "Tot_Spndng_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_spndng_2018: number;
+
+  /**
+   * @name tot_dsg_unts_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Dsg_Unts_2018"
+   * "title": "Tot_Dsg_Unts_2018"
+   * "source_name": "Tot_Dsg_Unts_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_dsg_unts_2018: number;
+
+  /**
+   * @name tot_clms_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Clms_2018"
+   * "title": "Tot_Clms_2018"
+   * "source_name": "Tot_Clms_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_clms_2018: number;
+
+  /**
+   * @name tot_benes_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Benes_2018"
+   * "title": "Tot_Benes_2018"
+   * "source_name": "Tot_Benes_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_benes_2018: number;
+
+  /**
+   * @name avg_spnd_per_dsg_unt_wghtd_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
+   * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
+   * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_dsg_unt_wghtd_2018: number;
+
+  /**
+   * @name avg_spnd_per_clm_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Clm_2018"
+   * "title": "Avg_Spnd_Per_Clm_2018"
+   * "source_name": "Avg_Spnd_Per_Clm_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_clm_2018: number;
+
+  /**
+   * @name avg_spnd_per_bene_2018
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Bene_2018"
+   * "title": "Avg_Spnd_Per_Bene_2018"
+   * "source_name": "Avg_Spnd_Per_Bene_2018"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_bene_2018: number;
+
+  /**
+   * @name outlier_flag_2018
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Outlier_Flag_2018"
+   * "title": "Outlier_Flag_2018"
+   * "source_name": "Outlier_Flag_2018"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  outlier_flag_2018: string;
+
+  /**
+   * @name tot_spndng_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Spndng_2019"
+   * "title": "Tot_Spndng_2019"
+   * "source_name": "Tot_Spndng_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_spndng_2019: number;
+
+  /**
+   * @name tot_dsg_unts_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Dsg_Unts_2019"
+   * "title": "Tot_Dsg_Unts_2019"
+   * "source_name": "Tot_Dsg_Unts_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_dsg_unts_2019: number;
+
+  /**
+   * @name tot_clms_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Clms_2019"
+   * "title": "Tot_Clms_2019"
+   * "source_name": "Tot_Clms_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_clms_2019: number;
+
+  /**
+   * @name tot_benes_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Benes_2019"
+   * "title": "Tot_Benes_2019"
+   * "source_name": "Tot_Benes_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_benes_2019: number;
+
+  /**
+   * @name avg_spnd_per_dsg_unt_wghtd_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
+   * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
+   * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_dsg_unt_wghtd_2019: number;
+
+  /**
+   * @name avg_spnd_per_clm_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Clm_2019"
+   * "title": "Avg_Spnd_Per_Clm_2019"
+   * "source_name": "Avg_Spnd_Per_Clm_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_clm_2019: number;
+
+  /**
+   * @name avg_spnd_per_bene_2019
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Bene_2019"
+   * "title": "Avg_Spnd_Per_Bene_2019"
+   * "source_name": "Avg_Spnd_Per_Bene_2019"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_bene_2019: number;
+
+  /**
+   * @name outlier_flag_2019
+   * @type {string}
+   * @description
+   * ```
+   * "name": "Outlier_Flag_2019"
+   * "title": "Outlier_Flag_2019"
+   * "source_name": "Outlier_Flag_2019"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
+
+  outlier_flag_2019: string;
+
+  /**
+   * @name tot_spndng_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Spndng_2020"
+   * "title": "Tot_Spndng_2020"
+   * "source_name": "Tot_Spndng_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_spndng_2020: number;
+
+  /**
+   * @name tot_dsg_unts_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Dsg_Unts_2020"
+   * "title": "Tot_Dsg_Unts_2020"
+   * "source_name": "Tot_Dsg_Unts_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_dsg_unts_2020: number;
+
+  /**
+   * @name tot_clms_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Clms_2020"
+   * "title": "Tot_Clms_2020"
+   * "source_name": "Tot_Clms_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_clms_2020: number;
+
+  /**
+   * @name tot_benes_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Benes_2020"
+   * "title": "Tot_Benes_2020"
+   * "source_name": "Tot_Benes_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_benes_2020: number;
+
+  /**
+   * @name avg_spnd_per_dsg_unt_wghtd_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
+   * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
+   * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_dsg_unt_wghtd_2020: number;
+
+  /**
+   * @name avg_spnd_per_clm_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Clm_2020"
+   * "title": "Avg_Spnd_Per_Clm_2020"
+   * "source_name": "Avg_Spnd_Per_Clm_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_clm_2020: number;
+
+  /**
+   * @name avg_spnd_per_bene_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Bene_2020"
+   * "title": "Avg_Spnd_Per_Bene_2020"
+   * "source_name": "Avg_Spnd_Per_Bene_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_bene_2020: number;
+
+  /**
+   * @name outlier_flag_2020
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Outlier_Flag_2020"
+   * "title": "Outlier_Flag_2020"
+   * "source_name": "Outlier_Flag_2020"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  outlier_flag_2020: number;
+
+  /**
+   * @name tot_spndng_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Spndng_2021"
+   * "title": "Tot_Spndng_2021"
+   * "source_name": "Tot_Spndng_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_spndng_2021: number;
+
+  /**
+   * @name tot_dsg_unts_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Dsg_Unts_2021"
+   * "title": "Tot_Dsg_Unts_2021"
+   * "source_name": "Tot_Dsg_Unts_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_dsg_unts_2021: number;
+
+  /**
+   * @name tot_clms_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Clms_2021"
+   * "title": "Tot_Clms_2021"
+   * "source_name": "Tot_Clms_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_clms_2021: number;
+
+  /**
+   * @name tot_benes_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Tot_Benes_2021"
+   * "title": "Tot_Benes_2021"
+   * "source_name": "Tot_Benes_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  tot_benes_2021: number;
+
+  /**
+   * @name avg_spnd_per_dsg_unt_wghtd_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
+   * "title": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
+   * "source_name": "Avg_Spnd_Per_Dsg_Unt_Wghtd_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_dsg_unt_wghtd_2021: number;
+
+  /**
+   * @name avg_spnd_per_clm_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Clm_2021"
+   * "title": "Avg_Spnd_Per_Clm_2021"
+   * "source_name": "Avg_Spnd_Per_Clm_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_clm_2021: number;
+
+  /**
+   * @name avg_spnd_per_bene_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Avg_Spnd_Per_Bene_2021"
+   * "title": "Avg_Spnd_Per_Bene_2021"
+   * "source_name": "Avg_Spnd_Per_Bene_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"currency","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  avg_spnd_per_bene_2021: number;
+
+  /**
+   * @name outlier_flag_2021
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Outlier_Flag_2021"
+   * "title": "Outlier_Flag_2021"
+   * "source_name": "Outlier_Flag_2021"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"standard","decimal_places":null,"thousand_separator":"comma"}
+   * ```
+   */
+
+  outlier_flag_2021: number;
+
+  /**
+   * @name chg_avg_spnd_per_dsg_unt_20_21
+   * @type {number}
+   * @description
+   * ```
+   * "name": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
+   * "title": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
+   * "source_name": "Chg_Avg_Spnd_Per_Dsg_Unt_20_21"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"percentage","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  chg_avg_spnd_per_dsg_unt_20_21: number;
+
+  /**
+   * @name cagr_avg_spnd_per_dsg_unt_17_21
+   * @type {number}
+   * @description
+   * ```
+   * "name": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
+   * "title": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
+   * "source_name": "CAGR_Avg_Spnd_Per_Dsg_Unt_17_21"
+   * "type": "number"
+   * "format": "default"
+   * "display_format": {"alignment":"right","formatting":"percentage","decimal_places":2,"thousand_separator":"comma"}
+   * ```
+   */
+
+  cagr_avg_spnd_per_dsg_unt_17_21: number;
 }

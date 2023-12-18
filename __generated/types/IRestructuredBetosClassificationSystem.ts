@@ -40,208 +40,195 @@
  * ```
  */
 export interface IRestructuredBetosClassificationSystem {
+  /**
+   * @name hcpcs_cd
+   * @type {string}
+   * @description
+   * ```
+   * "name": "HCPCS_Cd"
+   * "title": "HCPCS_Cd"
+   * "source_name": "HCPCS_Cd"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-/**
- * @name hcpcs_cd
- * @type {string}
- * @description
- * ```
- * "name": "HCPCS_Cd"
- * "title": "HCPCS_Cd"
- * "source_name": "HCPCS_Cd"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  hcpcs_cd: string;
 
-hcpcs_cd: string;
+  /**
+   * @name rbcs_id
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_ID"
+   * "title": "RBCS_ID"
+   * "source_name": "RBCS_ID"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
+  rbcs_id: string;
 
-/**
- * @name rbcs_id
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_ID"
- * "title": "RBCS_ID"
- * "source_name": "RBCS_ID"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  /**
+   * @name rbcs_cat
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Cat"
+   * "title": "RBCS_Cat"
+   * "source_name": "RBCS_Cat"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-rbcs_id: string;
+  rbcs_cat: string;
 
+  /**
+   * @name rbcs_cat_desc
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Cat_Desc"
+   * "title": "RBCS_Cat_Desc"
+   * "source_name": "RBCS_Cat_Desc"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-/**
- * @name rbcs_cat
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Cat"
- * "title": "RBCS_Cat"
- * "source_name": "RBCS_Cat"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  rbcs_cat_desc: string;
 
-rbcs_cat: string;
+  /**
+   * @name rbcs_cat_subcat
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Cat_Subcat"
+   * "title": "RBCS_Cat_Subcat"
+   * "source_name": "RBCS_Cat_Subcat"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
+  rbcs_cat_subcat: string;
 
-/**
- * @name rbcs_cat_desc
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Cat_Desc"
- * "title": "RBCS_Cat_Desc"
- * "source_name": "RBCS_Cat_Desc"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  /**
+   * @name rbcs_subcat_desc
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Subcat_Desc"
+   * "title": "RBCS_Subcat_Desc"
+   * "source_name": "RBCS_Subcat_Desc"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-rbcs_cat_desc: string;
+  rbcs_subcat_desc: string;
 
+  /**
+   * @name rbcs_fam_numb
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_FamNumb"
+   * "title": "RBCS_FamNumb"
+   * "source_name": "RBCS_FamNumb"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"right"}
+   * ```
+   */
 
-/**
- * @name rbcs_cat_subcat
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Cat_Subcat"
- * "title": "RBCS_Cat_Subcat"
- * "source_name": "RBCS_Cat_Subcat"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  rbcs_fam_numb: string;
 
-rbcs_cat_subcat: string;
+  /**
+   * @name rbcs_family_desc
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Family_Desc"
+   * "title": "RBCS_Family_Desc"
+   * "source_name": "RBCS_Family_Desc"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
+  rbcs_family_desc: string;
 
-/**
- * @name rbcs_subcat_desc
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Subcat_Desc"
- * "title": "RBCS_Subcat_Desc"
- * "source_name": "RBCS_Subcat_Desc"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  /**
+   * @name rbcs_major_ind
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Major_Ind"
+   * "title": "RBCS_Major_Ind"
+   * "source_name": "RBCS_Major_Ind"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-rbcs_subcat_desc: string;
+  rbcs_major_ind: string;
 
+  /**
+   * @name hcpcs_cd_add_dt
+   * @type {string}
+   * @description
+   * ```
+   * "name": "HCPCS_Cd_Add_Dt"
+   * "title": "HCPCS_Cd_Add_Dt"
+   * "source_name": "HCPCS_Cd_Add_Dt"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-/**
- * @name rbcs_fam_numb
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_FamNumb"
- * "title": "RBCS_FamNumb"
- * "source_name": "RBCS_FamNumb"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"right"}
- * ```
- */
+  hcpcs_cd_add_dt: string;
 
-rbcs_fam_numb: string;
+  /**
+   * @name hcpcs_cd_end_dt
+   * @type {string}
+   * @description
+   * ```
+   * "name": "HCPCS_Cd_End_Dt"
+   * "title": "HCPCS_Cd_End_Dt"
+   * "source_name": "HCPCS_Cd_End_Dt"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
+  hcpcs_cd_end_dt: string;
 
-/**
- * @name rbcs_family_desc
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Family_Desc"
- * "title": "RBCS_Family_Desc"
- * "source_name": "RBCS_Family_Desc"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
+  /**
+   * @name rbcs_assignment_eff_dt
+   * @type {string}
+   * @description
+   * ```
+   * "name": "RBCS_Assignment_Eff_Dt"
+   * "title": "RBCS_Assignment_Eff_Dt"
+   * "source_name": "RBCS_Assignment_Eff_Dt"
+   * "type": "string"
+   * "format": "default"
+   * "display_format": {"alignment":"left"}
+   * ```
+   */
 
-rbcs_family_desc: string;
-
-
-/**
- * @name rbcs_major_ind
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Major_Ind"
- * "title": "RBCS_Major_Ind"
- * "source_name": "RBCS_Major_Ind"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-rbcs_major_ind: string;
-
-
-/**
- * @name hcpcs_cd_add_dt
- * @type {string}
- * @description
- * ```
- * "name": "HCPCS_Cd_Add_Dt"
- * "title": "HCPCS_Cd_Add_Dt"
- * "source_name": "HCPCS_Cd_Add_Dt"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-hcpcs_cd_add_dt: string;
-
-
-/**
- * @name hcpcs_cd_end_dt
- * @type {string}
- * @description
- * ```
- * "name": "HCPCS_Cd_End_Dt"
- * "title": "HCPCS_Cd_End_Dt"
- * "source_name": "HCPCS_Cd_End_Dt"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-hcpcs_cd_end_dt: string;
-
-
-/**
- * @name rbcs_assignment_eff_dt
- * @type {string}
- * @description
- * ```
- * "name": "RBCS_Assignment_Eff_Dt"
- * "title": "RBCS_Assignment_Eff_Dt"
- * "source_name": "RBCS_Assignment_Eff_Dt"
- * "type": "string"
- * "format": "default"
- * "display_format": {"alignment":"left"}
- * ```
- */
-
-rbcs_assignment_eff_dt: string;
-
+  rbcs_assignment_eff_dt: string;
 }
