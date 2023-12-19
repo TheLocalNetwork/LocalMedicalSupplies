@@ -8,7 +8,7 @@ import {
 import { readJSONSync } from 'fs-extra';
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
-import { stagingDb } from '~/lib/db/staging';
+import { db } from '~/lib/db/db';
 import { CMS_TOOLS_CONFIG } from '~/scripts/cms/config';
 
 type IFieldWithKey = IDataGovDatasetTableSchemaField<any> & { key: string };
@@ -40,11 +40,11 @@ const main = async () => {
 
     sqlCreateTable(datasetId, fields);
 
-    const insertStatement = stagingDb.prepare(
+    const insertStatement = db.prepare(
       `INSERT INTO "${datasetId}" VALUES (${fieldParams.join(',')})`
     );
 
-    const insertMany = stagingDb.transaction((insertData) => {
+    const insertMany = db.transaction((insertData) => {
       for (const row of insertData) insertStatement.run(row);
     });
 
@@ -62,13 +62,13 @@ const main = async () => {
     console.timeEnd(datasetId);
   }
 
-  stagingDb.exec(`VACUUM;`);
+  db.exec(`VACUUM;`);
   console.timeEnd('main');
 };
 
 const sqlCreateTable = (tableName: string, fields: IFieldWithKey[]) => {
   const sqlSchema = getCreateTableSchema(tableName, fields);
-  return stagingDb.exec(sqlSchema);
+  return db.exec(sqlSchema);
 };
 
 const getCreateTableSchema = (tableName: string, fields: IFieldWithKey[]) => {
