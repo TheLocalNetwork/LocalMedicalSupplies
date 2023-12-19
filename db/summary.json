@@ -1,0 +1,27 @@
+[
+  {
+    "id": "113eb0bc-0c9a-4d91-9f93-3f6b28c0bf6b",
+    "title": "Medicare Provider and Supplier Taxonomy Crosswalk",
+    "description": "The Medicare Provider and Supplier Taxonomy Crosswalk dataset lists the providers and suppliers eligible to enroll in Medicare programs with the proper healthcare provider taxonomy code. This data includes the Medicare speciality codes, if available, provider/supplier type description, taxonomy code, and the taxonomy description."
+  },
+  {
+    "id": "e3db6e56-149f-49ce-b374-40aecda2357b",
+    "title": "Restructured BETOS Classification System",
+    "description": "The Restructured BETOS Classification System (RBCS) dataset is a taxonomy that allows researchers to group healthcare service codes for Medicare Part B services (i.e., HCPCS codes) into clinically meaningful categories and subcategories. It is based on the original Berenson-Eggers Type of Service (BETOS) classification created in the 1980s, and includes notable updates such as Part B non-physician services. The RBCS will undergo annual updates by a technical expert panel of researchers and clinicians."
+  },
+  {
+    "id": "7e0b4365-fd63-4a29-8f5e-e0ac9f66a81b",
+    "title": "Medicare Part D Spending by Drug",
+    "description": "The Medicare Part D by Drug dataset presents information on spending for drugs prescribed to Medicare beneficiaries enrolled in Part D by physicians and other healthcare providers. Drugs prescribed in the Medicare Part D program are drugs patients generally administer themselves.\n\n \n\nThe dataset focuses on average spending per dosage unit and change in average spending per dosage unit over time. It also includes spending information for manufacturer(s) of the drugs as well as consumer-friendly information of drug uses and clinical indications.\n\n \n\nDrug spending metrics for Part D drugs are based on the gross drug cost, which represents total spending for the prescription claim, including Medicare, plan, and beneficiary payments. The Part D spending metrics do not reflect any manufacturers’ rebates or other price concessions as CMS is prohibited from publicly disclosing such information."
+  },
+  {
+    "id": "86b4807a-d63a-44be-bfdf-ffd398d5e623",
+    "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service",
+    "description": "The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider and Service dataset contains information on usage, payments and submitted charges organized by National Provider Identifier (NPI), Healthcare Common Procedure Coding System (HCPCS) code, and supplier rental indicator.\n\n \n\nNote: This full dataset contains more records than most spreadsheet programs can handle, which will result in an incomplete load of data. Use of a database or statistical software is required."
+  },
+  {
+    "id": "f8603e5b-9c47-4c52-9b47-a4ef92dfada4",
+    "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider ",
+    "description": "The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider dataset contains information on usage, payments, submitted charges and beneficiary demographic and health characteristics organized by National Provider Identifier (NPI)."
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "accrualPeriodicity": "R/P1Y",
+    "bureauCode": ["009:38"],
+    "contactPoint": {
+      "@type": "vcard:Contact",
+      "fn": "Provider Enrollment Data Requests - CPI",
+      "hasEmail": "mailto:ProviderEnrollmentDataRequests@cms.hhs.gov"
+    },
+    "describedBy": "https://data.cms.gov/resources/medicare-provider-and-supplier-taxonomy-crosswalk-data-dictionary",
+    "dataQuality": true,
+    "description": "The Medicare Provider and Supplier Taxonomy Crosswalk dataset lists the providers and suppliers eligible to enroll in Medicare programs with the proper healthcare provider taxonomy code. This data includes the Medicare speciality codes, if available, provider/supplier type description, taxonomy code, and the taxonomy description.",
+    "distribution": [
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/113eb0bc-0c9a-4d91-9f93-3f6b28c0bf6b/data",
+        "description": "latest",
+        "title": "Medicare Provider and Supplier Taxonomy Crosswalk : 2023-09-01",
+        "modified": "2023-09-27",
+        "temporal": "2023-01-01/2023-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2023-09/b8c64259-47c7-4912-950b-ac933989c2c0/Medicare_Provider_and_Supplier_Taxonomy_Crosswalk_September_2023.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Provider and Supplier Taxonomy Crosswalk : 2023-09-01",
+        "modified": "2023-09-27",
+        "temporal": "2023-01-01/2023-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/22f41f23-6653-441f-9c88-2b8fad98c662/data",
+        "title": "Medicare Provider and Supplier Taxonomy Crosswalk : 2023-09-01",
+        "modified": "2023-09-27",
+        "temporal": "2023-01-01/2023-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2022-06/8639b869-e4dd-4bea-bb67-f8de6bc870b6/Taxonomy_List.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Provider and Supplier Taxonomy Crosswalk : 2021-10-29",
+        "modified": "2023-03-06",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/88bd5fb4-7b5c-4107-8131-23c485e00ef0/data",
+        "title": "Medicare Provider and Supplier Taxonomy Crosswalk : 2021-10-29",
+        "modified": "2023-03-06",
+        "temporal": "2021-01-01/2021-12-31"
+      }
+    ],
+    "identifier": "https://data.cms.gov/data-api/v1/dataset/113eb0bc-0c9a-4d91-9f93-3f6b28c0bf6b/data-viewer",
+    "keyword": [
+      "Medicare",
+      "Original Medicare",
+      "Medicare Advantage",
+      "Medical Suppliers & Equipment",
+      "Provider Enrollment"
+    ],
+    "landingPage": "https://data.cms.gov/provider-characteristics/medicare-provider-supplier-enrollment/medicare-provider-and-supplier-taxonomy-crosswalk",
+    "language": ["en-US"],
+    "license": "https://www.usa.gov/government-works",
+    "modified": "2023-09-27",
+    "programCode": ["009:000"],
+    "publisher": {
+      "@type": "org:Organization",
+      "name": "Centers for Medicare & Medicaid Services"
+    },
+    "references": [
+      "https://data.cms.gov/resources/medicare-provider-and-supplier-taxonomy-crosswalk-methodology"
+    ],
+    "temporal": "2021-01-01/2023-12-31",
+    "theme": ["Medicare"],
+    "title": "Medicare Provider and Supplier Taxonomy Crosswalk",
+    "id": "113eb0bc-0c9a-4d91-9f93-3f6b28c0bf6b"
+  },
+  {
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "accrualPeriodicity": "R/P1Y",
+    "bureauCode": ["009:38"],
+    "contactPoint": {
+      "@type": "vcard:Contact",
+      "fn": "PDAG Data Products - OEDA",
+      "hasEmail": "mailto:PDAG_Data_Products@cms.hhs.gov"
+    },
+    "describedBy": "https://data.cms.gov/resources/2023-rbcs-data-dictionary",
+    "dataQuality": true,
+    "description": "The Restructured BETOS Classification System (RBCS) dataset is a taxonomy that allows researchers to group healthcare service codes for Medicare Part B services (i.e., HCPCS codes) into clinically meaningful categories and subcategories. It is based on the original Berenson-Eggers Type of Service (BETOS) classification created in the 1980s, and includes notable updates such as Part B non-physician services. The RBCS will undergo annual updates by a technical expert panel of researchers and clinicians.",
+    "distribution": [
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/e3db6e56-149f-49ce-b374-40aecda2357b/data",
+        "description": "latest",
+        "title": "Restructured BETOS Classification System : 2023-10-06",
+        "modified": "2023-10-16",
+        "temporal": "2023-01-01/2023-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2023-10/4d609d9e-18e6-4f10-833d-16bf3028f4bc/RBCS%202023%20Taxonomy.csv",
+        "mediaType": "text/csv",
+        "title": "Restructured BETOS Classification System : 2023-10-06",
+        "modified": "2023-10-16",
+        "temporal": "2023-01-01/2023-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/301c2d4c-7d2b-41e6-ae15-6a57125d8399/data",
+        "title": "Restructured BETOS Classification System : 2023-10-06",
+        "modified": "2023-10-16",
+        "temporal": "2023-01-01/2023-12-31"
+      }
+    ],
+    "identifier": "https://data.cms.gov/data-api/v1/dataset/e3db6e56-149f-49ce-b374-40aecda2357b/data-viewer",
+    "keyword": [
+      "Medicare",
+      "Original Medicare",
+      "Medicare Advantage",
+      "Hospitals & Facilities",
+      "Outpatient Facilities",
+      "Physicians & Practitioners",
+      "Medical Suppliers & Equipment"
+    ],
+    "landingPage": "https://data.cms.gov/provider-summary-by-type-of-service/provider-service-classifications/restructured-betos-classification-system",
+    "language": ["en-US"],
+    "license": "https://www.usa.gov/government-works",
+    "modified": "2023-10-16",
+    "programCode": ["009:000"],
+    "publisher": {
+      "@type": "org:Organization",
+      "name": "Centers for Medicare & Medicaid Services"
+    },
+    "references": [
+      "https://data.cms.gov/sites/default/files/2023-10/RBCS%202023%20Final%20Report_2023%20V01%2010.03.2023_508.pdf"
+    ],
+    "temporal": "2023-01-01/2023-12-31",
+    "theme": ["Medicare"],
+    "title": "Restructured BETOS Classification System",
+    "id": "e3db6e56-149f-49ce-b374-40aecda2357b"
+  },
+  {
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "accrualPeriodicity": "R/P1Y",
+    "bureauCode": ["009:38"],
+    "contactPoint": {
+      "@type": "vcard:Contact",
+      "fn": "CMS Drug Spending - OEDA",
+      "hasEmail": "mailto:IPAG_Data_Products@cms.hhs.gov"
+    },
+    "describedBy": "https://data.cms.gov/resources/medicare-part-d-spending-by-drug-data-dictionary",
+    "dataQuality": true,
+    "description": "The Medicare Part D by Drug dataset presents information on spending for drugs prescribed to Medicare beneficiaries enrolled in Part D by physicians and other healthcare providers. Drugs prescribed in the Medicare Part D program are drugs patients generally administer themselves.\n\n \n\nThe dataset focuses on average spending per dosage unit and change in average spending per dosage unit over time. It also includes spending information for manufacturer(s) of the drugs as well as consumer-friendly information of drug uses and clinical indications.\n\n \n\nDrug spending metrics for Part D drugs are based on the gross drug cost, which represents total spending for the prescription claim, including Medicare, plan, and beneficiary payments. The Part D spending metrics do not reflect any manufacturers’ rebates or other price concessions as CMS is prohibited from publicly disclosing such information.",
+    "distribution": [
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/7e0b4365-fd63-4a29-8f5e-e0ac9f66a81b/data",
+        "description": "latest",
+        "title": "Medicare Part D Spending by Drug : 2021-01-01",
+        "modified": "2023-03-06",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2023-02/128e36b3-e62d-49cf-9963-dc6b1e540cc9/DSD_PTD_R22_P04_V22_D21_BGM.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Part D Spending by Drug : 2021-01-01",
+        "modified": "2023-03-06",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/63b6ee35-4593-4525-a9cc-4d39cd1e9132/data",
+        "title": "Medicare Part D Spending by Drug : 2021-01-01",
+        "modified": "2023-03-06",
+        "temporal": "2021-01-01/2021-12-31"
+      }
+    ],
+    "identifier": "https://data.cms.gov/data-api/v1/dataset/7e0b4365-fd63-4a29-8f5e-e0ac9f66a81b/data-viewer",
+    "keyword": [
+      "Medicare",
+      "Medicare Prescription Drug",
+      "Medical Suppliers & Equipment",
+      "Drugs"
+    ],
+    "landingPage": "https://data.cms.gov/summary-statistics-on-use-and-payments/medicare-medicaid-spending-by-drug/medicare-part-d-spending-by-drug",
+    "language": ["en-US"],
+    "license": "https://www.usa.gov/government-works",
+    "modified": "2023-03-06",
+    "programCode": ["009:000"],
+    "publisher": {
+      "@type": "org:Organization",
+      "name": "Centers for Medicare & Medicaid Services"
+    },
+    "references": [
+      "https://data.cms.gov/resources/medicare-part-d-spending-by-drug-methodology"
+    ],
+    "temporal": "2021-01-01/2021-12-31",
+    "theme": ["Medicare"],
+    "title": "Medicare Part D Spending by Drug",
+    "id": "7e0b4365-fd63-4a29-8f5e-e0ac9f66a81b"
+  },
+  {
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "accrualPeriodicity": "R/P1Y",
+    "bureauCode": ["009:38"],
+    "contactPoint": {
+      "@type": "vcard:Contact",
+      "fn": "Medicare Provider Data - OEDA",
+      "hasEmail": "mailto:IPAG_Data_Products@cms.hhs.gov"
+    },
+    "describedBy": "https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-referring-provider-and-service-data-dictionary",
+    "dataQuality": true,
+    "description": "The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider and Service dataset contains information on usage, payments and submitted charges organized by National Provider Identifier (NPI), Healthcare Common Procedure Coding System (HCPCS) code, and supplier rental indicator.\n\n \n\nNote: This full dataset contains more records than most spreadsheet programs can handle, which will result in an incomplete load of data. Use of a database or statistical software is required.",
+    "distribution": [
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/86b4807a-d63a-44be-bfdf-ffd398d5e623/data",
+        "description": "latest",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2021-12-31",
+        "modified": "2023-10-25",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2023-05/94a6354d-b672-4ecc-8f19-1c00f01d59b5/mup_dme_ry23_p05_v10_dy21_prvhpr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2021-12-31",
+        "modified": "2023-10-25",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/f4bac658-19f4-4259-b335-a88a71cd83d6/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2021-12-31",
+        "modified": "2023-10-25",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2022-09/3ddb3d77-82f9-408e-bad3-aa993e0c9b9a/mup_dme_ry22_p05_v10_dy20_prvhpr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2020-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2020-01-01/2020-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/503647c2-b622-4bae-ae53-fa559a68287f/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2020-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2020-01-01/2020-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2021-08/mup_dme_ry21_p05_v10_dy19_prvhpr_0.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2019-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2019-01-01/2019-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/d6d3de93-0579-408a-bcfe-c319f04069e7/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2019-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2019-01-01/2019-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2021-08/mup_dme_ry21_p05_v10_dy18_prvhpr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2018-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2018-01-01/2018-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/1c41ada1-2cb5-4808-95ef-757f5c237f4c/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2018-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2018-01-01/2018-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20and%20Service%20Data%202017.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2017-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2017-01-01/2017-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/4ca364a5-89a3-4d9b-9a62-a4817f6c1464/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2017-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2017-01-01/2017-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20and%20Service%20Data%202016.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2016-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2016-01-01/2016-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/3795f3a1-fa7a-4e7f-b4e4-0a3ba221311d/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2016-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2016-01-01/2016-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20and%20Service%20Data%202015_0.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2015-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2015-01-01/2015-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/8f8fcdce-0924-4f5c-ab49-88e34d581f4c/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2015-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2015-01-01/2015-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20and%20Service%20Data%202014_0.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2014-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2014-01-01/2014-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/3f53a9ab-cc41-46d0-b37d-8799799425a7/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2014-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2014-01-01/2014-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20and%20Service%20Data%202013.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2013-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2013-01-01/2013-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/631d1c71-8af2-4d6e-912a-73f7954178ca/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service : 2013-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2013-01-01/2013-12-31"
+      }
+    ],
+    "identifier": "https://data.cms.gov/data-api/v1/dataset/86b4807a-d63a-44be-bfdf-ffd398d5e623/data-viewer",
+    "keyword": [
+      "Medicare",
+      "Original Medicare",
+      "Physicians & Practitioners",
+      "Medical Suppliers & Equipment",
+      "Health Care Use & Payments",
+      "Health Equity"
+    ],
+    "landingPage": "https://data.cms.gov/provider-summary-by-type-of-service/medicare-durable-medical-equipment-devices-supplies/medicare-durable-medical-equipment-devices-supplies-by-referring-provider-and-service",
+    "language": ["en-US"],
+    "license": "https://www.usa.gov/government-works",
+    "modified": "2023-10-25",
+    "programCode": ["009:000"],
+    "publisher": {
+      "@type": "org:Organization",
+      "name": "Centers for Medicare & Medicaid Services"
+    },
+    "references": [
+      "https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology"
+    ],
+    "temporal": "2013-01-01/2021-12-31",
+    "theme": ["Medicare"],
+    "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider and Service",
+    "id": "86b4807a-d63a-44be-bfdf-ffd398d5e623"
+  },
+  {
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "accrualPeriodicity": "R/P1Y",
+    "bureauCode": ["009:38"],
+    "contactPoint": {
+      "@type": "vcard:Contact",
+      "fn": "Medicare Provider Data - OEDA",
+      "hasEmail": "mailto:IPAG_Data_Products@cms.hhs.gov"
+    },
+    "describedBy": "https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-referring-provider-data-dictionary",
+    "dataQuality": true,
+    "description": "The Medicare Durable Medical Equipment, Devices & Supplies by Referring Provider dataset contains information on usage, payments, submitted charges and beneficiary demographic and health characteristics organized by National Provider Identifier (NPI).",
+    "distribution": [
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/f8603e5b-9c47-4c52-9b47-a4ef92dfada4/data",
+        "description": "latest",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2021-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2023-05/6a76b0f8-9567-4da8-9927-99abd6bc0370/mup_dme_ry23_p05_v10_dy21_prvr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2021-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/be723506-a473-40dd-b2a6-e7e52c1708c3/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2021-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2021-01-01/2021-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2022-09/d71d8ee9-a490-4bc3-a75e-299903c83548/mup_dme_ry22_p05_v10_dy20_prvr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2020-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2020-01-01/2020-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/909a0182-0a98-4439-a082-3e933b0fdb61/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2020-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2020-01-01/2020-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2021-08/mup_dme_ry21_p05_v10_dy19_prvr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2019-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2019-01-01/2019-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/dfb06f7a-fbba-4774-87fb-75eac7e447c1/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2019-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2019-01-01/2019-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2021-08/mup_dme_ry21_p05_v10_dy18_prvr.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2018-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2018-01-01/2018-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/dc072f9d-99fe-49e7-90c7-0a1d791784b1/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2018-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2018-01-01/2018-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20Data%202017.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2017-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2017-01-01/2017-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/2cb14170-bd10-4f79-a79a-690439138e9f/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2017-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2017-01-01/2017-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20Data%202016.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2016-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2016-01-01/2016-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/79aedeb5-3bef-4b06-ba29-bc74f1f12eaa/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2016-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2016-01-01/2016-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-06/Medicare%20Durable%20Medical%20Equipment%2C%20Devices%20%26%20Supplies%20-%20by%20Referring%20Provider%20Data%202015.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2015-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2015-01-01/2015-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/3eaef4df-562c-42c3-ba44-4877691ae984/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2015-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2015-01-01/2015-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-07/MUP_DME_R19_P08_V10_D14_Prov.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2014-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2014-01-01/2014-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/abb49071-67cc-4c57-a5ee-55998219c416/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2014-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2014-01-01/2014-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "downloadURL": "https://data.cms.gov/sites/default/files/2020-07/MUP_DME_R19_P08_V10_D13_Prov.csv",
+        "mediaType": "text/csv",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2013-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2013-01-01/2013-12-31"
+      },
+      {
+        "@type": "dcat:Distribution",
+        "format": "API",
+        "accessURL": "https://data.cms.gov/data-api/v1/dataset/b8647771-9347-418d-90e3-c1db2e892582/data",
+        "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider : 2013-12-31",
+        "modified": "2023-05-10",
+        "temporal": "2013-01-01/2013-12-31"
+      }
+    ],
+    "identifier": "https://data.cms.gov/data-api/v1/dataset/f8603e5b-9c47-4c52-9b47-a4ef92dfada4/data-viewer",
+    "keyword": [
+      "Medicare",
+      "Original Medicare",
+      "Physicians & Practitioners",
+      "Medical Suppliers & Equipment",
+      "Health Care Use & Payments",
+      "Health Equity"
+    ],
+    "landingPage": "https://data.cms.gov/provider-summary-by-type-of-service/medicare-durable-medical-equipment-devices-supplies/medicare-durable-medical-equipment-devices-supplies-by-referring-provider",
+    "language": ["en-US"],
+    "license": "https://www.usa.gov/government-works",
+    "modified": "2023-05-10",
+    "programCode": ["009:000"],
+    "publisher": {
+      "@type": "org:Organization",
+      "name": "Centers for Medicare & Medicaid Services"
+    },
+    "references": [
+      "https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology"
+    ],
+    "temporal": "2013-01-01/2021-12-31",
+    "theme": ["Medicare"],
+    "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider ",
+    "id": "f8603e5b-9c47-4c52-9b47-a4ef92dfada4"
+  }
+]
