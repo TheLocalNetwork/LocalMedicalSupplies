@@ -13,7 +13,8 @@
     "cms:datasets": "npm run tsnode -- ./src/scripts/cms/datasets.ts",
     "cms:types": "npm run tsnode -- ./src/scripts/cms/generate-types.ts",
     "cms:download": "npm run tsnode -- ./src/scripts/cms/download.ts",
-    "cms:loaddata": "npm run tsnode -- ./src/scripts/cms/loaddata.ts"
+    "cms:loaddata": "npm run tsnode -- ./src/scripts/cms/loaddata.ts",
+    "cms:update": "npm run cms:download && npm run cms:types && cms:loaddata"
   },
   "dependencies": {
     "@types/better-sqlite3": "^7.6.8",
