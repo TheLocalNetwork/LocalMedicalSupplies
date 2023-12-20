@@ -14,6 +14,7 @@
     "cms:types": "npm run tsnode -- ./src/scripts/cms/generate-types.ts",
     "cms:download": "npm run tsnode -- ./src/scripts/cms/download.ts",
     "cms:loaddata": "npm run tsnode -- ./src/scripts/cms/loaddata.ts",
+    "cms:sql:create": "npm run tsnode -- ./src/scripts/cms/sql-create.ts",
     "cms:update": "npm run cms:download && npm run cms:types && cms:loaddata"
   },
   "dependencies": {
@@ -35,14 +36,15 @@
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.1",
-    "tailwindcss": "^3.3.0",
+    "prettier-plugin-sql": "^0.18.0",
+    "tailwindcss": "^3.4.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   }
