@@ -62,7 +62,12 @@ const main = async () => {
     console.timeEnd(datasetId);
   }
 
-  db.exec(`VACUUM;`);
+  db.exec(`
+    ALTER TABLE "f8603e5b-9c47-4c52-9b47-a4ef92dfada4" ADD geo_country_id INTEGER;
+    ALTER TABLE "f8603e5b-9c47-4c52-9b47-a4ef92dfada4" ADD geo_state_id INTEGER;
+    ALTER TABLE "f8603e5b-9c47-4c52-9b47-a4ef92dfada4" ADD geo_city_id INTEGER;
+    ALTER TABLE "f8603e5b-9c47-4c52-9b47-a4ef92dfada4" ADD geo_zipcode_id INTEGER;
+    `);
   console.timeEnd('main');
 };
 

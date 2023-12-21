@@ -2,17 +2,27 @@ import { readFileSync, readdirSync } from 'fs-extra';
 import path from 'path';
 import { db } from '~/lib/db/db';
 
+const localeSort = (collection: string[]) =>
+  collection.sort((a, b) => a.localeCompare(b));
+
 const main = async () => {
   console.time('main');
 
-  const statementsDirectory = path.resolve(__dirname, `sql`, 'create');
+  // processFolder(path.resolve(__dirname, `sql`, 'create', 'reference'));
+  processFolder(path.resolve(__dirname, `sql`, 'create', 'geo'));
 
-  const fileNames = readdirSync(statementsDirectory);
+  console.timeEnd('main');
+};
+
+const processFolder = (folderPath: string) => {
+  console.time(`processFolder:${folderPath}`);
+
+  const fileNames = localeSort(readdirSync(folderPath));
 
   for (const fileName of fileNames) {
     console.time(fileName);
 
-    const filePath = path.resolve(statementsDirectory, fileName);
+    const filePath = path.resolve(folderPath, fileName);
     const statements = readFileSync(filePath).toString().split(';');
 
     for (const sqlString of statements) {
@@ -31,7 +41,7 @@ const main = async () => {
     console.log();
   }
 
-  console.timeEnd('main');
+  console.timeEnd(`processFolder:${folderPath}`);
 };
 
 main();

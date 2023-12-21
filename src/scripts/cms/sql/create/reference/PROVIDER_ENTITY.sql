@@ -2,13 +2,14 @@ DROP TABLE IF EXISTS PROVIDER_ENTITY;
 
 CREATE TABLE
   PROVIDER_ENTITY (
-    code text NOT NULL
+    id INTEGER PRIMARY KEY AUTOINCREMENT
+  , code text NOT NULL
   , label text NOT NULL
   , num INT NOT NULL
   );
 
 INSERT INTO
-  PROVIDER_ENTITY
+  PROVIDER_ENTITY (code, label, num)
 SELECT
   sp.rfrg_prvdr_ent_cd AS code
 , CASE sp.rfrg_prvdr_ent_cd

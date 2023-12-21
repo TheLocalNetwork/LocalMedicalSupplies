@@ -2,13 +2,14 @@ DROP TABLE IF EXISTS PROVIDER_RUCA;
 
 CREATE TABLE
   PROVIDER_RUCA (
-    code text NOT NULL
+    id INTEGER PRIMARY KEY AUTOINCREMENT
+  , code text NOT NULL
   , description text NOT NULL
   , num INT NOT NULL
   );
 
 INSERT INTO
-  PROVIDER_RUCA
+  PROVIDER_RUCA (code, description, num)
 SELECT
   sp.rfrg_prvdr_ruca
 , sp.rfrg_prvdr_ruca_desc
