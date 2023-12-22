@@ -112,7 +112,7 @@
  * "references": ["https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology"]
  * "temporal": "2013-01-01/2021-12-31"
  * "theme": ["Medicare"]
- * "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider "
+ * "title": "Medicare Durable Medical Equipment, Devices & Supplies - by Referring Provider"
  * "id": "f8603e5b-9c47-4c52-9b47-a4ef92dfada4"
  * ```
  */

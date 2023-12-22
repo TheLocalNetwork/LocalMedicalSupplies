@@ -11,12 +11,12 @@ CREATE TABLE
 INSERT INTO
   PROVIDER_TYPE_FLAG (code, label, num)
 SELECT
-  COUNT(*) AS num
-, sp.rfrg_prvdr_type_flag AS code
+  sp.rfrg_prvdr_type_flag AS code
 , CASE sp.rfrg_prvdr_type_flag
     WHEN 'S' THEN 'Medicare Specialty Code'
     WHEN 'T' THEN 'Taxonomy Code Classification'
   END AS label
+, COUNT(*) AS num
 FROM
   staging_provider sp
 GROUP BY

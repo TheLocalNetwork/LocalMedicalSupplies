@@ -6,8 +6,8 @@ import { db } from '~/lib/db/db';
 const main = async () => {
   console.time('main');
 
-  // processFolder(path.resolve(__dirname, `sql`, 'create', 'reference'));
-  processFolder(path.resolve(__dirname, `sql`, 'create', 'geo'));
+  processFolder(path.resolve(__dirname, `sql`, 'create', 'reference'));
+  processFolder(path.resolve(__dirname, `sql`, 'create', 'provider'));
 
   console.timeEnd('main');
 };
