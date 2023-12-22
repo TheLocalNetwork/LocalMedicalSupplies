@@ -1,9 +1,7 @@
 import { readFileSync, readdirSync } from 'fs-extra';
 import path from 'path';
+import { localeSort } from '~/lib/collections';
 import { db } from '~/lib/db/db';
-
-const localeSort = (collection: string[]) =>
-  collection.sort((a, b) => a.localeCompare(b));
 
 const main = async () => {
   console.time('main');
