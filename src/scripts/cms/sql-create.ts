@@ -23,17 +23,19 @@ const processFolder = (folderPath: string) => {
     const filePath = path.resolve(folderPath, fileName);
     const statements = readFileSync(filePath).toString().split(';');
 
-    for (const sqlString of statements) {
-      const sqlStatement = sqlString.trim().replace(/\s{1,}/g, ' ');
-      console.log(fileName);
-      console.log(sqlStatement);
+    db.transaction(() => {
+      for (const sqlString of statements) {
+        const sqlStatement = sqlString.trim().replace(/\s{1,}/g, ' ');
+        console.log(fileName);
+        console.log(sqlStatement);
 
-      if (sqlStatement.length) {
-        const result = db.prepare(`${sqlStatement};`).run();
+        if (sqlStatement.length && !sqlStatement.startsWith(`--`)) {
+          const result = db.prepare(`${sqlStatement};`).run();
 
-        console.log({ result }, '\n');
+          console.log({ result }, '\n');
+        }
       }
-    }
+    })();
 
     console.timeEnd(fileName);
     console.log();
