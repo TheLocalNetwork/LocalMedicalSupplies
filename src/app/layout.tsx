@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Footer } from "~/components/layout/Footer";
 import { Navbar } from "~/components/layout/Navbar";
 import Provider from "~/components/layout/Provider";
 import "./globals.scss";
@@ -32,14 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={clsx(
           inter.className,
-          "mx-auto flex min-h-screen flex-col",
+          "container mx-auto flex min-h-screen max-w-6xl flex-col gap-8",
           "bg-white dark:bg-stone-800",
           "text-stone-900 dark:text-stone-100"
         )}
       >
         <Provider>
           <Navbar />
-          <main className={clsx("mx-auto flex max-w-7xl flex-col sm:px-6 lg:px-8")}>{children}</main>
+          <main className={clsx("flex flex-col px-6")}>{children}</main>
+          <Footer />
         </Provider>
       </body>
     </html>

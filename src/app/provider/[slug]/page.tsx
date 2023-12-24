@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (slug !== canonicalPath) return permanentRedirect(canonicalPath);
 
   return (
-    <article className={`m-12 flex flex-col gap-8`}>
+    <article className={`flex flex-col gap-8`}>
       <header>
         <h1 className={`text-6xl font-light`}>{supplier.practice_name}</h1>
         <h2 className={`text-xl font-light`}>{supplier.business_name}</h2>
