@@ -1,5 +1,5 @@
-import { chain } from 'lodash';
+import { deburr, kebabCase } from 'lodash';
 
 export const slugify = (str: string): string => {
-  return chain(str).deburr().kebabCase().value();
+  return kebabCase(deburr(str));
 };
