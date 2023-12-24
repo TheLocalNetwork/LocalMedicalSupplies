@@ -23,14 +23,21 @@
     "test": "npm run typecheck && npm run lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.0.0-alpha.3",
+    "@heroicons/react": "^2.1.1",
+    "@tailwindcss/forms": "^0.5.7",
     "@types/better-sqlite3": "^7.6.8",
     "@types/fs-extra": "^11.0.4",
     "better-sqlite3": "^9.2.2",
+    "clsx": "^2.0.0",
     "fs-extra": "^11.2.0",
     "lodash": "^4.17.21",
     "next": "^14.0.4",
+    "next-themes": "^0.2.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@swc-node/register": "^1.6.8",
@@ -48,6 +55,7 @@
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.1",
+    "prettier-plugin-embed": "^0.3.2",
     "prettier-plugin-sql": "^0.18.0",
     "tailwindcss": "^3.4.0",
     "ts-node": "^10.9.1",
