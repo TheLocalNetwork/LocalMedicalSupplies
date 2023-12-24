@@ -31,12 +31,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeLoaderScript }} />
       </head>
       <body
-        className={clsx(
+        className={clsx([
           inter.className,
           "container mx-auto flex min-h-screen max-w-6xl flex-col gap-8",
-          "bg-white dark:bg-stone-800",
-          "text-stone-900 dark:text-stone-100"
-        )}
+          "bg-zinc-50 dark:bg-zinc-900",
+          "text-zinc-600 dark:text-zinc-300",
+          "text-base/6  sm:text-sm/6",
+        ])}
       >
         <Provider>
           <Navbar />
