@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "@tsconfig/recommended/tsconfig",
-    "@tsconfig/strictest/tsconfig"
-  ],
+  "extends": ["@tsconfig/recommended/tsconfig", "@tsconfig/strictest/tsconfig"],
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -26,6 +23,23 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "tailwind.config.mjs",
+    "prettier.config.mjs"
+  ],
+  "exclude": ["node_modules"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": true,
+        "fixStyle": "inline-type-imports"
+      }
+    ]
+  }
 }

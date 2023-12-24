@@ -1,29 +1,26 @@
 /** @type {import('prettier').Config} */
 const prettierConfig = {
-  plugins: [
-    'prettier-plugin-embed',
-    'prettier-plugin-sql',
-    'prettier-plugin-tailwindcss',
-  ],
+  plugins: ["prettier-plugin-embed", "prettier-plugin-sql", "prettier-plugin-tailwindcss"],
   printWidth: 120,
   semi: true,
-  trailingComma: 'es5',
+  trailingComma: "es5",
 };
 
 /** @type {import('prettier-plugin-embed').PrettierPluginEmbedOptions} */
 const prettierPluginEmbedConfig = {
-  embeddedSqlIdentifiers: ['sql'],
+  embeddedSqlIdentifiers: ["sql"],
 };
 
 /** @type {import('prettier-plugin-sql').SqlBaseOptions} */
 const prettierPluginSqlConfig = {
-  language: 'sqlite',
-  keywordCase: 'upper',
-  comma: 'before',
+  language: "sqlite",
+  keywordCase: "upper",
 };
 
-export default {
+const config = {
   ...prettierConfig,
   ...prettierPluginEmbedConfig,
   ...prettierPluginSqlConfig,
 };
+
+module.exports = config;
