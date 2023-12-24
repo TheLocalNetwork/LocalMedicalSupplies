@@ -1,4 +1,4 @@
-import { AdjustmentsHorizontalIcon, QueueListIcon, TableCellsIcon } from "@heroicons/react/20/solid";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import icon from "~/app/icon.svg";
 import { Button } from "~/components/catalyst/button";

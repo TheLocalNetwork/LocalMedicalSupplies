@@ -32,7 +32,8 @@ FROM SUPPLIER
   INNER JOIN ZIP_CITY ON ZIP_CITY.id = ZIP_ZIPCODE.CityId
   INNER JOIN ZIP_COUNTY ON ZIP_COUNTY.id = ZIP_ZIPCODE.CountyId
   INNER JOIN ZIP_STATE ON ZIP_STATE.id = ZIP_ZIPCODE.StateId
-WHERE provider_id = @provider_id;`);
+WHERE provider_id = @provider_id;
+`);
 
 export const lookupSupplier = async (
   provider_id: IGeoSupplier['provider_id']
