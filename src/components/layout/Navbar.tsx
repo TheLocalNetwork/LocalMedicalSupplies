@@ -22,7 +22,7 @@ export const Navbar = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-4">
             <div>
               <Button href="/browse" outline className="shadow-sm">
                 <AdjustmentsHorizontalIcon className="size-8" />
