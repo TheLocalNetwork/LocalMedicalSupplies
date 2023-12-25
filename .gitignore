@@ -35,7 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 *.code-workspace
-/.cache-cms-data-tools/
-/.data/
+.cache-cms-data-tools/
+.data/
 data/
 ref/
+db/*
