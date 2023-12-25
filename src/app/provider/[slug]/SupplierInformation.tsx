@@ -7,6 +7,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/16/solid";
 import { Button } from "~/components/catalyst/button";
+import { Link } from "~/components/catalyst/link";
 import {
   DescriptionList,
   DescriptionListItem,
@@ -18,29 +19,11 @@ import { BooleanBadge } from "../../../components/elements/BooleanBadge";
 
 export const generateSupplierInformationListItems = (supplier: IGeoSupplier) => {
   return [
-    {
-      term: `Practice Name`,
-      Icon: IdentificationIcon,
-      data: supplier.practice_name,
-    },
-    { term: "Business Name", Icon: IdentificationIcon, data: supplier.business_name },
     { term: "Provider ID", Icon: IdentificationIcon, data: supplier.provider_id },
-    {
-      term: "Phone Number",
-      Icon: PhoneIcon,
-      data: (
-        <Button outline href={`tel:{supplier.phone}`}>
-          <PhoneArrowUpRightIcon />
-          {supplier.phone}
-        </Button>
-      ),
-    },
-    { term: "Street Address", Icon: MapPinIcon, data: supplier.address_1 },
-    { term: "Street Address Line 2", Icon: IdentificationIcon, data: supplier.address_2 },
-    { term: "City", Icon: MapPinIcon, data: supplier.CityName },
-    { term: "County/Parish", Icon: MapPinIcon, data: supplier.CountyName },
-    { term: "State", Icon: MapPinIcon, data: supplier.StateName },
-    { term: "Zip Code", Icon: MapPinIcon, data: supplier.zip },
+    { term: `Practice Name`, Icon: IdentificationIcon, data: supplier.practice_name },
+    { term: "Business Name", Icon: IdentificationIcon, data: supplier.business_name },
+    { term: "Address", Icon: MapPinIcon, data: <SupplierAddress supplier={supplier} /> },
+    { term: "Phone Number", Icon: PhoneIcon, data: <SupplierPhone supplier={supplier} /> },
     {
       term: "Participation Begin Date",
       Icon: CalendarIcon,
@@ -48,6 +31,12 @@ export const generateSupplierInformationListItems = (supplier: IGeoSupplier) => 
     },
     { term: "Is Contracted For CBA", Icon: FlagIcon, data: <BooleanBadge value={supplier.is_contracted_for_cba} /> },
     { term: "Accepts Assignment", Icon: FlagIcon, data: <BooleanBadge value={supplier.accepts_assignment} /> },
+    // { term: "Street Address", Icon: MapPinIcon, data: supplier.address_1 },
+    // { term: "Street Address Line 2", Icon: IdentificationIcon, data: supplier.address_2 },
+    // { term: "City", Icon: MapPinIcon, data: supplier.CityName },
+    // { term: "State", Icon: MapPinIcon, data: supplier.StateName },
+    // { term: "Zip Code", Icon: MapPinIcon, data: supplier.zip },
+    // { term: "County/Parish", Icon: MapPinIcon, data: supplier.CountyName },
   ];
 };
 
@@ -70,5 +59,35 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
         ))}
       </DescriptionList>
     </DescriptionListSection>
+  );
+};
+
+const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => {
+  return (
+    <address>
+      <div>
+        <Link href={`/provider/${supplier.provider_id}-${supplier.practice_slug}`}>
+          <strong>{supplier.practice_name}</strong>
+        </Link>
+      </div>
+      <div>{supplier.address_1}</div>
+      <div>{supplier.address_2}</div>
+      <div>
+        <Link href={`/browse?state=${supplier.StateSlug}&city=${supplier.CitySlug}`}>{supplier.CityName}</Link>
+        {` `}
+        <Link href={`/browse?state=${supplier.StateSlug}`}>{supplier.StateName}</Link>
+        {`, `}
+        <Link href={`/browse?zip=${supplier.zip}`}>{supplier.zip}</Link>
+      </div>
+    </address>
+  );
+};
+
+const SupplierPhone: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => {
+  return (
+    <Button outline href={`tel:{supplier.phone}`}>
+      <PhoneArrowUpRightIcon />
+      {supplier.phone}
+    </Button>
   );
 };
