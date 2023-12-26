@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "tailwind.config.mjs",
     "prettier.config.mjs"
-  ],
+, "src/components/catalyst/table.tsx.bak", "src/components/catalyst/listbox.tsx.bak", "src/components/catalyst/dialog.tsx.bak", "src/components/catalyst/alert.tsx.bak"  ],
   "exclude": ["node_modules"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": [
