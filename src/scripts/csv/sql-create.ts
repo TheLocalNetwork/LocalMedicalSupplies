@@ -1,13 +1,13 @@
 import path from 'path';
 import { db } from '~/lib/db/db';
 import { slugify } from '~/lib/string';
-import { ISupplierCSV } from '~/scripts/csv/types/Supplier';
+import { type ISupplierCSV } from '~/scripts/csv/types/Supplier';
 import { processFolder } from '~/scripts/sql';
 
-const main = async () => {
+const main = () => {
   console.time('create');
 
-  processFolder(path.resolve(__dirname, `sql`, `create`));
+  processFolder(path.resolve(__dirname, 'sql', 'create'));
 
   loadSuppliers();
 
@@ -45,11 +45,7 @@ FROM
   const providerTypes = new Map<string, Set<number>>();
   const supplies = new Map<string, Set<number>>();
 
-  const addToMap = (
-    mapObject: Map<string, Set<number>>,
-    string: string,
-    provider_id: number
-  ) => {
+  const addToMap = (mapObject: Map<string, Set<number>>, string: string, provider_id: number) => {
     if (!string.length) return;
     if (string.includes('|')) {
       string.split('|').map((s) => addToMap(mapObject, s, provider_id));
@@ -58,14 +54,13 @@ FROM
 
     string = string.replace('â\x80\x93', '-');
 
-    const set = mapObject.get(string) || new Set<number>();
+    const set = mapObject.get(string) ?? new Set<number>();
     set.add(provider_id);
     mapObject.set(string, set);
   };
 
   suppliersStaging.forEach((supplier) => {
-    const { provider_id, specialitieslist, providertypelist, supplieslist } =
-      supplier;
+    const { provider_id, specialitieslist, providertypelist, supplieslist } = supplier;
 
     const id = parseInt(provider_id, 10);
 
@@ -82,48 +77,36 @@ FROM
   // });
 
   db.transaction(() => {
-    const insertSpeciality = db.prepare(
-      `INSERT INTO SPECIALITY (id, name, num) VALUES (?,?,?);`
-    );
+    const insertSpeciality = db.prepare('INSERT INTO SPECIALITY (id, name, num) VALUES (?,?,?);');
     const insertSupplierSpeciality = db.prepare(
-      `INSERT INTO SUPPLIER_SPECIALITY (provider_id, speciality_id) VALUES (?,?);`
+      'INSERT INTO SUPPLIER_SPECIALITY (provider_id, speciality_id) VALUES (?,?);'
     );
-    Array.from(specialities.entries()).forEach(
-      ([name, provider_ids], index) => {
-        const speciality_id = index + 1;
-        insertSpeciality.run(speciality_id, name, provider_ids.size);
-        for (const provider_id of provider_ids) {
-          insertSupplierSpeciality.run(provider_id, speciality_id);
-        }
+    Array.from(specialities.entries()).forEach(([name, provider_ids], index) => {
+      const speciality_id = index + 1;
+      insertSpeciality.run(speciality_id, name, provider_ids.size);
+      for (const provider_id of provider_ids) {
+        insertSupplierSpeciality.run(provider_id, speciality_id);
       }
-    );
+    });
   })();
 
   db.transaction(() => {
-    const insertProviderType = db.prepare(
-      `INSERT INTO PROVIDERTYPE (id, name, num) VALUES (?,?,?);`
-    );
+    const insertProviderType = db.prepare('INSERT INTO PROVIDERTYPE (id, name, num) VALUES (?,?,?);');
     const insertSupplierProviderType = db.prepare(
-      `INSERT INTO SUPPLIER_PROVIDERTYPE (provider_id, providertype_id) VALUES (?,?);`
+      'INSERT INTO SUPPLIER_PROVIDERTYPE (provider_id, providertype_id) VALUES (?,?);'
     );
-    Array.from(providerTypes.entries()).forEach(
-      ([name, provider_ids], index) => {
-        const providertype_id = index + 1;
-        insertProviderType.run(providertype_id, name, provider_ids.size);
-        for (const provider_id of provider_ids) {
-          insertSupplierProviderType.run(provider_id, providertype_id);
-        }
+    Array.from(providerTypes.entries()).forEach(([name, provider_ids], index) => {
+      const providertype_id = index + 1;
+      insertProviderType.run(providertype_id, name, provider_ids.size);
+      for (const provider_id of provider_ids) {
+        insertSupplierProviderType.run(provider_id, providertype_id);
       }
-    );
+    });
   })();
 
   db.transaction(() => {
-    const insertSupplies = db.prepare(
-      `INSERT INTO SUPPLY (id, name, num) VALUES (?,?,?);`
-    );
-    const insertSupplierSupply = db.prepare(
-      `INSERT INTO SUPPLIER_SUPPLY (provider_id, supply_id) VALUES (?,?);`
-    );
+    const insertSupplies = db.prepare('INSERT INTO SUPPLY (id, name, num) VALUES (?,?,?);');
+    const insertSupplierSupply = db.prepare('INSERT INTO SUPPLIER_SUPPLY (provider_id, supply_id) VALUES (?,?);');
     Array.from(supplies.entries()).forEach(([name, provider_ids], index) => {
       const supply_id = index + 1;
       insertSupplies.run(supply_id, name, provider_ids.size);
@@ -150,9 +133,7 @@ FROM
       'is_contracted_for_cba',
     ];
     const params = fields.map((field) => `@${field}`);
-    const insertSupplier = db.prepare(
-      `INSERT INTO SUPPLIER (${fields.join()}) VALUES (${params});`
-    );
+    const insertSupplier = db.prepare(`INSERT INTO SUPPLIER (${fields.join()}) VALUES (${params.join(',')});`);
 
     for (const supplier of suppliersStaging) {
       const zip = supplier.practicezip9code.substring(0, 5);
@@ -163,28 +144,16 @@ FROM
       const binding = {
         provider_id: parseInt(supplier.provider_id, 10),
         accepts_assignment: boolTrueFalse(supplier.acceptsassignement),
-        participation_begin_date: supplier.participationbegindate.length
-          ? supplier.participationbegindate
-          : null,
-        business_name: supplier.businessname.length
-          ? supplier.businessname
-          : null,
+        participation_begin_date: supplier.participationbegindate.length ? supplier.participationbegindate : null,
+        business_name: supplier.businessname.length ? supplier.businessname : null,
         business_slug: business_slug.length ? business_slug : null,
-        practice_name: supplier.practicename.length
-          ? supplier.practicename
-          : null,
+        practice_name: supplier.practicename.length ? supplier.practicename : null,
         practice_slug: practice_slug.length ? practice_slug : null,
-        address_1: supplier.practiceaddress1.length
-          ? supplier.practiceaddress1
-          : null,
-        address_2: supplier.practiceaddress2.length
-          ? supplier.practiceaddress2
-          : null,
+        address_1: supplier.practiceaddress1.length ? supplier.practiceaddress1 : null,
+        address_2: supplier.practiceaddress2.length ? supplier.practiceaddress2 : null,
         zip: zip.length === 5 ? zip : null,
         zip4: zip4.length === 4 ? zip4 : null,
-        phone: supplier.telephonenumber.length
-          ? supplier.telephonenumber
-          : null,
+        phone: supplier.telephonenumber.length ? supplier.telephonenumber : null,
         is_contracted_for_cba: boolTrueFalse(supplier.is_contracted_for_cba),
       };
 

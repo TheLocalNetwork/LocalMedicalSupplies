@@ -7,6 +7,10 @@
     "prettier",
     "next"
   ],
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  },
+  "ignorePatterns": ["src/components/catalyst"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": [
       "error",
@@ -16,6 +20,10 @@
         "fixStyle": "inline-type-imports"
       }
     ],
-    "no-console": ["error", { "allow": ["warn", "error", "time", "timeEnd"] }]
+    "@next/next/no-img-element": ["off"],
+    "no-console": ["error", { "allow": ["warn", "error", "time", "timeEnd"] }],
+    "no-unused-vars": ["off"],
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-confusing-void-expression": ["off"]
   }
 }

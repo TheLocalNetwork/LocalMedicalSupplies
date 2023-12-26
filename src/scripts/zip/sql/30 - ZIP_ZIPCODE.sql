@@ -1,20 +1,19 @@
 DROP TABLE IF EXISTS ZIP_ZIPCODE;
 
-CREATE TABLE
-  IF NOT EXISTS ZIP_ZIPCODE (
-    ZIPCode text PRIMARY KEY NOT NULL
-  , CityId INT NOT NULL
-  , CountyId INT NOT NULL
-  , StateId INT NOT NULL
-  );
+CREATE TABLE IF NOT EXISTS ZIP_ZIPCODE (
+  ZIPCode text PRIMARY KEY NOT NULL,
+  CityId INT NOT NULL,
+  CountyId INT NOT NULL,
+  StateId INT NOT NULL
+);
 
 INSERT INTO
   ZIP_ZIPCODE (ZIPCode, CityId, CountyId, StateId)
 SELECT
-  zip_staging.ZIPCode
-, ZIP_CITY.rowid AS CityId
-, ZIP_COUNTY.rowid AS CountyId
-, ZIP_STATE.rowid AS StateId
+  zip_staging.ZIPCode,
+  ZIP_CITY.rowid AS CityId,
+  ZIP_COUNTY.rowid AS CountyId,
+  ZIP_STATE.rowid AS StateId
 FROM
   zip_staging
   LEFT JOIN ZIP_STATE ON zip_staging.StateName = ZIP_STATE.StateName
@@ -25,12 +24,12 @@ FROM
 WHERE
   zip_staging.CityType = 'D'
 GROUP BY
-  zip_staging.ZIPCode
-, ZIP_CITY.rowid
-, ZIP_COUNTY.rowid
-, ZIP_STATE.rowid
+  zip_staging.ZIPCode,
+  ZIP_CITY.rowid,
+  ZIP_COUNTY.rowid,
+  ZIP_STATE.rowid
 ORDER BY
-  zip_staging.ZIPCode
-, ZIP_CITY.rowid
-, ZIP_COUNTY.rowid
-, ZIP_STATE.rowid RETURNING *;
+  zip_staging.ZIPCode,
+  ZIP_CITY.rowid,
+  ZIP_COUNTY.rowid,
+  ZIP_STATE.rowid RETURNING *;

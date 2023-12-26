@@ -1,6 +1,6 @@
-import { ArrowRightCircleIcon } from "@heroicons/react/20/solid";
-import { Link } from "~/components/catalyst/link";
-import { IGeoSupplier } from "~/types/Supplier";
+import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
+import { Link } from '~/components/catalyst/link';
+import { type IGeoSupplier } from '~/types/Supplier';
 
 export interface ISupplierHeaderProps {
   supplier: IGeoSupplier;
@@ -9,19 +9,19 @@ export interface ISupplierHeaderProps {
 export const SupplierHeaderOld: React.FC<ISupplierHeaderProps> = ({ supplier, canonical }) => {
   return (
     <header className="flex flex-col gap-2">
-      <h1 className={`letter text-2xl font-semibold leading-none tracking-tight sm:text-5xl`}>
+      <h1 className={'letter text-2xl font-semibold leading-none tracking-tight sm:text-5xl'}>
         <Link href={`/provider/${canonical}`}>{supplier.practice_name}</Link>
       </h1>
-      <h2 className={`text-xs font-light sm:text-base`}>{supplier.business_name}</h2>
+      <h2 className={'text-xs font-light sm:text-base'}>{supplier.business_name}</h2>
     </header>
   );
 };
 
 const links = [
-  { name: "Location", href: "#SupplierInformation" },
-  { name: "Supplies", href: "#SuppliesAvailable" },
-  { name: "Specialites", href: "#ProviderSpecialites" },
-  { name: "Provider Type", href: "#ProviderType" },
+  { name: 'Location', href: '#SupplierInformation' },
+  { name: 'Supplies', href: '#SuppliesAvailable' },
+  { name: 'Specialites', href: '#ProviderSpecialites' },
+  { name: 'Provider Type', href: '#ProviderType' },
 ];
 
 export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier, canonical }) => {

@@ -1,10 +1,10 @@
 import path from 'path';
 import { processFolder } from '~/scripts/sql';
 
-const main = async () => {
+const main = () => {
   console.time('init');
 
-  processFolder(path.resolve(__dirname, `sql`, `init`));
+  processFolder(path.resolve(__dirname, 'sql', 'init'));
 
   console.timeEnd('init');
 };

@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Footer } from "~/components/layout/Footer";
-import { Navbar } from "~/components/layout/Navbar";
-import Provider from "~/components/layout/Provider";
-import "./globals.scss";
+import clsx from 'clsx';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { Footer } from '~/components/layout/Footer';
+import { Navbar } from '~/components/layout/Navbar';
+import Provider from '~/components/layout/Provider';
+import './globals.scss';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Local Medical Supplies",
-  description: "Local Medical Supplies",
+  title: 'Local Medical Supplies',
+  description: 'Local Medical Supplies',
 };
 
 const themeLoaderScript = `
@@ -33,15 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={clsx([
           inter.className,
-          " mx-auto flex min-h-screen flex-col gap-6",
-          "bg-zinc-50 dark:bg-zinc-900",
-          "text-zinc-600 dark:text-zinc-300",
-          "text-base/6  sm:text-sm/6",
+          ' mx-auto flex min-h-screen flex-col gap-6',
+          'bg-zinc-50 dark:bg-zinc-900',
+          'text-zinc-600 dark:text-zinc-300',
+          'text-base/6  sm:text-sm/6',
         ])}
       >
         <Provider>
           <Navbar />
-          <main className={clsx("flex flex-col")}>{children}</main>
+          <main className={clsx('flex flex-col')}>{children}</main>
           <Footer />
         </Provider>
       </body>

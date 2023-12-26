@@ -35,11 +35,7 @@ FROM SUPPLIER
 WHERE provider_id = @provider_id;
 `);
 
-export const lookupSupplier = async (
-  provider_id: IGeoSupplier['provider_id']
-) => lookupSupplierStatement.get({ provider_id }) as GetSupplierResult;
+export const lookupSupplier = (provider_id: IGeoSupplier['provider_id']) =>
+  lookupSupplierStatement.get({ provider_id }) as GetSupplierResult;
 
-export const getSupplier = cache(
-  async (provider_id: IGeoSupplier['provider_id']) =>
-    lookupSupplier(provider_id)
-);
+export const getSupplier = cache((provider_id: IGeoSupplier['provider_id']) => lookupSupplier(provider_id));

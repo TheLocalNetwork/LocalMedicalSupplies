@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { readFileSync, readdirSync } from 'fs-extra';
 import path from 'path';
 import { localeSort } from '~/lib/collections';
@@ -19,7 +20,7 @@ export const processFolder = (folderPath: string) => {
       console.log(fileName);
       console.log(sqlStatement);
 
-      if (sqlStatement.length && !sqlStatement.startsWith(`--`)) {
+      if (sqlStatement.length && !sqlStatement.startsWith('--')) {
         const result = db.prepare(`${sqlStatement};`).run();
 
         console.log({ result }, '\n');

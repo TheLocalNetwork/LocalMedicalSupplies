@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { ThemeProvider } from "next-themes";
-import { useEffect, useState } from "react";
+import { ThemeProvider } from 'next-themes';
+import { useEffect, useState } from 'react';
 
-type Props = {
+interface Props {
   children: string | React.JSX.Element | React.JSX.Element[];
-};
+}
 
 const Provider = ({ children }: Props) => {
   const [mounted, setMounted] = useState<boolean>(false);

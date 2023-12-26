@@ -2,12 +2,12 @@ import path from 'path';
 import { db } from '~/lib/db/db';
 import { slugify } from '~/lib/string';
 import { processFolder } from '~/scripts/sql';
-import { IZipCity, IZipCounty, IZipState } from '~/types/zip';
+import { type IZipCity, type IZipCounty, type IZipState } from '~/types/zip';
 
-const main = async () => {
+const main = () => {
   console.time('main');
 
-  processFolder(path.resolve(__dirname, `sql`));
+  processFolder(path.resolve(__dirname, 'sql'));
 
   createSlugs();
 
@@ -25,12 +25,10 @@ const createSlugs = () => {
 const createStateSlugs = () => {
   console.time('createSlugs:states');
 
-  const selectZipStatesStatement = db.prepare(
-    `SELECT rowid as id, StateName FROM ZIP_STATE`
-  );
+  const selectZipStatesStatement = db.prepare('SELECT rowid as id, StateName FROM ZIP_STATE');
 
   const updateZipStateSlugStatement = db.prepare<{ id: number; slug: string }>(
-    `UPDATE ZIP_STATE SET StateSlug = @slug WHERE rowid = @id`
+    'UPDATE ZIP_STATE SET StateSlug = @slug WHERE rowid = @id'
   );
 
   const states = selectZipStatesStatement.all() as IZipState[];
@@ -47,12 +45,10 @@ const createStateSlugs = () => {
 const createCountySlugs = () => {
   console.time('createSlugs:counties');
 
-  const selectZipCountiesStatement = db.prepare(
-    `SELECT rowid as id, CountyName FROM ZIP_COUNTY`
-  );
+  const selectZipCountiesStatement = db.prepare('SELECT rowid as id, CountyName FROM ZIP_COUNTY');
 
   const updateZipCountySlugStatement = db.prepare<{ id: number; slug: string }>(
-    `UPDATE ZIP_COUNTY SET CountySlug = @slug WHERE rowid = @id`
+    'UPDATE ZIP_COUNTY SET CountySlug = @slug WHERE rowid = @id'
   );
 
   const counties = selectZipCountiesStatement.all() as IZipCounty[];
@@ -69,11 +65,9 @@ const createCountySlugs = () => {
 const createCitySlugs = () => {
   console.time('createSlugs:cities');
 
-  const selectZipCitiesStatement = db.prepare(
-    `SELECT rowid as id, CityName FROM ZIP_CITY`
-  );
+  const selectZipCitiesStatement = db.prepare('SELECT rowid as id, CityName FROM ZIP_CITY');
   const updateZipCitySlugStatement = db.prepare<{ id: number; slug: string }>(
-    `UPDATE ZIP_CITY SET CitySlug = @slug WHERE rowid = @id`
+    'UPDATE ZIP_CITY SET CitySlug = @slug WHERE rowid = @id'
   );
 
   const cities = selectZipCitiesStatement.all() as IZipCity[];

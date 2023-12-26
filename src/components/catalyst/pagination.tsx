@@ -1,21 +1,21 @@
-import clsx from 'clsx'
-import type React from 'react'
-import { Button } from './button'
+import clsx from 'clsx';
+import type React from 'react';
+import { Button } from './button';
 
 export function Pagination({
   'aria-label': ariaLabel = 'Page navigation',
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'nav'>) {
-  return <nav aria-label={ariaLabel} {...props} className={clsx(className, 'flex gap-x-2')} />
+  return <nav aria-label={ariaLabel} {...props} className={clsx(className, 'flex gap-x-2')} />;
 }
 
 export function PaginationPrevious({
   href = null,
   children = 'Previous',
 }: {
-  href?: string | null
-  children?: React.ReactNode
+  href?: string | null;
+  children?: React.ReactNode;
 }) {
   return (
     <span className="grow basis-0">
@@ -31,15 +31,15 @@ export function PaginationPrevious({
         {children}
       </Button>
     </span>
-  )
+  );
 }
 
 export function PaginationNext({
   href = null,
   children = 'Next',
 }: {
-  href?: string | null
-  children?: React.ReactNode
+  href?: string | null;
+  children?: React.ReactNode;
 }) {
   return (
     <span className="flex grow basis-0 justify-end">
@@ -55,11 +55,11 @@ export function PaginationNext({
         </svg>
       </Button>
     </span>
-  )
+  );
 }
 
 export function PaginationList({ children }: { children: React.ReactNode }) {
-  return <span className="hidden items-baseline gap-x-2 sm:flex">{children}</span>
+  return <span className="hidden items-baseline gap-x-2 sm:flex">{children}</span>;
 }
 
 export function PaginationPage({
@@ -67,9 +67,9 @@ export function PaginationPage({
   children,
   current = false,
 }: {
-  href: string
-  children: string
-  current?: boolean
+  href: string;
+  children: string;
+  current?: boolean;
 }) {
   return (
     <Button
@@ -84,7 +84,7 @@ export function PaginationPage({
     >
       <span className="-mx-0.5">{children}</span>
     </Button>
-  )
+  );
 }
 
 export function PaginationGap() {
@@ -95,5 +95,5 @@ export function PaginationGap() {
     >
       &hellip;
     </div>
-  )
+  );
 }

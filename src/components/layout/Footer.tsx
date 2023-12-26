@@ -1,5 +1,5 @@
-import { Link } from "~/components/catalyst/link";
-import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from "~/lib/const";
+import { Link } from '~/components/catalyst/link';
+import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from '~/lib/const';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

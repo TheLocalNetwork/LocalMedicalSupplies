@@ -1,5 +1,5 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { Input } from "~/components/catalyst/input";
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { Input } from '~/components/catalyst/input';
 
 export const NavbarSearch = () => {
   return (

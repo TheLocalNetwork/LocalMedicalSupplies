@@ -1,10 +1,10 @@
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
-import { isNil } from "lodash";
-import { Card } from "./Card";
+import { type InformationCircleIcon } from '@heroicons/react/24/solid';
+import { isNil } from 'lodash';
+import { Card } from './Card';
 
 interface IDescriptionListSectionProps
   extends React.PropsWithChildren,
-    Omit<React.ComponentPropsWithoutRef<"section">, "title"> {
+    Omit<React.ComponentPropsWithoutRef<'section'>, 'title'> {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
 }

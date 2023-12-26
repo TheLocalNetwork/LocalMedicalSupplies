@@ -1,19 +1,18 @@
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import { isNil } from "lodash";
-import { Link } from "~/components/catalyst/link";
-import { DescriptionListSection } from "~/components/elements/DescriptionListSection";
-import { getSupplierSupplyCollection } from "~/lib/db/supplier-supply/get";
-import { getSupplier } from "~/lib/db/supplier/get";
-import { slugify } from "~/lib/string";
-import { ISupplier, ISupply } from "~/types/Supplier";
+import { CheckCircleIcon } from '@heroicons/react/20/solid';
+import { isNil } from 'lodash';
+import { Link } from '~/components/catalyst/link';
+import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { getSupplierSupplyCollection } from '~/lib/db/supplier-supply/get';
+import { getSupplier } from '~/lib/db/supplier/get';
+import { slugify } from '~/lib/string';
+import { type ISupplier, type ISupply } from '~/types/Supplier';
 
 export interface ISupplierSupplyProps {
-  provider_id: ISupplier["provider_id"];
+  provider_id: ISupplier['provider_id'];
 }
-export default async function SupplierSupply({ provider_id }: ISupplierSupplyProps) {
-  "use server";
-  const supplier = await getSupplier(provider_id);
-  const supplierSupplyCollection = await getSupplierSupplyCollection(provider_id);
+export default function SupplierSupply({ provider_id }: ISupplierSupplyProps) {
+  const supplier = getSupplier(provider_id);
+  const supplierSupplyCollection = getSupplierSupplyCollection(provider_id);
 
   if (isNil(supplierSupplyCollection) || isNil(supplier)) return null;
 
@@ -22,7 +21,7 @@ export default async function SupplierSupply({ provider_id }: ISupplierSupplyPro
       title="Supply Categories"
       subtitle={
         <div>
-          Following categories of medical equipment are supplied by{` `}
+          Following categories of medical equipment are supplied by{' '}
           <span className="whitespace-nowrap">{supplier.practice_name}</span>
         </div>
       }

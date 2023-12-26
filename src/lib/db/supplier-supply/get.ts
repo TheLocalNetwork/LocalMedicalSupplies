@@ -1,17 +1,18 @@
-import { cache } from "react";
-import { db } from "~/lib/db/db";
-import { ISupplierSupply, ISupply } from "~/types/Supplier";
+import { cache } from 'react';
+import { db } from '~/lib/db/db';
+import { type ISupplierSupply, type ISupply } from '~/types/Supplier';
 
 export type GetSupplierSupplyResult = ISupplierSupply[] | undefined;
 
 const lookupSupplierSupplyStatement = db.prepare<{ provider_id: number }>(
-  `SELECT provider_id, supply_id FROM SUPPLIER_SUPPLY WHERE provider_id = @provider_id;`
+  'SELECT provider_id, supply_id FROM SUPPLIER_SUPPLY WHERE provider_id = @provider_id;'
 );
 
-export const lookupSupplierSupply = async (provider_id: number) =>
-  lookupSupplierSupplyStatement.all({ provider_id }) as GetSupplierSupplyResult;
+export const lookupSupplierSupply = (provider_id: number) => {
+  return lookupSupplierSupplyStatement.all({ provider_id }) as GetSupplierSupplyResult;
+};
 
-export const getSupplierSupply = cache(async (provider_id: number) => lookupSupplierSupply(provider_id));
+export const getSupplierSupply = cache((provider_id: number) => lookupSupplierSupply(provider_id));
 
 export type GetSupplierSupplyCollectionResult = ISupply[] | undefined;
 
@@ -24,11 +25,9 @@ const lookupSupplierSupplyCollectionStatement = db.prepare<{
   WHERE SUPPLIER_SUPPLY.provider_id = @provider_id;
 `);
 
-export const lookupSupplierSupplyCollection = async (provider_id: number) =>
+export const lookupSupplierSupplyCollection = (provider_id: number) =>
   lookupSupplierSupplyCollectionStatement.all({
     provider_id,
   }) as GetSupplierSupplyCollectionResult;
 
-export const getSupplierSupplyCollection = cache(async (provider_id: number) =>
-  lookupSupplierSupplyCollection(provider_id)
-);
+export const getSupplierSupplyCollection = cache((provider_id: number) => lookupSupplierSupplyCollection(provider_id));
