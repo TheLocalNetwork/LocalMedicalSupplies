@@ -52,6 +52,7 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
         </div>
       }
       subtitle={<div>Location details and contact information</div>}
+      id={`SupplierInformation`}
     >
       <DescriptionList>
         {supplierAddressListItems.map(({ term, Icon, data }) => (

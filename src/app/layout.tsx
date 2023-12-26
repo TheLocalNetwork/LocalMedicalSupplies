@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={clsx([
           inter.className,
-          "container mx-auto flex min-h-screen max-w-6xl flex-col gap-8",
+          " mx-auto flex min-h-screen flex-col gap-6",
           "bg-zinc-50 dark:bg-zinc-900",
           "text-zinc-600 dark:text-zinc-300",
           "text-base/6  sm:text-sm/6",
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <Provider>
           <Navbar />
-          <main className={clsx("flex flex-col px-6")}>{children}</main>
+          <main className={clsx("flex flex-col")}>{children}</main>
           <Footer />
         </Provider>
       </body>

@@ -9,7 +9,7 @@ import { NavbarSearch } from "./NavbarSearch";
 export const Navbar = () => {
   return (
     <>
-      <header className="mx-auto w-full min-w-36 p-6">
+      <header className="mx-auto w-full max-w-6xl min-w-36 p-6">
         <div className="flex flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 px-2 lg:px-0">
             <div className=" flex-shrink-0">

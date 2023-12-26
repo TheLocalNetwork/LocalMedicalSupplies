@@ -1,9 +1,9 @@
 import { isNil } from "lodash";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import { JsonLD } from "~/app/provider/[slug]/JsonLD";
+import { SupplierHeader } from "~/app/provider/[slug]/SupplierHeader";
+import { SupplierJsonLD } from "~/app/provider/[slug]/SupplierJsonLD";
 import SupplierSupply from "~/app/provider/[slug]/SupplierSupply";
-import { Link } from "~/components/catalyst/link";
 import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from "~/lib/const";
 import { getSupplier } from "~/lib/db/supplier/get";
 import { SupplierInformation } from "./SupplierInformation";
@@ -32,7 +32,7 @@ interface IProps {
   params: { slug: string };
 }
 export const runtime = "nodejs";
-export default async function Page({ params }: IProps) {
+export default async function SupplierPage({ params }: IProps) {
   const { slug } = params;
 
   const providerMeta = await getSupplierFromSlug(slug);
@@ -43,14 +43,8 @@ export default async function Page({ params }: IProps) {
   return (
     <>
       <article className={`flex flex-col gap-12`}>
-        <header className="flex flex-col gap-2">
-          <h1 className={`letter text-2xl font-semibold leading-none tracking-tight sm:text-5xl`}>
-            <Link href={`/provider/${slug}`}>{supplier.practice_name}</Link>
-          </h1>
-          <h2 className={`text-xs font-light sm:text-base`}>{supplier.business_name}</h2>
-        </header>
-
-        <JsonLD supplier={supplier} canonical={canonical} />
+        <SupplierHeader supplier={supplier} canonical={canonical} />
+        <SupplierJsonLD supplier={supplier} canonical={canonical} />
         <SupplierInformation supplier={supplier} />
         <SupplierSupply provider_id={supplier.provider_id} />
       </article>

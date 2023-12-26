@@ -2,13 +2,20 @@ import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { isNil } from "lodash";
 import { Card } from "./Card";
 
-interface IDescriptionListSectionProps extends React.PropsWithChildren {
+interface IDescriptionListSectionProps
+  extends React.PropsWithChildren,
+    Omit<React.ComponentPropsWithoutRef<"section">, "title"> {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
 }
-export const DescriptionListSection: React.FC<IDescriptionListSectionProps> = ({ title, subtitle, children }) => {
+export const DescriptionListSection: React.FC<IDescriptionListSectionProps> = ({
+  title,
+  subtitle,
+  children,
+  ...props
+}) => {
   return (
-    <Card>
+    <Card {...props}>
       <div className="flex flex-col gap-1 px-4 sm:gap-2 sm:px-0">
         <h1 className="text-xl font-semibold leading-7 sm:text-3xl ">{title}</h1>
         <h2 className="max-w-2xl text-sm sm:text-base">{subtitle}</h2>

@@ -5,7 +5,7 @@ interface IJsonLDProps {
   supplier: IGeoSupplier;
   canonical: string;
 }
-export const JsonLD: React.FC<IJsonLDProps> = ({ supplier, canonical }) => {
+export const SupplierJsonLD: React.FC<IJsonLDProps> = ({ supplier, canonical }) => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
