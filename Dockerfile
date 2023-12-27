@@ -10,16 +10,19 @@ LABEL fly_launch_runtime="Next.js"
 WORKDIR /app
 
 # Set production environment
-ENV NEXT_TELEMETRY_DISABLED="1" \
-    NODE_ENV="production"
+ENV NODE_ENV="production"
+ENV NEXT_TELEMETRY_DISABLED="1"
 
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build node modules
+# Install packages needed to build node modules and litefs
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3 ca-certificates fuse3 sqlite3
+
+# Copy in the LiteFS binary:
+COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /usr/local/bin/litefs
 
 # Install node modules
 COPY --link .npmrc package-lock.json package.json ./
@@ -45,7 +48,10 @@ COPY --from=build /app /app
 RUN mkdir -p /data
 VOLUME /data
 
+
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 ENV DATABASE_URL="file:///data/sqlite.db"
-CMD [ "npm", "run", "start" ]
+
+ENTRYPOINT litefs mount
+
