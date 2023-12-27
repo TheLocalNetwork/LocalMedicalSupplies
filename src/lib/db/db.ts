@@ -4,8 +4,8 @@ import path from 'node:path';
 const dbPath = path.resolve(process.cwd(), 'db', 'localmedicalsupplies.sqlite');
 
 export const db = new Database(dbPath, {
-  fileMustExist: false,
-  readonly: false,
+  fileMustExist: true,
+  readonly: true,
   // verbose: (...args) => console.info(`SQL: `, ...args),
 });
 
