@@ -1,6 +1,4 @@
-import { AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import { Button } from '~/components/catalyst/button';
 import ThemeSwitcher from '~/components/layout/ThemeSwitcher';
 import { NavbarSearch } from './NavbarSearch';
 
@@ -21,12 +19,6 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center justify-end gap-4">
-            <div>
-              <Button href="/browse" outline className="shadow-sm">
-                <AdjustmentsHorizontalIcon className="size-8" />
-                Browse
-              </Button>
-            </div>
             <NavbarSearch />
             <ThemeSwitcher />
           </div>
