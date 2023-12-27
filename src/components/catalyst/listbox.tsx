@@ -30,7 +30,7 @@ export function Listbox<T>({
   return (
     <HeadlessListbox {...props} multiple={false}>
       <HeadlessListboxButton
-        autoFocus={autoFocus}
+        autoFocus={!!autoFocus}
         data-slot="control"
         aria-label={ariaLabel}
         className={clsx([
