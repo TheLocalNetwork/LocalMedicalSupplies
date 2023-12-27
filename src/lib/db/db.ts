@@ -14,9 +14,6 @@ const dbOptions =
 
 const dbPath = path.resolve(process.cwd(), 'db', 'localmedicalsupplies.sqlite');
 
-// eslint-disable-next-line no-console
-console.info(`Database Setup`, { dbPath, dbOptions });
-
 export const db = new Database(dbPath, dbOptions);
 
 db.pragma('journal_mode = WAL');
