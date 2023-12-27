@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "preversion": "npm run sql:vacuum",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "tsnode": "node -r @swc-node/register ",
+    "sql:vacuum": "npm run tsnode -- ./src/scripts/vacuum.ts",
     "update": "npm run zip:update && npm run csv:update",
     "csv:update": "npm run csv:sql:init && npm run csv:import && npm run csv:sql:create && npm run csv:sql:cleanup",
     "csv:import": "npm run csv:import:suppliers && npm run csv:import:products",
