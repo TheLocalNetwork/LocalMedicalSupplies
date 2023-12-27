@@ -3,6 +3,9 @@ import path from 'node:path';
 
 const dbPath = process.env['DATABASE_URL'] ?? path.resolve(process.cwd(), 'db', 'localmedicalsupplies.sqlite');
 
+// eslint-disable-next-line no-console
+console.info({ dbPath });
+
 export const db = new Database(dbPath, {
   fileMustExist: true,
   readonly: true,
