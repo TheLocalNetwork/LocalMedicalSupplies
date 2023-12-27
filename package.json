@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "preversion": "npm run sql:vacuum",
+    "postversion": "git push --follow-tags",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
