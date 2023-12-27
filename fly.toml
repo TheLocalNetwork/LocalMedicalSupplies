@@ -8,10 +8,10 @@ primary_region = "ord"
 
 [build]
 
-[[mounts]]
-  source = "data"
-  destination = "/data"
-  auto_extend_size_threshold = 0
+[mounts]
+  source = "litefs"
+  destination = "/var/lib/litefs"
+
 
 [http_service]
   internal_port = 3000
