@@ -78,10 +78,10 @@ const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => 
       <div>{supplier.address_1}</div>
       <div>{supplier.address_2}</div>
       <div>
-        <Link href={`/browse?state=${supplier.StateSlug}&city=${supplier.CitySlug}`}>{supplier.CityName}</Link>{' '}
-        <Link href={`/browse?state=${supplier.StateSlug}`}>{supplier.StateName}</Link>
+        <Link href={`/?state=${supplier.StateSlug}&city=${supplier.CitySlug}`}>{supplier.CityName}</Link>{' '}
+        <Link href={`/?state=${supplier.StateSlug}`}>{supplier.StateName}</Link>
         {', '}
-        <Link href={`/browse?zip=${supplier.zip}`}>{supplier.zip}</Link>
+        <Link href={`/?zip=${supplier.zip}`}>{supplier.zip}</Link>
       </div>
     </address>
   );
