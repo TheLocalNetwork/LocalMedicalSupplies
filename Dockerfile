@@ -12,7 +12,7 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 ENV NEXT_TELEMETRY_DISABLED="1"
-ENV DATABASE_URL="file:///litefs/localmedicalsupplies.sqlite"
+ENV DATABASE_URL="/litefs/localmedicalsupplies.sqlite"
 
 
 # Throw-away build stage to reduce size of final image
