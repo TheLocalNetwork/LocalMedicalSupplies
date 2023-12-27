@@ -45,7 +45,7 @@ const getSuppliers = (id: string) => {
 
   const suppliers = suppliersStatement.all({ state }) as ISupplier[];
   return suppliers.map(({ provider_id, practice_slug }) => ({
-    url: `${CANONICAL_DOMAIN_NAME}/provider/${provider_id}-${practice_slug}`,
+    url: `/provider/${provider_id}-${practice_slug}`,
     priority: 0.8,
   }));
 };
