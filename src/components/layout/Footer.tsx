@@ -1,4 +1,4 @@
-import { Link } from '~/components/catalyst/link';
+import Link from 'next/link';
 import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from '~/lib/const';
 
 export const Footer = () => {

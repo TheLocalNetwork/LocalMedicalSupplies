@@ -1,6 +1,6 @@
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 import { Button } from '~/components/catalyst/button';
-import { Link } from '~/components/catalyst/link';
 import ThemeSwitcher from '~/components/layout/ThemeSwitcher';
 import { NavbarSearch } from './NavbarSearch';
 
