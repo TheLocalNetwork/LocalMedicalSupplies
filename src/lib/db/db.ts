@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'node:path';
 
-const dbOptions =
+export const dbOptions =
   process.env.NODE_ENV === 'production'
     ? {
         fileMustExist: true,
@@ -12,7 +12,7 @@ const dbOptions =
         readonly: false,
       };
 
-const dbPath = path.resolve(process.cwd(), 'db', 'localmedicalsupplies.sqlite');
+export const dbPath = path.resolve(process.cwd(), 'db', 'localmedicalsupplies.sqlite');
 
 export const db = new Database(dbPath, dbOptions);
 
