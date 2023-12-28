@@ -4,7 +4,7 @@ import { type ISupplier } from '~/types/Supplier';
 
 export const getSupplierLink = (supplier: ISupplier, includeDomain = false): string => {
   const slugParts = compact([
-    supplier.provider_id,
+    supplier.id,
     supplier.business_slug,
     supplier.practice_slug !== supplier.business_slug ? supplier.practice_slug : undefined,
   ]);

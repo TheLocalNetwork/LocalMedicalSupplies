@@ -12,12 +12,12 @@ const supplierStatesStatement = db.prepare(`SELECT StateSlug FROM ZIP_STATE`);
 const supplierStates = supplierStatesStatement.all() as IZipState[];
 
 const suppliersByStateStatement = db.prepare(`
-  SELECT provider_id, practice_slug, business_slug
+  SELECT SUPPLIER.id, practice_slug, business_slug
   FROM SUPPLIER
     INNER JOIN ZIP_ZIPCODE ON SUPPLIER.zip = ZIP_ZIPCODE.ZIPCode
     INNER JOIN ZIP_STATE ON ZIP_ZIPCODE.StateID = ZIP_STATE.id
   WHERE ZIP_STATE.StateSlug = @StateSlug
-  ORDER BY provider_id
+  ORDER BY SUPPLIER.id
 `);
 
 export const generateSupplierStateSitemaps = (sitemapIndexItems: string[]) => {

@@ -1,19 +1,19 @@
 export type TISODate = string;
 
 export interface ISupplier {
-  provider_id: number;
-  accepts_assignment: boolean;
-  participation_begin_date: TISODate;
-  business_name: string;
-  business_slug: string;
-  practice_name: string;
-  practice_slug: string;
-  address_1: string;
-  address_2: string;
-  zip: string;
-  zip4: string;
-  phone: string;
-  is_contracted_for_cba: boolean;
+  id: number;
+  accepts_assignment: boolean | null;
+  participation_begin_date: TISODate | null;
+  business_name: string | null;
+  business_slug: string | null;
+  practice_name: string | null;
+  practice_slug: string | null;
+  address_1: string | null;
+  address_2: string | null;
+  zip: string | null;
+  zip4: string | null;
+  phone: string | null;
+  is_contracted_for_cba: boolean | null;
 }
 export interface IGeoSupplier extends ISupplier {
   CityName: string;
@@ -31,6 +31,6 @@ export interface ISupply {
 }
 
 export interface ISupplierSupply {
-  provider_id: ISupplier['provider_id'];
+  provider_id: ISupplier['id'];
   supply_id: ISupply['id'];
 }

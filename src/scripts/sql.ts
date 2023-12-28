@@ -33,3 +33,10 @@ export const processFolder = (folderPath: string) => {
 
   console.timeEnd(`processFolder:${folderPath}`);
 };
+
+
+export const boolTrueFalse = (value: string) => {
+  if (value === 'True') return 1;
+  if (value === 'False') return 0;
+  return null;
+};

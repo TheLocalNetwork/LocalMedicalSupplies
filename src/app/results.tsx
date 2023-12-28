@@ -50,7 +50,7 @@ export const Results: React.FC<IResultsProps> = ({ searchParams }) => {
 
       <ul key={urlSearchParams.toString()}>
         {(suppliers ?? []).map((supplier) => (
-          <li key={supplier.provider_id} className="p-2">
+          <li key={supplier.id} className="p-2">
             <Link href={getSupplierLink(supplier)}>
               <div>{supplier.practice_name}</div>
               <div>{supplier.business_name}</div>
@@ -78,51 +78,62 @@ export const lookupSuppliers = (searchParams: {
   const { state, city, zip } = searchParams;
 
   const filterClauses = compact([
-    state && !isEmpty(state) ? `ZIP_STATE.StateSlug = @state` : null,
-    city && !isEmpty(city) ? `ZIP_City.CitySlug = @city` : null,
-    zip && !isEmpty(zip) ? `SUPPLIER.zip = @zip` : null,
+    state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null,
+    city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null,
+    zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null,
   ]);
 
-  const where = filterClauses.length > 0 ? `WHERE ${filterClauses.join(' AND ')}` : '';
+  const whereString = filterClauses.length > 0 ? `\nWHERE\n${filterClauses.join('\nAND\n')}` : '';
 
-  const statement = db.prepare(`
-    WITH results as (      
-      SELECT
-        provider_id,
-        accepts_assignment,
-        participation_begin_date,
-        business_name,
-        business_slug,
-        practice_name,
-        practice_slug,
-        address_1,
-        address_2,
-        zip,
-        zip4,
-        phone,
-        is_contracted_for_cba,
-        ZIP_CITY.CityName,
-        ZIP_CITY.CitySlug,
-        ZIP_COUNTY.CountyName,
-        ZIP_COUNTY.CountySlug,
-        ZIP_STATE.StateName,
-        ZIP_STATE.StateSlug
-      FROM
-        SUPPLIER
-        INNER JOIN ZIP_ZIPCODE ON SUPPLIER.zip = ZIP_ZIPCODE.ZIPCode
-        INNER JOIN ZIP_CITY ON ZIP_CITY.id = ZIP_ZIPCODE.CityId
-        INNER JOIN ZIP_COUNTY ON ZIP_COUNTY.id = ZIP_ZIPCODE.CountyId
-        INNER JOIN ZIP_STATE ON ZIP_STATE.id = ZIP_ZIPCODE.StateId ${where}
-    )
-    SELECT *, (SELECT COUNT(*) FROM results) as numResults
-    FROM results
+  const statement = db.prepare(sql`
+    WITH
+      results AS (
+        SELECT
+          SUPPLIER.id,
+          accepts_assignment,
+          participation_begin_date,
+          business_name,
+          business_slug,
+          practice_name,
+          practice_slug,
+          address_1,
+          address_2,
+          zip,
+          zip4,
+          phone,
+          is_contracted_for_cba,
+          ZIP_CITY.CityName,
+          ZIP_CITY.CitySlug,
+          ZIP_COUNTY.CountyName,
+          ZIP_COUNTY.CountySlug,
+          ZIP_STATE.StateName,
+          ZIP_STATE.StateSlug
+        FROM
+          SUPPLIER
+          INNER JOIN ZIP_ZIPCODE ON SUPPLIER.zip = ZIP_ZIPCODE.ZIPCode
+          INNER JOIN ZIP_CITY ON ZIP_CITY.id = ZIP_ZIPCODE.CityId
+          INNER JOIN ZIP_COUNTY ON ZIP_COUNTY.id = ZIP_ZIPCODE.CountyId
+          INNER JOIN ZIP_STATE ON ZIP_STATE.id = ZIP_ZIPCODE.StateId ${whereString}
+      )
+    SELECT
+      *,
+      (
+        SELECT
+          COUNT(*)
+        FROM
+          results
+      ) AS numResults
+    FROM
+      results
     ORDER BY
       practice_name ASC
     LIMIT
-      @limit
+      :limit
     OFFSET
-      @offset;
+      :offset;
   `);
+
+  console.info(statement.source);
 
   return statement.all(searchParams) as LookupResults;
 };
@@ -137,6 +148,7 @@ import {
   PaginationPrevious,
 } from '~/components/catalyst/pagination';
 import { getSupplierLink } from '~/lib/link/supplier';
+import { sql } from '~/lib/string';
 
 interface Paginator extends IResultsProps {
   numResults: number;

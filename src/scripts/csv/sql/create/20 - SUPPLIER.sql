@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS SUPPLIER;
 
 CREATE TABLE SUPPLIER (
-  provider_id INTEGER PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   accepts_assignment BOOLEAN NOT NULL,
   participation_begin_date DATE NULL,
   business_name text NULL,
@@ -14,4 +14,4 @@ CREATE TABLE SUPPLIER (
   zip4 text NULL,
   phone text NOT NULL,
   is_contracted_for_cba BOOLEAN NOT NULL
-);
+) WITHOUT ROWID;

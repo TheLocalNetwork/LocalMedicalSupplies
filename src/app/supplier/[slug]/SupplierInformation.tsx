@@ -21,7 +21,7 @@ import { type IGeoSupplier } from '~/types/Supplier';
 
 export const generateSupplierInformationListItems = (supplier: IGeoSupplier) => {
   return compact([
-    { term: 'Provider ID', Icon: IdentificationIcon, data: supplier.provider_id },
+    { term: 'Provider ID', Icon: IdentificationIcon, data: supplier.id },
     { term: 'Practice Name', Icon: IdentificationIcon, data: supplier.practice_name },
     supplier.practice_slug !== supplier.business_slug
       ? { term: 'Business Name', Icon: IdentificationIcon, data: supplier.business_name }
@@ -31,10 +31,10 @@ export const generateSupplierInformationListItems = (supplier: IGeoSupplier) => 
     {
       term: 'Participation Begin Date',
       Icon: CalendarIcon,
-      data: isoDateToLocaleDate(supplier.participation_begin_date),
+      data: supplier.participation_begin_date ? isoDateToLocaleDate(supplier.participation_begin_date) : undefined,
     },
-    { term: 'Is Contracted For CBA', Icon: FlagIcon, data: <BooleanBadge value={supplier.is_contracted_for_cba} /> },
-    { term: 'Accepts Assignment', Icon: FlagIcon, data: <BooleanBadge value={supplier.accepts_assignment} /> },
+    { term: 'Is Contracted For CBA', Icon: FlagIcon, data: <BooleanBadge value={!!supplier.is_contracted_for_cba} /> },
+    { term: 'Accepts Assignment', Icon: FlagIcon, data: <BooleanBadge value={!!supplier.accepts_assignment} /> },
     // { term: "Street Address", Icon: MapPinIcon, data: supplier.address_1 },
     // { term: "Street Address Line 2", Icon: IdentificationIcon, data: supplier.address_2 },
     // { term: "City", Icon: MapPinIcon, data: supplier.CityName },

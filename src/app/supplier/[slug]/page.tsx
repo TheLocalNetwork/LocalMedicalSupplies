@@ -15,10 +15,10 @@ const getSupplierFromSlug = async (slug: string) => {
   if (matchArray === null) return Promise.resolve(undefined);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_route_match, route_provider_id, _route_practice_slug] = matchArray;
-  if (!route_provider_id) return Promise.resolve(undefined);
+  const [_route_match, route_id, _route_practice_slug] = matchArray;
+  if (!route_id) return Promise.resolve(undefined);
 
-  const supplier = getSupplier(parseInt(route_provider_id, 10));
+  const supplier = getSupplier(parseInt(route_id, 10));
   if (!supplier) return Promise.resolve(undefined);
 
   return supplier;
@@ -42,7 +42,7 @@ export default async function SupplierPage({ params }: IProps) {
       <SupplierHeader supplier={supplier} />
       <SupplierJsonLD supplier={supplier} />
       <SupplierInformation supplier={supplier} />
-      <SupplierSupply provider_id={supplier.provider_id} />
+      <SupplierSupply id={supplier.id} />
     </article>
   );
 }

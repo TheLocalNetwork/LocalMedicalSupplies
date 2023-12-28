@@ -8,11 +8,11 @@ import { slugify } from '~/lib/string';
 import { type ISupplier, type ISupply } from '~/types/Supplier';
 
 export interface ISupplierSupplyProps {
-  provider_id: ISupplier['provider_id'];
+  id: ISupplier['id'];
 }
-export default function SupplierSupply({ provider_id }: ISupplierSupplyProps) {
-  const supplier = getSupplier(provider_id);
-  const supplierSupplyCollection = getSupplierSupplyCollection(provider_id);
+export default function SupplierSupply({ id }: ISupplierSupplyProps) {
+  const supplier = getSupplier(id);
+  const supplierSupplyCollection = getSupplierSupplyCollection(id);
 
   if (isNil(supplierSupplyCollection) || isNil(supplier)) return null;
 
