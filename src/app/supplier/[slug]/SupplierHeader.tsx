@@ -8,10 +8,11 @@ export interface ISupplierHeaderProps {
 }
 
 const links = [
-  { name: 'Location', href: '#SupplierInformation' },
-  { name: 'Supplies', href: '#SuppliesAvailable' },
-  { name: 'Specialites', href: '#ProviderSpecialites' },
-  { name: 'Provider Type', href: '#ProviderType' },
+  { name: 'Information', href: '#information' },
+  { name: 'Categories', href: '#categories' },
+  { name: 'Specialites', href: '#specialites' },
+  { name: 'Provider Types', href: '#provider_types' },
+  { name: 'Products', href: '#products' },
 ];
 
 export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier }) => {

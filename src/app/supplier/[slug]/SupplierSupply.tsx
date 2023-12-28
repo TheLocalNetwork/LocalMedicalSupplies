@@ -3,22 +3,21 @@ import { isNil, sortBy } from 'lodash';
 import Link from 'next/link';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierSupply } from '~/lib/db/supplier-supply/getAllSupplierSupply';
-import { getSupplierGeo } from '~/lib/db/supplier/getSupplierGeo';
 import { type ISupplier } from '~/types/Supplier';
 import { type ISupply } from '~/types/tables';
 
 export interface ISupplierSupplyProps {
-  id: ISupplier['id'];
+  supplier: ISupplier;
 }
-export default function SupplierSupply({ id }: ISupplierSupplyProps) {
-  const supplier = getSupplierGeo({ id });
-  const supplierSupplyCollection = getAllSupplierSupply({ provider_id: id });
+export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => {
+  const supplierSupplyCollection = getAllSupplierSupply({ provider_id: supplier.id });
 
   if (isNil(supplierSupplyCollection) || isNil(supplier)) return null;
 
   return (
     <DescriptionListSection
       title="Supply Categories"
+      id="categories"
       subtitle={
         <div>
           Following categories of medical equipment are supplied by{' '}
@@ -35,7 +34,7 @@ export default function SupplierSupply({ id }: ISupplierSupplyProps) {
       </div>
     </DescriptionListSection>
   );
-}
+};
 
 interface ISupplierSupplyListProps {
   collection: ISupply[];

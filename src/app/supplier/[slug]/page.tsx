@@ -1,13 +1,16 @@
 import { isNil } from 'lodash';
 import { type Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { SupplierHeader } from '~/app/supplier/[slug]/SupplierHeader';
-import { SupplierJsonLD } from '~/app/supplier/[slug]/SupplierJsonLD';
-import SupplierSupply from '~/app/supplier/[slug]/SupplierSupply';
 import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from '~/lib/const';
 import { getSupplierGeo } from '~/lib/db/supplier/getSupplierGeo';
 import { getSupplierLink } from '~/lib/link/supplier';
+import { SupplierHeader } from './SupplierHeader';
 import { SupplierInformation } from './SupplierInformation';
+import { SupplierJsonLD } from './SupplierJsonLD';
+import { SupplierProducts } from './SupplierProducts';
+import { SupplierProviderTypes } from './SupplierProviderTypes';
+import { SupplierSpecialities } from './SupplierSpecialities';
+import { SupplierSupply } from './SupplierSupply';
 
 const providerPageRegex = /^(\d{8})(-[\w-]+)?/;
 const getSupplierFromSlug = async (slug: string) => {
@@ -43,7 +46,10 @@ export default async function SupplierPage({ params }: IProps) {
       <SupplierHeader supplier={supplier} />
       <SupplierJsonLD supplier={supplier} />
       <SupplierInformation supplier={supplier} />
-      <SupplierSupply id={supplier.id} />
+      <SupplierSupply supplier={supplier} />
+      <SupplierSpecialities supplier={supplier} />
+      <SupplierProviderTypes supplier={supplier} />
+      <SupplierProducts supplier={supplier} />
     </article>
   );
 }
