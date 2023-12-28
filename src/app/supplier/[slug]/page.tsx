@@ -5,7 +5,7 @@ import { SupplierHeader } from '~/app/supplier/[slug]/SupplierHeader';
 import { SupplierJsonLD } from '~/app/supplier/[slug]/SupplierJsonLD';
 import SupplierSupply from '~/app/supplier/[slug]/SupplierSupply';
 import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from '~/lib/const';
-import { getSupplier } from '~/lib/db/supplier/get';
+import { getSupplierGeo } from '~/lib/db/supplier/getSupplierGeo';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { SupplierInformation } from './SupplierInformation';
 
@@ -18,7 +18,8 @@ const getSupplierFromSlug = async (slug: string) => {
   const [_route_match, route_id, _route_practice_slug] = matchArray;
   if (!route_id) return Promise.resolve(undefined);
 
-  const supplier = getSupplier(parseInt(route_id, 10));
+  const id = parseInt(route_id, 10);
+  const supplier = getSupplierGeo({ id });
   if (!supplier) return Promise.resolve(undefined);
 
   return supplier;

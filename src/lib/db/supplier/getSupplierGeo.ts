@@ -1,12 +1,12 @@
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
-import { type IGeoSupplier } from '~/types/Supplier';
+import { type IGeoSupplier, type ISupplier } from '~/types/Supplier';
+import { type TDatabaseRecord } from '~/types/database';
 
-export type GetSupplierResult = IGeoSupplier | undefined;
-
-const lookupSupplierStatement = db.prepare<{
-  id: IGeoSupplier['id'];
-}>(sql`
+export interface IGetSupplierGeoFilter {
+  id: ISupplier['id'];
+}
+const getSupplierGeoStatement = db.prepare<IGetSupplierGeoFilter>(sql`
   SELECT
     SUPPLIER.id,
     accepts_assignment,
@@ -37,6 +37,5 @@ const lookupSupplierStatement = db.prepare<{
     SUPPLIER.id = :id;
 `);
 
-export const lookupSupplier = (id: IGeoSupplier['id']) => lookupSupplierStatement.get({ id }) as GetSupplierResult;
-
-export const getSupplier = (id: IGeoSupplier['id']) => lookupSupplier(id);
+export const getSupplierGeo = (filter: IGetSupplierGeoFilter) =>
+  getSupplierGeoStatement.get(filter) as TDatabaseRecord<IGeoSupplier>;

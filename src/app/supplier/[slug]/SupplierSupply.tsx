@@ -2,8 +2,8 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { isNil, sortBy } from 'lodash';
 import Link from 'next/link';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
-import { getSupplierSupplyCollection } from '~/lib/db/supplier-supply/get';
-import { getSupplier } from '~/lib/db/supplier/get';
+import { getAllSupplierSupply } from '~/lib/db/supplier-supply/getAllSupplierSupply';
+import { getSupplierGeo } from '~/lib/db/supplier/getSupplierGeo';
 import { type ISupplier } from '~/types/Supplier';
 import { type ISupply } from '~/types/tables';
 
@@ -11,8 +11,8 @@ export interface ISupplierSupplyProps {
   id: ISupplier['id'];
 }
 export default function SupplierSupply({ id }: ISupplierSupplyProps) {
-  const supplier = getSupplier(id);
-  const supplierSupplyCollection = getSupplierSupplyCollection(id);
+  const supplier = getSupplierGeo({ id });
+  const supplierSupplyCollection = getAllSupplierSupply({ provider_id: id });
 
   if (isNil(supplierSupplyCollection) || isNil(supplier)) return null;
 
