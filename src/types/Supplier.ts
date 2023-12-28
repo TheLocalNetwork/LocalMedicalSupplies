@@ -23,14 +23,3 @@ export interface IGeoSupplier extends ISupplier {
   StateName: string;
   StateSlug: string;
 }
-
-export interface ISupply {
-  id: number;
-  name: string;
-  num: number;
-}
-
-export interface ISupplierSupply {
-  provider_id: ISupplier['id'];
-  supply_id: ISupply['id'];
-}

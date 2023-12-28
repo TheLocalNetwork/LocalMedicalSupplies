@@ -1,5 +1,6 @@
 import { db } from '~/lib/db/db';
-import { type ISupplierSupply, type ISupply } from '~/types/Supplier';
+import { sql } from '~/lib/string';
+import { type ISupplierSupply, type ISupply } from '~/types/tables';
 
 export type GetSupplierSupplyResult = ISupplierSupply[] | undefined;
 
@@ -17,11 +18,17 @@ export type GetSupplierSupplyCollectionResult = ISupply[] | undefined;
 
 const lookupSupplierSupplyCollectionStatement = db.prepare<{
   provider_id: number;
-}>(`
-  SELECT SUPPLY.id, SUPPLY.name
-  FROM SUPPLIER_SUPPLY 
-    INNER JOIN SUPPLY ON SUPPLIER_SUPPLY.supply_id = SUPPLY.id
-  WHERE SUPPLIER_SUPPLY.provider_id = @provider_id;
+}>(sql`
+  SELECT
+    SUPPLY.id,
+    SUPPLY.name,
+    SUPPLY.slug,
+    SUPPLY.num
+  FROM
+    SUPPLIER_SUPPLY
+    INNER JOIN SUPPLY ON SUPPLY.id = SUPPLIER_SUPPLY.supply_id
+  WHERE
+    SUPPLIER_SUPPLY.provider_id = :provider_id;
 `);
 
 export const lookupSupplierSupplyCollection = (provider_id: number) =>

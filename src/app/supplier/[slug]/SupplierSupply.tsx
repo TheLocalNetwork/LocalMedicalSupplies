@@ -1,11 +1,11 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
-import { isNil } from 'lodash';
+import { isNil, sortBy } from 'lodash';
 import Link from 'next/link';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getSupplierSupplyCollection } from '~/lib/db/supplier-supply/get';
 import { getSupplier } from '~/lib/db/supplier/get';
-import { slugify } from '~/lib/string';
-import { type ISupplier, type ISupply } from '~/types/Supplier';
+import { type ISupplier } from '~/types/Supplier';
+import { type ISupply } from '~/types/tables';
 
 export interface ISupplierSupplyProps {
   id: ISupplier['id'];
@@ -41,17 +41,12 @@ interface ISupplierSupplyListProps {
   collection: ISupply[];
 }
 export const SupplierSupplyList = ({ collection }: ISupplierSupplyListProps) => {
-  const slugged = collection.map((item) => ({
-    ...item,
-    slug: slugify(item.name),
-  }));
-
-  const sorted = slugged.sort((a, b) => a.slug.localeCompare(b.slug));
+  const sorted = sortBy(collection, 'slug');
 
   return (
     <ul className="px-2 text-base sm:px-0">
       {sorted.map(({ id, name, slug }) => {
-        const href = `/supply-category/${slug}`;
+        const href = `/?category=${slug}`;
 
         return (
           <li key={id}>
