@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "lint": "next lint",
+    "lint": "next lint && tsc --noEmit",
     "tsnode": "node -r @swc-node/register ",
     "update": "npm run zip:update && npm run csv:update && npm run seo:sitemaps && npm run sql:vacuum",
     "seo:sitemaps": "npm run tsnode -- ./src/scripts/seo/sitemaps/sitemaps.ts",
