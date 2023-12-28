@@ -1,5 +1,7 @@
 import { deburr, kebabCase } from 'lodash';
 
+export const sql = (strings: TemplateStringsArray): string => String.raw({ raw: strings });
+
 export const slugify = (str: string): string => {
   return kebabCase(deburr(str));
 };
