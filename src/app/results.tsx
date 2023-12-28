@@ -31,7 +31,7 @@ export const Results: React.FC<IResultsProps> = ({ searchParams }) => {
     zip,
   });
 
-  const numResults = suppliers ? suppliers[0].numResults : 0;
+  const numResults = suppliers?.[0]?.numResults ?? 0;
 
   return (
     <section className="flex w-8/12 flex-col gap-6">
@@ -64,7 +64,10 @@ export const Results: React.FC<IResultsProps> = ({ searchParams }) => {
   );
 };
 
-type LookupResults = undefined | (IGeoSupplier & { numResults: number })[];
+interface IGeoSupplierResults extends IGeoSupplier {
+  numResults: number;
+}
+type LookupResults = undefined | IGeoSupplierResults[];
 export const lookupSuppliers = (searchParams: {
   offset: number;
   limit: number;
