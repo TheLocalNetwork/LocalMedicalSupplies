@@ -1,4 +1,6 @@
 import { type Metadata } from 'next';
+import { Form } from '~/app/form';
+import { Results } from '~/app/results';
 import { Card } from '~/components/elements/Card';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
 import { type IZipCity, type IZipCode, type IZipState } from '~/types/zip';
@@ -24,7 +26,14 @@ export interface IFilterZip extends Record<string, string> {
   city: never;
 }
 
-type IFilterParams = IFilterState | IFilterCity | IFilterZip;
+export interface IPagination {
+  limit?: number;
+  offset?: number;
+}
+
+export type IGeoFilterParams = IFilterState | IFilterCity | IFilterZip;
+
+export type IFilterParams = IGeoFilterParams & IPagination;
 
 interface IProps {
   params: never;
@@ -33,22 +42,16 @@ interface IProps {
 export default function HomePage(props: IProps) {
   const { searchParams } = props;
   const urlSearchParams = new URLSearchParams(searchParams);
-  const hasParams = urlSearchParams.size > 0;
-
-  if (!hasParams) {
-    return (
-      <article className="flex min-h-screen flex-col items-center justify-center gap-12">
-        <img src={'/icon.svg'} alt={'logo'} width={256} height={256} />
-        <h1 className="text-center text-4xl font-thin">Local Medical Supplies</h1>
-      </article>
-    );
-  }
 
   return (
     <article className={'flex flex-col gap-12'}>
       <Card>
         <h1>Browse</h1>
-        <pre>{JSON.stringify({ props, searchParams }, null, 2)}</pre>
+
+        <div key={urlSearchParams.toString()} className="flex flex-row items-start gap-8">
+          <Form urlSearchParams={urlSearchParams} />
+          <Results searchParams={searchParams} />
+        </div>
       </Card>
     </article>
   );
