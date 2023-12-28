@@ -133,7 +133,7 @@ export const lookupSuppliers = (searchParams: {
       :offset;
   `);
 
-  console.info(statement.source);
+  // console.info(statement.source);
 
   return statement.all(searchParams) as LookupResults;
 };
