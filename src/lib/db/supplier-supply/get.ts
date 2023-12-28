@@ -4,9 +4,15 @@ import { type ISupplierSupply, type ISupply } from '~/types/tables';
 
 export type GetSupplierSupplyResult = ISupplierSupply[] | undefined;
 
-const lookupSupplierSupplyStatement = db.prepare<{ provider_id: number }>(
-  'SELECT provider_id, supply_id FROM SUPPLIER_SUPPLY WHERE provider_id = @provider_id;'
-);
+const lookupSupplierSupplyStatement = db.prepare<{ provider_id: number }>(sql`
+  SELECT
+    provider_id,
+    supply_id
+  FROM
+    SUPPLIER_SUPPLY
+  WHERE
+    provider_id = :provider_id;
+`);
 
 export const lookupSupplierSupply = (provider_id: number) => {
   return lookupSupplierSupplyStatement.all({ provider_id }) as GetSupplierSupplyResult;
