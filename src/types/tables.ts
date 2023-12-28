@@ -18,7 +18,7 @@ export interface IProduct extends Omit<IStandardTable, 'num'> {
 }
 
 export type IProviderType = IStandardTable;
-export type ISpecialty = IStandardTable;
+export type ISpeciality = IStandardTable;
 export type ISupply = IStandardTable;
 
 export interface ISupplierProduct {
@@ -33,7 +33,7 @@ export interface ISupplierProviderType {
 
 export interface ISupplierSpeciality {
   provider_id: ISupplier['id'];
-  speciality_id: ISpecialty['id'];
+  speciality_id: ISpeciality['id'];
 }
 
 export interface ISupplierSupply {
