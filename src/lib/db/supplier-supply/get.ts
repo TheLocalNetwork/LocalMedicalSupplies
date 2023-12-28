@@ -1,4 +1,3 @@
-import { cache } from 'react';
 import { db } from '~/lib/db/db';
 import { type ISupplierSupply, type ISupply } from '~/types/Supplier';
 
@@ -12,7 +11,7 @@ export const lookupSupplierSupply = (provider_id: number) => {
   return lookupSupplierSupplyStatement.all({ provider_id }) as GetSupplierSupplyResult;
 };
 
-export const getSupplierSupply = cache((provider_id: number) => lookupSupplierSupply(provider_id));
+export const getSupplierSupply = (provider_id: number) => lookupSupplierSupply(provider_id);
 
 export type GetSupplierSupplyCollectionResult = ISupply[] | undefined;
 
@@ -30,4 +29,4 @@ export const lookupSupplierSupplyCollection = (provider_id: number) =>
     provider_id,
   }) as GetSupplierSupplyCollectionResult;
 
-export const getSupplierSupplyCollection = cache((provider_id: number) => lookupSupplierSupplyCollection(provider_id));
+export const getSupplierSupplyCollection = (provider_id: number) => lookupSupplierSupplyCollection(provider_id);

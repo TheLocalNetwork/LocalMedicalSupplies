@@ -1,4 +1,3 @@
-import { cache } from 'react';
 import { db } from '~/lib/db/db';
 import { type ISupply } from '~/types/Supplier';
 
@@ -8,4 +7,4 @@ const lookupSupplyStatement = db.prepare<{ id: ISupply['id'] }>('SELECT id, name
 
 export const lookupSupply = async (id: ISupply['id']) => (await lookupSupplyStatement.get({ id })) as GetSupplyResult;
 
-export const getSupply = cache(async (id: ISupply['id']) => lookupSupply(id));
+export const getSupply = async (id: ISupply['id']) => lookupSupply(id);

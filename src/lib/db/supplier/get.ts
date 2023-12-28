@@ -1,4 +1,3 @@
-import { cache } from 'react';
 import { db } from '~/lib/db/db';
 import { type IGeoSupplier } from '~/types/Supplier';
 
@@ -38,4 +37,4 @@ WHERE provider_id = @provider_id;
 export const lookupSupplier = (provider_id: IGeoSupplier['provider_id']) =>
   lookupSupplierStatement.get({ provider_id }) as GetSupplierResult;
 
-export const getSupplier = cache((provider_id: IGeoSupplier['provider_id']) => lookupSupplier(provider_id));
+export const getSupplier = (provider_id: IGeoSupplier['provider_id']) => lookupSupplier(provider_id);
