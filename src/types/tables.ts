@@ -21,9 +21,14 @@ export type IProviderType = IStandardTable;
 export type ISpecialty = IStandardTable;
 export type ISupply = IStandardTable;
 
+export interface ISupplierProduct {
+  provider_id: ISupplier['id'];
+  product_id: IProduct['id'];
+}
+
 export interface ISupplierProviderType {
   provider_id: ISupplier['id'];
-  providertype_id: IStandardTable['id'];
+  providertype_id: IProviderType['id'];
 }
 
 export interface ISupplierSpeciality {
