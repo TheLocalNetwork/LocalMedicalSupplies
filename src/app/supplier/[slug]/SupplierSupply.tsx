@@ -1,18 +1,25 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
-import { isNil, sortBy } from 'lodash';
-import Link from 'next/link';
+import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierSupply } from '~/lib/db/supplier-supply/getAllSupplierSupply';
 import { type ISupplier } from '~/types/Supplier';
-import { type ISupply } from '~/types/tables';
+import { List } from './List';
 
 export interface ISupplierSupplyProps {
   supplier: ISupplier;
 }
 export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => {
-  const supplierSupplyCollection = getAllSupplierSupply({ provider_id: supplier.id });
-
-  if (isNil(supplierSupplyCollection) || isNil(supplier)) return null;
+  const supplies = getAllSupplierSupply({ provider_id: supplier.id });
+  const listItems = sortBy(supplies ?? [], 'slug').map((item) => ({
+    key: item.id,
+    href: `/?category=${item.slug}`,
+    content: (
+      <>
+        <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />
+        <span>{item.name}</span>
+      </>
+    ),
+  }));
 
   return (
     <DescriptionListSection
@@ -26,39 +33,8 @@ export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => 
       }
     >
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        {isNil(supplierSupplyCollection) ? (
-          <p>No Results</p>
-        ) : (
-          <SupplierSupplyList collection={supplierSupplyCollection} />
-        )}
+        {listItems.length ? <List items={listItems} /> : <p>No Results</p>}
       </div>
     </DescriptionListSection>
-  );
-};
-
-interface ISupplierSupplyListProps {
-  collection: ISupply[];
-}
-export const SupplierSupplyList = ({ collection }: ISupplierSupplyListProps) => {
-  const sorted = sortBy(collection, 'slug');
-
-  return (
-    <ul className="px-2 text-base sm:px-0">
-      {sorted.map(({ id, name, slug }) => {
-        const href = `/?category=${slug}`;
-
-        return (
-          <li key={id}>
-            <Link
-              href={href}
-              className="flex items-center gap-4 rounded p-2 py-4 hover:bg-zinc-100 sm:gap-2 sm:p-2 dark:hover:bg-zinc-700"
-            >
-              <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />
-              <span>{name}</span>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
   );
 };
