@@ -134,7 +134,7 @@ FROM
       const binding: ISupplierSQL = {
         id: parseInt(supplier.provider_id, 10),
         accepts_assignment: boolTrueFalse(supplier.acceptsassignement),
-        participation_begin_date: supplier.participationbegindate.length ? supplier.participationbegindate : null,
+        participation_begin_date: supplier.participationbegindate,
         business_name: supplier.businessname.length ? supplier.businessname : null,
         business_slug: business_slug.length ? business_slug : null,
         practice_name: supplier.practicename.length ? supplier.practicename : null,
