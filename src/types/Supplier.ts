@@ -3,7 +3,7 @@ export type TISODate = string;
 export interface ISupplier {
   id: number;
   accepts_assignment: boolean | null;
-  participation_begin_date: TISODate | null;
+  participation_begin_date: TISODate;
   business_name: string | null;
   business_slug: string | null;
   practice_name: string | null;

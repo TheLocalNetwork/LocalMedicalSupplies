@@ -1,22 +1,30 @@
+import { CheckCircleIcon } from '@heroicons/react/20/solid';
+import { sortBy } from 'lodash';
+import { List } from '~/app/supplier/[slug]/List';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { getAllSupplierProviderType } from '~/lib/db/supplier-providertype/getAllSupplierProviderType';
 import { type IGeoSupplier } from '~/types/Supplier';
 
 export const SupplierProviderTypes = ({ supplier }: { supplier: IGeoSupplier }) => {
+  const providerTypes = getAllSupplierProviderType({ provider_id: supplier.id });
+
+  if (!providerTypes?.length) return null;
+
+  const listItems = sortBy(providerTypes, 'slug').map((item) => ({
+    key: item.id,
+    href: `/?providertype=${item.slug}`,
+    content: (
+      <>
+        <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />
+        <span>{item.name}</span>
+      </>
+    ),
+  }));
   return (
-    <DescriptionListSection
-      title={
-        <div className="flex items-center gap-2">
-          <div>Supplier Provider Types</div>
-        </div>
-      }
-      subtitle={<div>TODO: Describe provider types at {supplier.practice_name}</div>}
-      id={'provider_types'}
-    >
-      {/* <DescriptionList>
-        {supplierAddressListItems.map(({ term, Icon, data }) => (
-          <DescriptionListItem key={term} term={term} Icon={Icon} data={data} />
-        ))}
-      </DescriptionList> */}
+    <DescriptionListSection id={'provider_types'} title={`Provider Types`}>
+      <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
+        <List items={listItems} />
+      </div>
     </DescriptionListSection>
   );
 };

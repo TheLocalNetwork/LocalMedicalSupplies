@@ -21,17 +21,23 @@ import { type IGeoSupplier } from '~/types/Supplier';
 
 export const generateSupplierInformationListItems = (supplier: IGeoSupplier) => {
   return compact([
-    { term: 'Provider ID', Icon: IdentificationIcon, data: supplier.id },
     { term: 'Practice Name', Icon: IdentificationIcon, data: supplier.practice_name },
     supplier.practice_slug !== supplier.business_slug
       ? { term: 'Business Name', Icon: IdentificationIcon, data: supplier.business_name }
       : undefined,
     { term: 'Address', Icon: MapPinIcon, data: <SupplierAddress supplier={supplier} /> },
     { term: 'Phone Number', Icon: PhoneIcon, data: <SupplierPhone supplier={supplier} /> },
+    { term: 'Provider ID', Icon: IdentificationIcon, data: <code>{supplier.id}</code> },
     {
       term: 'Participation Begin Date',
       Icon: CalendarIcon,
-      data: supplier.participation_begin_date ? isoDateToLocaleDate(supplier.participation_begin_date) : undefined,
+      data: (
+        <code>
+          <time dateTime={supplier.participation_begin_date}>
+            {isoDateToLocaleDate(supplier.participation_begin_date)}
+          </time>
+        </code>
+      ),
     },
     { term: 'Is Contracted For CBA', Icon: FlagIcon, data: <BooleanBadge value={!!supplier.is_contracted_for_cba} /> },
     { term: 'Accepts Assignment', Icon: FlagIcon, data: <BooleanBadge value={!!supplier.accepts_assignment} /> },
@@ -49,6 +55,7 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
 
   return (
     <DescriptionListSection
+      id={'information'}
       title={
         <div className="flex items-center gap-2">
           <IdentificationIcon className="size-6 sm:size-8" />
@@ -56,7 +63,6 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
         </div>
       }
       subtitle={<div>Location details and contact information</div>}
-      id={'information'}
     >
       <DescriptionList>
         {supplierAddressListItems.map(({ term, Icon, data }) => (

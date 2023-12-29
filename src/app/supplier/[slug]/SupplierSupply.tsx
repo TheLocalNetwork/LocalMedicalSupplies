@@ -10,7 +10,10 @@ export interface ISupplierSupplyProps {
 }
 export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => {
   const supplies = getAllSupplierSupply({ provider_id: supplier.id });
-  const listItems = sortBy(supplies ?? [], 'slug').map((item) => ({
+
+  if (!supplies?.length) return null;
+
+  const listItems = sortBy(supplies, 'slug').map((item) => ({
     key: item.id,
     href: `/?category=${item.slug}`,
     content: (
@@ -23,17 +26,19 @@ export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => 
 
   return (
     <DescriptionListSection
-      title="Supply Categories"
       id="categories"
+      title="Equipment Categories"
       subtitle={
         <div>
-          Following categories of medical equipment are supplied by{' '}
-          <span className="whitespace-nowrap">{supplier.practice_name}</span>
+          <span>
+            This supplier is licensed to carry the following equipment. Contact the supplier to confirm which products
+            are currently in stock.
+          </span>
         </div>
       }
     >
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        {listItems.length ? <List items={listItems} /> : <p>No Results</p>}
+        <List items={listItems} />
       </div>
     </DescriptionListSection>
   );

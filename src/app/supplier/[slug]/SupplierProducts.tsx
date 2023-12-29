@@ -13,17 +13,13 @@ interface ISupplierProductsProps {
 export const SupplierProducts: React.FC<ISupplierProductsProps> = ({ supplier }) => {
   const products = getAllSupplierProduct({ provider_id: supplier.id });
 
+  if (!products?.length) return null;
+
   return (
-    <DescriptionListSection
-      title={
-        <div className="flex items-center gap-2">
-          <div>Supplier Products</div>
-        </div>
-      }
-      subtitle={<div>A list of product brands carried at {supplier.practice_name}</div>}
-      id={'products'}
-    >
-      {products && products.length > 0 ? <SupplierProductsList products={products} /> : <p>No Results</p>}
+    <DescriptionListSection id={'products'} title={`Products`}>
+      <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
+        <SupplierProductsList products={products} />
+      </div>
     </DescriptionListSection>
   );
 };
