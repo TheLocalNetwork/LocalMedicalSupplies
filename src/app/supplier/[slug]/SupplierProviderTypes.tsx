@@ -1,8 +1,9 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
-import { List } from '~/components/elements/List';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { List } from '~/components/elements/List';
 import { getAllSupplierProviderType } from '~/lib/db/supplier-providertype/getAllSupplierProviderType';
+import { getBrowseLink } from '~/lib/link/browse';
 import { type IGeoSupplier } from '~/types/Supplier';
 
 export const SupplierProviderTypes = ({ supplier }: { supplier: IGeoSupplier }) => {
@@ -12,7 +13,7 @@ export const SupplierProviderTypes = ({ supplier }: { supplier: IGeoSupplier }) 
 
   const listItems = sortBy(providerTypes, 'slug').map((item) => ({
     key: item.id,
-    href: `/?providertype=${item.slug}`,
+    href: getBrowseLink({ providertype: item.slug }),
     content: (
       <>
         <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />

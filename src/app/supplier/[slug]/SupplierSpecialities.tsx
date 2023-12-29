@@ -4,6 +4,7 @@ import { List } from '~/components/elements/List';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierSpeciality } from '~/lib/db/supplier-speciality/getAllSupplierSpeciality';
 import { type IGeoSupplier } from '~/types/Supplier';
+import { getBrowseLink } from '~/lib/link/browse';
 
 export const SupplierSpecialities = ({ supplier }: { supplier: IGeoSupplier }) => {
   const specialities = getAllSupplierSpeciality({ provider_id: supplier.id });
@@ -12,7 +13,7 @@ export const SupplierSpecialities = ({ supplier }: { supplier: IGeoSupplier }) =
 
   const listItems = sortBy(specialities, 'slug').map((item) => ({
     key: item.id,
-    href: `/?speciality=${item.slug}`,
+    href: getBrowseLink({ speciality: item.slug }),
     content: (
       <>
         <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />

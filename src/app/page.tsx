@@ -3,37 +3,7 @@ import { Form } from '~/app/form';
 import { Results } from '~/app/results';
 import { Card } from '~/components/elements/Card';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
-import { type IZipCity, type IZipCode, type IZipState } from '~/types/zip';
-
-export interface IFilterParamsFull extends Record<string, string> {
-  state?: IZipState['StateSlug'];
-  city?: IZipCity['CitySlug'];
-  zip?: IZipCode['ZIPCode'];
-}
-export interface IFilterState extends Record<string, string> {
-  state: IZipState['StateSlug'];
-  city: never;
-  zip: never;
-}
-export interface IFilterCity extends Record<string, string> {
-  state: IZipState['StateSlug'];
-  city: IZipCity['CitySlug'];
-  zip: never;
-}
-export interface IFilterZip extends Record<string, string> {
-  zip: IZipCode['ZIPCode'];
-  state: never;
-  city: never;
-}
-
-export interface IPagination {
-  limit?: number;
-  offset?: number;
-}
-
-export type IGeoFilterParams = IFilterState | IFilterCity | IFilterZip;
-
-export type IFilterParams = IGeoFilterParams & IPagination;
+import { type IFilterParams } from '~/types/filters';
 
 interface IProps {
   params: never;
@@ -50,7 +20,7 @@ export default function HomePage(props: IProps) {
 
         <div key={urlSearchParams.toString()} className="flex flex-row items-start gap-8">
           <Form urlSearchParams={urlSearchParams} />
-          <Results searchParams={searchParams} />
+          <Results filterParams={searchParams} />
         </div>
       </Card>
     </article>

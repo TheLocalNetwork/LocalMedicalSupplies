@@ -15,6 +15,7 @@ import {
   DescriptionListItem,
   DescriptionListSection,
 } from '~/components/elements/DescriptionListSection';
+import { getBrowseLink } from '~/lib/link/browse';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { isoDateToLocaleDate } from '~/lib/string';
 import { type IGeoSupplier } from '~/types/Supplier';
@@ -74,20 +75,26 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
 };
 
 const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => {
+  const supplierLink = getSupplierLink(supplier);
+  const stateLink = getBrowseLink({ state: supplier.StateSlug });
+  const cityLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug });
+  const zipLink = getBrowseLink({ zip: supplier.zip });
+
   return (
     <address>
       <div>
-        <Link href={getSupplierLink(supplier)}>
+        <Link href={supplierLink}>
           <strong>{supplier.practice_name}</strong>
         </Link>
       </div>
       <div>{supplier.address_1}</div>
       <div>{supplier.address_2}</div>
       <div>
-        <Link href={`/?state=${supplier.StateSlug}&city=${supplier.CitySlug}`}>{supplier.CityName}</Link>
+        <Link href={cityLink}>{supplier.CityName}</Link>
         {', '}
-        <Link href={`/?state=${supplier.StateSlug}`}>{supplier.StateName}</Link>{' '}
-        <Link href={`/?zip=${supplier.zip}`}>{supplier.zip}</Link>
+        <Link href={stateLink}>{supplier.StateAbbr}</Link>
+        {` `}
+        <Link href={zipLink}>{supplier.zip}</Link>
       </div>
     </address>
   );

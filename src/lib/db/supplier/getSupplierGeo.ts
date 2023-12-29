@@ -21,12 +21,13 @@ const getSupplierGeoStatement = db.prepare<IGetSupplierGeoFilter>(sql`
     zip4,
     phone,
     is_contracted_for_cba,
-    ZIP_CITY.CityName,
-    ZIP_CITY.CitySlug,
-    ZIP_COUNTY.CountyName,
-    ZIP_COUNTY.CountySlug,
-    ZIP_STATE.StateName,
-    ZIP_STATE.StateSlug
+    CityName,
+    CitySlug,
+    CountyName,
+    CountySlug,
+    StateName,
+    StateAbbr,
+    StateSlug
   FROM
     SUPPLIER
     INNER JOIN ZIP_ZIPCODE ON SUPPLIER.zip = ZIP_ZIPCODE.ZIPCode

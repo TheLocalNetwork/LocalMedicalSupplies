@@ -2,6 +2,7 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierSupply } from '~/lib/db/supplier-supply/getAllSupplierSupply';
+import { getBrowseLink } from '~/lib/link/browse';
 import { type ISupplier } from '~/types/Supplier';
 import { List } from '../../../components/elements/List';
 
@@ -15,7 +16,7 @@ export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => 
 
   const listItems = sortBy(supplies, 'slug').map((item) => ({
     key: item.id,
-    href: `/?category=${item.slug}`,
+    href: getBrowseLink({ category: item.slug }),
     content: (
       <>
         <CheckCircleIcon className="size-6 shrink-0 text-green-800 opacity-80  sm:size-5" />

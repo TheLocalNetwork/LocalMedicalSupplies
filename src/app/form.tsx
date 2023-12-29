@@ -1,3 +1,4 @@
+import { compact } from 'lodash';
 import Link from 'next/link';
 import { DEFAULT_LIMIT } from '~/app/results';
 import { StatesListbox } from '~/components/form/StatesListbox';
@@ -14,7 +15,7 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
       </StatesListbox>
       <div>
         <ul>
-          {[10, 20, 50, 100].map((limit) => {
+          {[10, 20, 50].map((limit) => {
             const proposedSearchParams = new URLSearchParams(urlSearchParams);
             proposedSearchParams.delete('offset');
 
@@ -24,9 +25,11 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
               proposedSearchParams.set('limit', limit.toString());
             }
 
+            const href = compact([`/`, proposedSearchParams.toString()]).join(`?`);
+
             return (
               <li key={limit}>
-                <Link href={`/?${proposedSearchParams.toString()}`}>{limit}</Link>
+                <Link href={href}>{limit}</Link>
               </li>
             );
           })}

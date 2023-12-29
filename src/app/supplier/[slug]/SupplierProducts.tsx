@@ -5,7 +5,9 @@ import {
   getAllSupplierProduct,
   type IGetSupplierProductFilterResult,
 } from '~/lib/db/supplier-product/getAllSupplierProduct';
+import { getBrowseLink } from '~/lib/link/browse';
 import { type IGeoSupplier } from '~/types/Supplier';
+import { type IManufacturer } from '~/types/tables';
 
 interface ISupplierProductsProps {
   supplier: IGeoSupplier;
@@ -35,25 +37,40 @@ export const SupplierProductsList: React.FC<ISupplierProductsListProps> = ({ pro
     <>
       {Object.entries(grouped).map(([key, products]) => {
         const { manufacturer_name, manufacturer_slug } = products[0] ?? {};
+        if (!manufacturer_slug) return null;
+
+        const href = getBrowseLink({ manfacturer: manufacturer_slug });
 
         return (
           <DescriptionListItem
             key={key}
-            term={<Link href={`/?manfacturer=${manufacturer_slug}`}>{manufacturer_name}</Link>}
-            data={
-              <ol>
-                {products.map((product) => {
-                  return (
-                    <li key={product.id}>
-                      <Link href={`/?manfacturer=${manufacturer_slug}&product=${product.slug}`}>{product.name}</Link>
-                    </li>
-                  );
-                })}
-              </ol>
-            }
+            term={<Link href={href}>{manufacturer_name}</Link>}
+            data={<SupplierProductsListProducts manufacturer_slug={manufacturer_slug} products={products} />}
           />
         );
       })}
     </>
+  );
+};
+interface ISupplierProductsListProductsProps {
+  manufacturer_slug: IManufacturer['slug'];
+  products: IGetSupplierProductFilterResult[];
+}
+export const SupplierProductsListProducts: React.FC<ISupplierProductsListProductsProps> = ({
+  products,
+  manufacturer_slug,
+}) => {
+  return (
+    <ol>
+      {products.map((product) => {
+        const href = getBrowseLink({ manfacturer: manufacturer_slug, product: product.slug });
+
+        return (
+          <li key={product.id}>
+            <Link href={href}>{product.name}</Link>
+          </li>
+        );
+      })}
+    </ol>
   );
 };

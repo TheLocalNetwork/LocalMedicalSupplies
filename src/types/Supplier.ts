@@ -10,7 +10,7 @@ export interface ISupplier {
   practice_slug: string | null;
   address_1: string | null;
   address_2: string | null;
-  zip: string | null;
+  zip: string;
   zip4: string | null;
   phone: string | null;
   is_contracted_for_cba: boolean | null;
@@ -21,5 +21,6 @@ export interface IGeoSupplier extends ISupplier {
   CountyName: string;
   CountySlug: string;
   StateName: string;
+  StateAbbr: string;
   StateSlug: string;
 }
