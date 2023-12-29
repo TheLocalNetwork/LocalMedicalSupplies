@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
-import { List } from '~/app/supplier/[slug]/List';
+import { List } from '~/components/elements/List';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierProviderType } from '~/lib/db/supplier-providertype/getAllSupplierProviderType';
 import { type IGeoSupplier } from '~/types/Supplier';

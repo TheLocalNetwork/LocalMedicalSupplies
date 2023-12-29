@@ -3,7 +3,7 @@ import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
 import { getAllSupplierSupply } from '~/lib/db/supplier-supply/getAllSupplierSupply';
 import { type ISupplier } from '~/types/Supplier';
-import { List } from './List';
+import { List } from '../../../components/elements/List';
 
 export interface ISupplierSupplyProps {
   supplier: ISupplier;
