@@ -1,7 +1,8 @@
+import { isEmpty, isNil } from 'lodash';
 import { type Metadata } from 'next';
-import { Form } from '~/app/form';
-import { Results } from '~/app/results';
+import { Results } from '~/components/results/results';
 import { Card } from '~/components/elements/Card';
+import { Form } from '~/components/form/form';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
 import { type IFilterParams } from '~/types/filters';
 
@@ -13,14 +14,21 @@ export default function HomePage(props: IProps) {
   const { searchParams } = props;
   const urlSearchParams = new URLSearchParams(searchParams);
 
+  for (const [key, value] of urlSearchParams.entries()) {
+    if (isNil(value) || isEmpty(value)) urlSearchParams.delete(key);
+  }
+
+  const filterParams = Array.from(urlSearchParams.entries()).reduce(
+    (acc, [key, value]) => ({ ...acc, [key]: value }),
+    {}
+  );
+
   return (
     <article className={'flex flex-col gap-12'}>
       <Card>
-        <h1>Browse</h1>
-
         <div key={urlSearchParams.toString()} className="flex flex-row items-start gap-8">
           <Form urlSearchParams={urlSearchParams} />
-          <Results filterParams={searchParams} />
+          <Results filterParams={filterParams} />
         </div>
       </Card>
     </article>
