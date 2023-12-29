@@ -28,9 +28,11 @@ CREATE TABLE
 
 INSERT INTO
   SUPPLIER_PRODUCT (provider_id, product_id)
-SELECT
+SELECT DISTINCT
   sp.provider_id
 , PRODUCT.id AS product_id
 FROM
   staging_products sp
+  INNER JOIN MANUFACTURER ON MANUFACTURER.name = sp.manufacturer
+  AND MANUFACTURER.id = PRODUCT.manufacturer_id
   INNER JOIN PRODUCT ON PRODUCT.name = sp.product_name

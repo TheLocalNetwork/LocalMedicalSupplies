@@ -53,7 +53,7 @@ interface IDescriptionListItemTermProps {
 }
 export const DescriptionListItemTerm = ({ Icon, term }: IDescriptionListItemTermProps) => {
   return (
-    <dt className="flex items-center gap-2 text-base font-bold leading-6 sm:gap-2 sm:text-sm">
+    <dt className="flex items-start gap-2 text-base font-bold leading-6 sm:gap-2 sm:text-sm">
       {Icon ? <Icon className="size-5 opacity-70" /> : null}
       <div>{term}</div>
     </dt>
