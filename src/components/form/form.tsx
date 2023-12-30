@@ -1,6 +1,6 @@
 import { Button } from '~/components/catalyst/button';
-import { StatesListbox } from '~/components/form/StatesListbox';
-import { StatesListboxOptions } from '~/components/form/StatesListboxOptions';
+import { StatesDialog } from '~/components/form/StatesDialog';
+import { StatesDialogContent } from '~/components/form/StatesDialogContent';
 import { SelectLimit } from './SelectLimit';
 
 export interface IFormProps {
@@ -12,14 +12,16 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
   return (
     <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
       <h1>Search Filters</h1>
-      <StatesListbox urlSearchString={urlSearchString}>
-        <StatesListboxOptions />
-      </StatesListbox>
+
+      <StatesDialog urlSearchString={urlSearchString}>
+        <StatesDialogContent urlSearchParams={urlSearchParams} />
+      </StatesDialog>
 
       <SelectLimit urlSearchString={urlSearchString} />
 
       <Button outline href={'/'}>
-        Clear Filters
+        <span className="hidden sm:block">{`Remove All Filters`}</span>
+        <span className="block sm:hidden">{`Clear`}</span>
       </Button>
     </section>
   );
