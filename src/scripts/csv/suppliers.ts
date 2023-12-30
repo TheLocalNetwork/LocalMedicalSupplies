@@ -141,7 +141,7 @@ FROM
         practice_slug: practice_slug.length ? practice_slug : null,
         address_1: supplier.practiceaddress1.length ? supplier.practiceaddress1 : null,
         address_2: supplier.practiceaddress2.length ? supplier.practiceaddress2 : null,
-        zip: zip.length === 5 ? zip : null,
+        zip: zip,
         zip4: zip4.length === 4 ? zip4 : null,
         phone: supplier.telephonenumber.length ? supplier.telephonenumber : null,
         is_contracted_for_cba: boolTrueFalse(supplier.is_contracted_for_cba),
