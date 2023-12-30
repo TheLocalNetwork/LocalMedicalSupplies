@@ -6,7 +6,7 @@ import { Results } from '~/components/results/results';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
 import { type IFilterParams } from '~/types/filters';
 
-export const dynamics = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
 interface IProps {
