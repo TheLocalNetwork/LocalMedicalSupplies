@@ -1,3 +1,4 @@
+import InformationCircleIcon from '@heroicons/react/16/solid/InformationCircleIcon';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
@@ -11,8 +12,6 @@ export interface ISupplierSupplyProps {
 }
 export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => {
   const supplies = getAllSupplierSupply({ provider_id: supplier.id });
-
-  if (!supplies?.length) return null;
 
   const listItems = sortBy(supplies, 'slug').map((item) => ({
     key: item.id,
@@ -39,7 +38,14 @@ export const SupplierSupply: React.FC<ISupplierSupplyProps> = ({ supplier }) => 
       }
     >
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        <List items={listItems} />
+        {supplies?.length ? (
+          <List items={listItems} />
+        ) : (
+          <p className="flex items-center gap-2">
+            <InformationCircleIcon className="inline-block size-6" />
+            <span>No reported equipment categories</span>
+          </p>
+        )}
       </div>
     </DescriptionListSection>
   );

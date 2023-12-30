@@ -1,3 +1,4 @@
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import { groupBy, sortBy } from 'lodash';
 import { Link } from '~/components/catalyst/link';
 import { DescriptionListItem, DescriptionListSection } from '~/components/elements/DescriptionListSection';
@@ -15,12 +16,17 @@ interface ISupplierProductsProps {
 export const SupplierProducts: React.FC<ISupplierProductsProps> = ({ supplier }) => {
   const products = getAllSupplierProduct({ provider_id: supplier.id });
 
-  if (!products?.length) return null;
-
   return (
     <DescriptionListSection id={'products'} title={`Products`}>
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        <SupplierProductsList products={products} />
+        {products?.length ? (
+          <SupplierProductsList products={products} />
+        ) : (
+          <p className="flex items-center gap-2">
+            <InformationCircleIcon className="inline-block size-6" />
+            <span>No reported products</span>
+          </p>
+        )}
       </div>
     </DescriptionListSection>
   );
@@ -44,7 +50,11 @@ export const SupplierProductsList: React.FC<ISupplierProductsListProps> = ({ pro
         return (
           <DescriptionListItem
             key={key}
-            term={<Link className="hover:underline" href={href}>{manufacturer_name}</Link>}
+            term={
+              <Link className="hover:underline" href={href}>
+                {manufacturer_name}
+              </Link>
+            }
             data={<SupplierProductsListProducts manufacturer_slug={manufacturer_slug} products={products} />}
           />
         );

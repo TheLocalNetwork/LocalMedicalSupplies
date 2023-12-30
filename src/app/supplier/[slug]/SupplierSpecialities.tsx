@@ -1,15 +1,14 @@
+import InformationCircleIcon from '@heroicons/react/16/solid/InformationCircleIcon';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
-import { List } from '~/components/elements/List';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { List } from '~/components/elements/List';
 import { getAllSupplierSpeciality } from '~/lib/db/supplier-speciality/getAllSupplierSpeciality';
-import { type IGeoSupplier } from '~/types/Supplier';
 import { getBrowseLink } from '~/lib/link/browse';
+import { type IGeoSupplier } from '~/types/Supplier';
 
 export const SupplierSpecialities = ({ supplier }: { supplier: IGeoSupplier }) => {
   const specialities = getAllSupplierSpeciality({ provider_id: supplier.id });
-
-  if (!specialities?.length) return null;
 
   const listItems = sortBy(specialities, 'slug').map((item) => ({
     key: item.id,
@@ -25,7 +24,14 @@ export const SupplierSpecialities = ({ supplier }: { supplier: IGeoSupplier }) =
   return (
     <DescriptionListSection id={'specialities'} title={`Specialities`}>
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        <List items={listItems} />
+        {specialities?.length ? (
+          <List items={listItems} />
+        ) : (
+          <p className="flex items-center gap-2">
+            <InformationCircleIcon className="inline-block size-6" />
+            <span>No reported specialities</span>
+          </p>
+        )}
       </div>
     </DescriptionListSection>
   );
