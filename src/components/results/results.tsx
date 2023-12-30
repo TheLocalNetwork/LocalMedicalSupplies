@@ -33,7 +33,7 @@ export const Results: React.FC<IResultsProps> = ({ filterParams }) => {
   const startRow = firstRecord.rowNumber;
 
   return (
-    <section className="flex w-8/12 flex-col gap-6">
+    <section className="flex w-full flex-col gap-6 md:w-8/12">
       <ResultsHeader numResults={numResults} offset={offset} limit={limit} />
 
       <Paginator filterParams={filterParams} numResults={numResults} limit={limit} offset={offset} />

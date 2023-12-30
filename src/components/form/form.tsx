@@ -10,7 +10,7 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
   const urlSearchString = urlSearchParams.toString(); // must serialize before passing to a client-side component
 
   return (
-    <section className="flex w-3/12 shrink-0 flex-col gap-4">
+    <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
       <h1>Search Filters</h1>
       <StatesListbox urlSearchString={urlSearchString}>
         <StatesListboxOptions />
