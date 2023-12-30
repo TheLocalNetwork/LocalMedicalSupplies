@@ -1,7 +1,10 @@
 import { Button } from '~/components/catalyst/button';
-import { StatesDialog } from '~/components/form/StatesDialog';
-import { StatesDialogContent } from '~/components/form/StatesDialogContent';
-import { SelectLimit } from './SelectLimit';
+import { GeoCityDialog } from '~/components/form/GeoCityDialog';
+import { GeoCityDialogContent } from '~/components/form/GeoCityDialogContent';
+import { GeoStateDialog } from '~/components/form/GeoStateDialog';
+import { GeoStateDialogContent } from '~/components/form/GeoStateDialogContent';
+import { isValidSimpleParam } from '~/components/form/urlParams';
+import { PaginationSelectLimit } from './PaginationSelectLimit';
 
 export interface IFormProps {
   urlSearchParams: URLSearchParams;
@@ -9,15 +12,23 @@ export interface IFormProps {
 export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
   const urlSearchString = urlSearchParams.toString(); // must serialize before passing to a client-side component
 
+  const state = urlSearchParams.get('state');
+
   return (
     <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
       <h1>Search Filters</h1>
 
-      <StatesDialog urlSearchString={urlSearchString}>
-        <StatesDialogContent urlSearchParams={urlSearchParams} />
-      </StatesDialog>
+      <GeoStateDialog urlSearchString={urlSearchString}>
+        <GeoStateDialogContent urlSearchParams={urlSearchParams} />
+      </GeoStateDialog>
 
-      <SelectLimit urlSearchString={urlSearchString} />
+      {isValidSimpleParam(state) ? (
+        <GeoCityDialog urlSearchString={urlSearchString}>
+          <GeoCityDialogContent urlSearchParams={urlSearchParams} />
+        </GeoCityDialog>
+      ) : null}
+
+      <PaginationSelectLimit urlSearchString={urlSearchString} />
 
       <Button outline href={'/'}>
         <span className="hidden sm:block">{`Remove All Filters`}</span>

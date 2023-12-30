@@ -4,10 +4,10 @@ import { Listbox, ListboxLabel, ListboxOption } from '~/components/catalyst/list
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
 import { useSetLimit } from '~/components/form/urlParamsRouting';
 
-export interface ISelectLimitProps {
+export interface IPaginationSelectLimitProps {
   urlSearchString: string;
 }
-export const SelectLimit: React.FC<ISelectLimitProps> = ({ urlSearchString }) => {
+export const PaginationSelectLimit: React.FC<IPaginationSelectLimitProps> = ({ urlSearchString }) => {
   const urlSearchParams = new URLSearchParams(urlSearchString);
   const urlValue = urlSearchParams.get('limit');
   const defaultValue = urlValue ? urlValue : DEFAULT_LIMIT.toString();

@@ -7,9 +7,10 @@ import { type IZipState } from '~/types/zip';
 
 const statesStatementSql = sql`
   SELECT
-    StateName,
-    StateAbbr,
-    StateSlug
+    ZIP_STATE.id,
+    ZIP_STATE.StateName,
+    ZIP_STATE.StateAbbr,
+    ZIP_STATE.StateSlug
   FROM
     ZIP_STATE
   WHERE
@@ -22,21 +23,21 @@ const statesStatementSql = sql`
     );
 `;
 
-const states = db.prepare(statesStatementSql).all() as IZipState[];
+const results = db.prepare(statesStatementSql).all() as IZipState[];
 
-export interface IStatesDialogContentProps {
+export interface IGeoStateDialogContentProps {
   urlSearchParams: URLSearchParams;
 }
-export const StatesDialogContent: React.FC<IStatesDialogContentProps> = ({ urlSearchParams }) => {
+export const GeoStateDialogContent: React.FC<IGeoStateDialogContentProps> = ({ urlSearchParams }) => {
   const getParams = useGetStateParams(urlSearchParams);
 
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {states.map((state) => {
+      {results.map((state) => {
         const params = getParams(state.StateSlug);
 
         return (
-          <Button key={state.StateAbbr} outline href={`/?${params.toString()}`}>
+          <Button key={state.id} outline href={`/?${params.toString()}`}>
             <>{state.StateName}</>
           </Button>
         );
