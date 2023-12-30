@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import ThemeSwitcher from '~/components/layout/ThemeSwitcher';
-import { NavbarSearch } from './NavbarSearch';
 
 export const Navbar = () => {
   return (
@@ -21,7 +20,7 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center justify-end gap-4">
-            <NavbarSearch />
+            {/* <NavbarSearch /> */}
             <ThemeSwitcher />
           </div>
         </div>
