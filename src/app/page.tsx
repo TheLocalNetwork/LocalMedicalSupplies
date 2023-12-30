@@ -26,7 +26,7 @@ export default function HomePage(props: IProps) {
   return (
     <article className={'flex flex-col gap-12'}>
       <Card>
-        <div key={urlSearchParams.toString()} className="flex flex-row items-start gap-8">
+        <div key={urlSearchParams.toString()} className="flex flex-col md:flex-row items-start gap-8">
           <Form urlSearchParams={urlSearchParams} />
           <Results filterParams={filterParams} />
         </div>

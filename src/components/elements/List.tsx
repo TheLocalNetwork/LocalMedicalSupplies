@@ -16,7 +16,7 @@ export const List = ({ items }: IListProps) => {
           <li key={key}>
             <Link
               href={href}
-              className="flex items-center gap-4 rounded p-2 py-4 hover:bg-zinc-100 sm:gap-2 sm:p-2 dark:hover:bg-zinc-700"
+              className="flex items-center gap-4 rounded p-2 py-4 hover:bg-zinc-100 hover:underline sm:gap-2 sm:p-2 dark:hover:bg-zinc-700"
             >
               {content}
             </Link>

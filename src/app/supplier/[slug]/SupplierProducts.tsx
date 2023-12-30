@@ -44,7 +44,7 @@ export const SupplierProductsList: React.FC<ISupplierProductsListProps> = ({ pro
         return (
           <DescriptionListItem
             key={key}
-            term={<Link href={href}>{manufacturer_name}</Link>}
+            term={<Link className="hover:underline" href={href}>{manufacturer_name}</Link>}
             data={<SupplierProductsListProducts manufacturer_slug={manufacturer_slug} products={products} />}
           />
         );
@@ -67,7 +67,9 @@ export const SupplierProductsListProducts: React.FC<ISupplierProductsListProduct
 
         return (
           <li key={product.id}>
-            <Link href={href}>{product.name}</Link>
+            <Link className="hover:underline" href={href}>
+              {product.name}
+            </Link>
           </li>
         );
       })}

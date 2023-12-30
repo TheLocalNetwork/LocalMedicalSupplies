@@ -26,7 +26,9 @@ export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier }) => 
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-50 drop-shadow-lg sm:text-5xl">
-            <Link href={getSupplierLink(supplier)}>{supplier.practice_name}</Link>
+            <Link className="hover:underline" href={getSupplierLink(supplier)}>
+              {supplier.practice_name}
+            </Link>
           </h2>
 
           <p className="mt-6 text-base leading-8 drop-shadow-lg sm:text-lg">
@@ -37,7 +39,11 @@ export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier }) => 
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-2xl font-semibold leading-7 drop-shadow-lg sm:grid-cols-2 md:flex md:text-base lg:gap-x-10">
             {links.map((link) => (
-              <a key={link.name} href={link.href} className="flex items-center gap-2 whitespace-nowrap">
+              <a
+                key={link.name}
+                href={link.href}
+                className="whitespace-nowraphover:underline flex items-center gap-2 hover:underline"
+              >
                 <span>{link.name}</span>
                 <span aria-hidden="true">
                   <ArrowRightCircleIcon className="size-5" />

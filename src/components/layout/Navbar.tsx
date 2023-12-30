@@ -14,7 +14,9 @@ export const Navbar = () => {
               </Link>
             </div>
             <div className="hidden text-xl font-light opacity-70 md:flex md:text-2xl lg:text-3xl">
-              <Link href="/">Local Medical Supplies</Link>
+              <Link className="hover:underline" href="/">
+                Local Medical Supplies
+              </Link>
             </div>
           </div>
 

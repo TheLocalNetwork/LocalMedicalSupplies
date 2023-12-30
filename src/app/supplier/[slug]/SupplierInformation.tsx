@@ -83,18 +83,24 @@ const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => 
   return (
     <address>
       <div>
-        <Link href={supplierLink}>
+        <Link className="hover:underline" href={supplierLink}>
           <strong>{supplier.practice_name}</strong>
         </Link>
       </div>
       <div>{supplier.address_1}</div>
       <div>{supplier.address_2}</div>
       <div>
-        <Link href={cityLink}>{supplier.CityName}</Link>
+        <Link className="hover:underline" href={cityLink}>
+          {supplier.CityName}
+        </Link>
         {', '}
-        <Link href={stateLink}>{supplier.StateAbbr}</Link>
+        <Link className="hover:underline" href={stateLink}>
+          {supplier.StateAbbr}
+        </Link>
         {` `}
-        <Link href={zipLink}>{supplier.zip}</Link>
+        <Link className="hover:underline" href={zipLink}>
+          {supplier.zip}
+        </Link>
       </div>
     </address>
   );
