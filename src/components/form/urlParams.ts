@@ -44,12 +44,12 @@ export const useGetCountyParams = (inSearchParams: URLSearchParams): TFnSetUrlPa
 
     if (isValidSimpleParam(value)) {
       outSearchParams.set('county', value);
+      outSearchParams.delete('city');
+      outSearchParams.delete('zip');
     } else {
       outSearchParams.delete('county');
     }
 
-    outSearchParams.delete('city');
-    outSearchParams.delete('zip');
     outSearchParams.delete('offset');
 
     outSearchParams.sort();
@@ -65,11 +65,11 @@ export const useGetCityParams = (inSearchParams: URLSearchParams): TFnSetUrlPara
 
     if (isValidSimpleParam(value)) {
       outSearchParams.set('city', value);
+      outSearchParams.delete('zip');
     } else {
       outSearchParams.delete('city');
     }
 
-    outSearchParams.delete('zip');
     outSearchParams.delete('offset');
 
     outSearchParams.sort();

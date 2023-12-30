@@ -1,4 +1,4 @@
-import { DEFAULT_LIMIT, DEFAULT_OFFSET, MAX_LIMIT } from '~/components/form/consts';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
 import { Paginator } from './Paginator';
 import { SupplierResult } from './SupplierResult';
 import { lookupSuppliers } from './lookupSuppliers';
@@ -7,23 +7,7 @@ export interface IResultsProps {
   urlSearchParams: URLSearchParams;
 }
 export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
-  const urlLimit = urlSearchParams.get('limit');
-  const limit = urlLimit ? Math.min(parseInt(urlLimit, 10), MAX_LIMIT) : DEFAULT_LIMIT;
-
-  const urlOffset = urlSearchParams.get('offset');
-  const offset = urlOffset ? parseInt(urlOffset, 10) : DEFAULT_OFFSET;
-
-  const state = urlSearchParams.get('state');
-  const city = urlSearchParams.get('city');
-  const zip = urlSearchParams.get('zip');
-
-  const suppliers = lookupSuppliers({
-    offset,
-    limit,
-    state,
-    city,
-    zip,
-  });
+  const suppliers = lookupSuppliers(urlSearchParams);
 
   const firstRecord = suppliers?.[0] ?? { numResults: 0, rowNumber: 0 };
   const numResults = firstRecord.numResults;
@@ -31,9 +15,9 @@ export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
 
   return (
     <section className="flex w-full flex-col gap-6 md:w-8/12">
-      <ResultsHeader numResults={numResults} offset={offset} limit={limit} />
+      <ResultsHeader urlSearchParams={urlSearchParams} numResults={numResults} />
 
-      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} limit={limit} offset={offset} />
+      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} />
 
       <div className="border-y border-black/10 dark:border-white/10">
         <ol key={urlSearchParams.toString()} start={startRow} className="divide-y divide-black/10 dark:divide-white/10">
@@ -43,17 +27,19 @@ export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
         </ol>
       </div>
 
-      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} limit={limit} offset={offset} />
+      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} />
     </section>
   );
 };
 
 interface IResultsHeaderProps {
+  urlSearchParams: URLSearchParams;
   numResults: number;
-  offset: number;
-  limit: number;
 }
-const ResultsHeader: React.FC<IResultsHeaderProps> = ({ numResults, offset, limit }) => {
+const ResultsHeader: React.FC<IResultsHeaderProps> = ({ urlSearchParams, numResults }) => {
+  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+
   return (
     <header>
       {numResults ? (

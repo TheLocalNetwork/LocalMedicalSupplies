@@ -7,14 +7,16 @@ import {
   PaginationPage,
   PaginationPrevious,
 } from '~/components/catalyst/pagination';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
 
 interface Paginator {
   urlSearchParams: URLSearchParams;
   numResults: number;
-  limit: number;
-  offset: number;
 }
-export const Paginator: React.FC<Paginator> = ({ limit, offset, numResults, urlSearchParams }) => {
+export const Paginator: React.FC<Paginator> = ({ numResults, urlSearchParams }) => {
+  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+
   const getHref = (offset: number) => {
     const proposedUrlSearchParams = new URLSearchParams(urlSearchParams);
 

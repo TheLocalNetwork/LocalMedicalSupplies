@@ -1,4 +1,5 @@
 import { compact, isEmpty } from 'lodash';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
 import { type IGeoSupplier } from '~/types/Supplier';
@@ -9,17 +10,26 @@ export interface IGeoSupplierResults extends IGeoSupplier {
   numResults: number;
   rowNumber: number;
 }
-export const lookupSuppliers = (searchParams: {
-  offset: number;
-  limit: number;
-  state: string | null;
-  city: string | null;
-  zip: string | null;
-}): ILookupResults => {
-  const { state, city, zip } = searchParams;
+export const lookupSuppliers = (urlSearchParams: URLSearchParams): ILookupResults => {
+  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+  const state = urlSearchParams.get('state');
+  const county = urlSearchParams.get('county');
+  const city = urlSearchParams.get('city');
+  const zip = urlSearchParams.get('zip');
+
+  const binding = {
+    limit,
+    offset,
+    state,
+    county,
+    city,
+    zip,
+  };
 
   const filters = compact([
     state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null,
+    county && !isEmpty(county) ? `ZIP_COUNTY.CountySlug = :county` : null,
     city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null,
     zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null,
   ]);
@@ -68,9 +78,9 @@ export const lookupSuppliers = (searchParams: {
   `);
 
   // eslint-disable-next-line no-console
-  // console.info(statement.source);
+  console.info(statement.source);
   // eslint-disable-next-line no-console
-  // console.info(searchParams);
+  console.info(binding);
 
-  return statement.all(searchParams) as ILookupResults;
+  return statement.all(binding) as ILookupResults;
 };
