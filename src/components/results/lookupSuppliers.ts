@@ -67,6 +67,10 @@ export const lookupSuppliers = (searchParams: {
       :offset;
   `);
 
-  // console.info(statement.source);
+  // eslint-disable-next-line no-console
+  console.info(statement.source);
+  // eslint-disable-next-line no-console
+  console.info(searchParams);
+
   return statement.all(searchParams) as ILookupResults;
 };

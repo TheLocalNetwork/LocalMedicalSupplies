@@ -7,28 +7,32 @@ export const getParamsUrl = (urlSearchParams: URLSearchParams) => {
   return [`/`, urlSearchParams.toString()].join(`?`);
 };
 
-export const useGetStateParams = (urlSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetStateParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+  const outSearchParams = new URLSearchParams(inSearchParams);
+
   const fn = (value: string | null) => {
     if (value) {
-      urlSearchParams.set('state', value);
+      outSearchParams.set('state', value);
     } else {
-      urlSearchParams.delete('state');
+      outSearchParams.delete('state');
     }
 
-    urlSearchParams.delete('city');
-    urlSearchParams.delete('county');
-    urlSearchParams.delete('zip');
-    urlSearchParams.delete('offset');
+    outSearchParams.delete('city');
+    outSearchParams.delete('county');
+    outSearchParams.delete('zip');
+    outSearchParams.delete('offset');
 
-    return urlSearchParams;
+    return outSearchParams;
   };
 
   return fn;
 };
 
-export const useGetLimitParams = (urlSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetLimitParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+  const outSearchParams = new URLSearchParams(inSearchParams);
+
   const fn = (proposedLimit: string | null) => {
-    if (isNil(proposedLimit)) return urlSearchParams;
+    if (isNil(proposedLimit)) return outSearchParams;
 
     const numLimit = parseInt(proposedLimit, 10);
 
@@ -36,14 +40,14 @@ export const useGetLimitParams = (urlSearchParams: URLSearchParams): TFnSetUrlPa
     if (numLimit < 10) proposedLimit = `10`;
 
     if (numLimit === DEFAULT_LIMIT) {
-      urlSearchParams.delete('limit');
+      outSearchParams.delete('limit');
     } else {
-      urlSearchParams.set('limit', proposedLimit);
+      outSearchParams.set('limit', proposedLimit);
     }
 
-    urlSearchParams.delete('offset');
+    outSearchParams.delete('offset');
 
-    return urlSearchParams;
+    return outSearchParams;
   };
 
   return fn;

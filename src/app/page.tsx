@@ -15,7 +15,7 @@ interface IProps {
 }
 export default function HomePage(props: IProps) {
   const { searchParams } = props;
-  const urlSearchParams = new URLSearchParams(searchParams);
+  const urlSearchParams: Readonly<URLSearchParams> = new URLSearchParams(searchParams);
 
   // eslint-disable-next-line no-console
   console.info({ urlSearchParams });
@@ -26,11 +26,11 @@ export default function HomePage(props: IProps) {
   }
 
   return (
-    <article className={'flex flex-col gap-12'}>
+    <article key={urlSearchParams.toString()} className={'flex flex-col gap-12'}>
       <Card>
-        <div key={urlSearchParams.toString()} className="flex flex-col items-start gap-8 md:flex-row">
-          <Form key={urlSearchParams.toString()} urlSearchParams={urlSearchParams} />
-          <Results key={urlSearchParams.toString()} urlSearchParams={urlSearchParams} />
+        <div className="flex flex-col items-start gap-8 md:flex-row">
+          <Form urlSearchParams={urlSearchParams} />
+          <Results urlSearchParams={urlSearchParams} />
         </div>
       </Card>
     </article>
