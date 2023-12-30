@@ -9,9 +9,6 @@ LABEL fly_launch_runtime="Next.js"
 # Next.js app lives here
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
-
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -26,6 +23,10 @@ RUN npm ci --no-fund --no-audit
 
 # Copy application code
 COPY --link . .
+
+# Set production environment
+ENV NODE_ENV="production"
+ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build application
 RUN npm run build
