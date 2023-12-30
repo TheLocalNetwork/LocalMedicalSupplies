@@ -3,8 +3,7 @@ import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Badge } from '~/components/catalyst/badge';
-import { getParamsUrl, useGetStateParams } from '~/components/form/urlParams';
-import { getBrowseLink } from '~/lib/link/browse';
+import { getParamsUrl, useGetCityParams, useGetStateParams, useGetZipParams } from '~/components/form/urlParams';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { type IGeoSupplierResults } from './lookupSuppliers';
 
@@ -48,9 +47,13 @@ interface ISupplierAddressProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 const SupplierAddress: React.FC<ISupplierAddressProps> = ({ supplier, urlSearchParams, className, ...attrs }) => {
   const supplierLink = getSupplierLink(supplier);
-  const stateLink = getParamsUrl(useGetStateParams(urlSearchParams)(supplier.StateSlug));
-  const cityLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug });
-  const zipLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug, zip: supplier.zip });
+  const stateUrlSearchParams = useGetStateParams(urlSearchParams)(supplier.StateSlug);
+  const cityUrlSearchParams = useGetCityParams(stateUrlSearchParams)(supplier.CitySlug);
+  const zipUrlSearchParams = useGetZipParams(cityUrlSearchParams)(supplier.zip);
+
+  const stateLink = getParamsUrl(stateUrlSearchParams);
+  const cityLink = getParamsUrl(cityUrlSearchParams);
+  const zipLink = getParamsUrl(zipUrlSearchParams);
 
   return (
     <div {...attrs} className={clsx('flex flex-col gap-2 px-2 text-xs italic leading-none opacity-70', className)}>

@@ -68,9 +68,9 @@ export const lookupSuppliers = (searchParams: {
   `);
 
   // eslint-disable-next-line no-console
-  console.info(statement.source);
+  // console.info(statement.source);
   // eslint-disable-next-line no-console
-  console.info(searchParams);
+  // console.info(searchParams);
 
   return statement.all(searchParams) as ILookupResults;
 };

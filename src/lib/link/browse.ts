@@ -1,7 +1,7 @@
 import { compact } from 'lodash';
-import { type IFilterParams } from '~/types/filters';
+import { type IFilterUrlParams } from '~/types/filters';
 
-export const getBrowseLink = (filters: IFilterParams) => {
+export const getBrowseLink = (filters: IFilterUrlParams) => {
   const urlSearchParams = new URLSearchParams(filters);
 
   for (const [key, value] of urlSearchParams.entries()) {

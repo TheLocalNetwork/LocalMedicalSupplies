@@ -1,25 +1,28 @@
 import { type IManufacturer, type IProduct, type IProviderType, type ISpeciality, type ISupply } from '~/types/tables';
-import { type IZipCity, type IZipCode, type IZipState } from '~/types/zip';
+import { type IZipCity, type IZipCode, type IZipCounty, type IZipState } from '~/types/zip';
 
-export interface IGeoFilters extends Record<string, string> {
+export type Nullable<T> = T | null | undefined;
+
+export interface IGeoUrlParams extends Record<string, string> {
   state?: IZipState['StateSlug'];
   city?: IZipCity['CitySlug'];
+  county?: IZipCounty['CountySlug'];
   zip?: IZipCode['ZIPCode'];
 }
 
-export interface ISupplierFilters extends Record<string, string> {
+export interface ISupplierUrlParams extends Record<string, string> {
   category?: ISupply['slug'];
   providertype?: IProviderType['slug'];
   speciality?: ISpeciality['slug'];
   manufacturer?: IManufacturer['slug'];
   product?: IProduct['slug'];
-  cba?: 'yes' | 'no';
-  assignment?: 'yes' | 'no';
+  cba?: string;
+  assignment?: string;
 }
 
-export interface IPaginationFilters {
-  limit?: number;
-  offset?: number;
+export interface IPaginationUrlParams extends Record<string, string> {
+  limit?: string;
+  offset?: string;
 }
 
-export type IFilterParams = IGeoFilters & IPaginationFilters & ISupplierFilters;
+export type IFilterUrlParams = IGeoUrlParams & IPaginationUrlParams & ISupplierUrlParams;

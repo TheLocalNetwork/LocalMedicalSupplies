@@ -15,7 +15,7 @@ import {
   DescriptionListItem,
   DescriptionListSection,
 } from '~/components/elements/DescriptionListSection';
-import { getBrowseLink } from '~/lib/link/browse';
+import { getParamsUrl, useGetCityParams, useGetStateParams, useGetZipParams } from '~/components/form/urlParams';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { isoDateToLocaleDate } from '~/lib/string';
 import { type IGeoSupplier } from '~/types/Supplier';
@@ -76,9 +76,13 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
 
 const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => {
   const supplierLink = getSupplierLink(supplier);
-  const stateLink = getBrowseLink({ state: supplier.StateSlug });
-  const cityLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug });
-  const zipLink = getBrowseLink({ zip: supplier.zip });
+  const stateUrlSearchParams = useGetStateParams(new URLSearchParams())(supplier.StateSlug);
+  const cityUrlSearchParams = useGetCityParams(stateUrlSearchParams)(supplier.CitySlug);
+  const zipUrlSearchParams = useGetZipParams(cityUrlSearchParams)(supplier.zip);
+
+  const stateLink = getParamsUrl(stateUrlSearchParams);
+  const cityLink = getParamsUrl(cityUrlSearchParams);
+  const zipLink = getParamsUrl(zipUrlSearchParams);
 
   return (
     <address>
