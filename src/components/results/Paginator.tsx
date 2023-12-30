@@ -5,9 +5,9 @@ import {
   PaginationList,
   PaginationNext,
   PaginationPage,
-  PaginationPrevious
+  PaginationPrevious,
 } from '~/components/catalyst/pagination';
-import { IResultsProps } from './results';
+import { type IResultsProps } from './results';
 
 interface Paginator extends IResultsProps {
   numResults: number;
