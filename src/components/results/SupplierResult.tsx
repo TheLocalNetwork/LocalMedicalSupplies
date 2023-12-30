@@ -3,14 +3,16 @@ import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Badge } from '~/components/catalyst/badge';
+import { getParamsUrl, useGetStateParams } from '~/components/form/urlParams';
 import { getBrowseLink } from '~/lib/link/browse';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { type IGeoSupplierResults } from './lookupSuppliers';
 
 export interface ISupplierResultProps {
   supplier: IGeoSupplierResults;
+  urlSearchParams: URLSearchParams;
 }
-export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier }) => {
+export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier, urlSearchParams }) => {
   const supplierLink = getSupplierLink(supplier);
 
   return (
@@ -28,7 +30,7 @@ export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier }) => 
           {supplier.practice_name}
         </Link>
 
-        <SupplierAddress supplier={supplier} className="" />
+        <SupplierAddress supplier={supplier} urlSearchParams={urlSearchParams} className="" />
         <SupplierBadges supplier={supplier} className="" />
       </div>
       <div className="hidden shrink sm:block">
@@ -42,12 +44,13 @@ export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier }) => 
 
 interface ISupplierAddressProps extends React.ComponentPropsWithoutRef<'div'> {
   supplier: IGeoSupplierResults;
+  urlSearchParams: URLSearchParams;
 }
-const SupplierAddress: React.FC<ISupplierAddressProps> = ({ supplier, className, ...attrs }) => {
+const SupplierAddress: React.FC<ISupplierAddressProps> = ({ supplier, urlSearchParams, className, ...attrs }) => {
   const supplierLink = getSupplierLink(supplier);
-  const stateLink = getBrowseLink({ state: supplier.StateSlug });
+  const stateLink = getParamsUrl(useGetStateParams(urlSearchParams)(supplier.StateSlug));
   const cityLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug });
-  const zipLink = getBrowseLink({ zip: supplier.zip });
+  const zipLink = getBrowseLink({ state: supplier.StateSlug, city: supplier.CitySlug, zip: supplier.zip });
 
   return (
     <div {...attrs} className={clsx('flex flex-col gap-2 px-2 text-xs italic leading-none opacity-70', className)}>

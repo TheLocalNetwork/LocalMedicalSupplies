@@ -7,7 +7,6 @@ export const getParamsUrl = (urlSearchParams: URLSearchParams) => {
   return [`/`, urlSearchParams.toString()].join(`?`);
 };
 
-
 export const useGetStateParams = (urlSearchParams: URLSearchParams): TFnSetUrlParam => {
   const fn = (value: string | null) => {
     if (value) {

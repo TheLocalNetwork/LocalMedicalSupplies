@@ -7,16 +7,16 @@ import {
   PaginationPage,
   PaginationPrevious,
 } from '~/components/catalyst/pagination';
-import { type IResultsProps } from './results';
 
-interface Paginator extends IResultsProps {
+interface Paginator {
+  urlSearchParams: URLSearchParams;
   numResults: number;
   limit: number;
   offset: number;
 }
-export const Paginator: React.FC<Paginator> = ({ limit, offset, numResults, filterParams }) => {
+export const Paginator: React.FC<Paginator> = ({ limit, offset, numResults, urlSearchParams }) => {
   const getHref = (offset: number) => {
-    const proposedUrlSearchParams = new URLSearchParams(filterParams);
+    const proposedUrlSearchParams = new URLSearchParams(urlSearchParams);
 
     if (offset === 0) {
       proposedUrlSearchParams.delete('offset');

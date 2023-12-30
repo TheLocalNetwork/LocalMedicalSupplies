@@ -20,21 +20,17 @@ export default function HomePage(props: IProps) {
   // eslint-disable-next-line no-console
   console.info({ urlSearchParams });
 
+  // TODO: smarter cleanup of filter params
   for (const [key, value] of urlSearchParams.entries()) {
     if (isNil(value) || isEmpty(value)) urlSearchParams.delete(key);
   }
-
-  const filterParams = Array.from(urlSearchParams.entries()).reduce(
-    (acc, [key, value]) => ({ ...acc, [key]: value }),
-    {}
-  );
 
   return (
     <article className={'flex flex-col gap-12'}>
       <Card>
         <div key={urlSearchParams.toString()} className="flex flex-col items-start gap-8 md:flex-row">
           <Form key={urlSearchParams.toString()} urlSearchParams={urlSearchParams} />
-          <Results key={urlSearchParams.toString()} filterParams={filterParams} />
+          <Results key={urlSearchParams.toString()} urlSearchParams={urlSearchParams} />
         </div>
       </Card>
     </article>

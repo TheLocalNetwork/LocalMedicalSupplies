@@ -1,15 +1,12 @@
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, MAX_LIMIT } from '~/components/form/consts';
-import { type IFilterParams } from '~/types/filters';
 import { Paginator } from './Paginator';
 import { SupplierResult } from './SupplierResult';
 import { lookupSuppliers } from './lookupSuppliers';
 
 export interface IResultsProps {
-  filterParams: IFilterParams;
+  urlSearchParams: URLSearchParams;
 }
-export const Results: React.FC<IResultsProps> = ({ filterParams }) => {
-  const urlSearchParams = new URLSearchParams(filterParams);
-
+export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
   const urlLimit = urlSearchParams.get('limit');
   const limit = urlLimit ? Math.min(parseInt(urlLimit, 10), MAX_LIMIT) : DEFAULT_LIMIT;
 
@@ -36,17 +33,17 @@ export const Results: React.FC<IResultsProps> = ({ filterParams }) => {
     <section className="flex w-full flex-col gap-6 md:w-8/12">
       <ResultsHeader numResults={numResults} offset={offset} limit={limit} />
 
-      <Paginator filterParams={filterParams} numResults={numResults} limit={limit} offset={offset} />
+      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} limit={limit} offset={offset} />
 
       <div className="border-y border-black/10 dark:border-white/10">
         <ol key={urlSearchParams.toString()} start={startRow} className="divide-y divide-black/10 dark:divide-white/10">
           {(suppliers ?? []).map((supplier) => (
-            <SupplierResult key={supplier.id} supplier={supplier} />
+            <SupplierResult key={supplier.id} supplier={supplier} urlSearchParams={urlSearchParams} />
           ))}
         </ol>
       </div>
 
-      <Paginator filterParams={filterParams} numResults={numResults} limit={limit} offset={offset} />
+      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} limit={limit} offset={offset} />
     </section>
   );
 };
