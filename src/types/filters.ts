@@ -13,6 +13,8 @@ export interface ISupplierFilters extends Record<string, string> {
   speciality?: ISpeciality['slug'];
   manufacturer?: IManufacturer['slug'];
   product?: IProduct['slug'];
+  cba?: 'yes' | 'no';
+  assignment?: 'yes' | 'no';
 }
 
 export interface IPaginationFilters {
