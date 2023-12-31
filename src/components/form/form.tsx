@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { Button } from '~/components/catalyst/button';
 import { FormDialogContainer } from '~/components/form/FormDialogContainer';
@@ -19,22 +20,22 @@ import {
 import { PaginationSelectLimit } from './PaginationSelectLimit';
 
 export interface IFormProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
-  const urlSearchString = urlSearchParams.toString(); // must serialize before passing to a client-side component
+export const Form: React.FC<IFormProps> = ({ immUrlSearchParams }) => {
+  const urlSearchString = immUrlSearchParams.toString(); // must serialize before passing to a client-side component
 
-  const state = urlSearchParams.get('state');
-  const county = urlSearchParams.get('county');
-  const city = urlSearchParams.get('city');
-  const zip = urlSearchParams.get('zip');
-  const category = urlSearchParams.get('category');
+  const state = immUrlSearchParams.get('state');
+  const county = immUrlSearchParams.get('county');
+  const city = immUrlSearchParams.get('city');
+  const zip = immUrlSearchParams.get('zip');
+  const category = immUrlSearchParams.get('category');
 
-  const unsetStateHref = getParamsUrl(useGetStateParams(urlSearchParams)(null));
-  const unsetCountyHref = getParamsUrl(useGetCountyParams(urlSearchParams)(null));
-  const unsetCityHref = getParamsUrl(useGetCityParams(urlSearchParams)(null));
-  const unsetZipHref = getParamsUrl(useGetZipParams(urlSearchParams)(null));
-  const unsetCategoryHref = getParamsUrl(useGetCategoryParams(urlSearchParams)(null));
+  const unsetStateHref = getParamsUrl(useGetStateParams(immUrlSearchParams)(null));
+  const unsetCountyHref = getParamsUrl(useGetCountyParams(immUrlSearchParams)(null));
+  const unsetCityHref = getParamsUrl(useGetCityParams(immUrlSearchParams)(null));
+  const unsetZipHref = getParamsUrl(useGetZipParams(immUrlSearchParams)(null));
+  const unsetCategoryHref = getParamsUrl(useGetCategoryParams(immUrlSearchParams)(null));
 
   return (
     <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
@@ -43,32 +44,32 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
       </header>
 
       <FormSection title={`Location Filters`}>
-        <FormDialogContainer label={'State'} currentValue={urlSearchParams.get('state')} unsetHref={unsetStateHref}>
-          <GeoStateDialogContent urlSearchParams={urlSearchParams} />
+        <FormDialogContainer label={'State'} currentValue={immUrlSearchParams.get('state')} unsetHref={unsetStateHref}>
+          <GeoStateDialogContent immUrlSearchParams={immUrlSearchParams} />
         </FormDialogContainer>
 
         {isValidSimpleParam(state) ? (
           <FormDialogContainer label={'County or Parish'} currentValue={county} unsetHref={unsetCountyHref}>
-            <GeoCountyDialogContent urlSearchParams={urlSearchParams} />
+            <GeoCountyDialogContent immUrlSearchParams={immUrlSearchParams} />
           </FormDialogContainer>
         ) : null}
 
         {isValidSimpleParam(state) ? (
           <FormDialogContainer label={'City'} currentValue={city} unsetHref={unsetCityHref}>
-            <GeoCityDialogContent urlSearchParams={urlSearchParams} />
+            <GeoCityDialogContent immUrlSearchParams={immUrlSearchParams} />
           </FormDialogContainer>
         ) : null}
 
         {isValidSimpleParam(state) ? (
           <FormDialogContainer label={'Zip Code'} currentValue={zip} unsetHref={unsetZipHref}>
-            <GeoZipDialogContent urlSearchParams={urlSearchParams} />
+            <GeoZipDialogContent immUrlSearchParams={immUrlSearchParams} />
           </FormDialogContainer>
         ) : null}
       </FormSection>
 
       <FormSection title={`Supplier Characteristics`}>
         <FormDialogContainer label={'Supply Category'} currentValue={category} unsetHref={unsetCategoryHref}>
-          <SupplierCategoryDialogContent urlSearchParams={urlSearchParams} />
+          <SupplierCategoryDialogContent immUrlSearchParams={immUrlSearchParams} />
         </FormDialogContainer>
       </FormSection>
 

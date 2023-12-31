@@ -1,4 +1,5 @@
 'use server';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { getParamsUrl, useGetCategoryParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
@@ -19,10 +20,10 @@ const statementSql = sql`
 const results = db.prepare(statementSql).all() as ISupply[];
 
 export interface IGeoStateDialogContentProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const SupplierCategoryDialogContent: React.FC<IGeoStateDialogContentProps> = ({ urlSearchParams }) => {
-  const getParams = useGetCategoryParams(urlSearchParams);
+export const SupplierCategoryDialogContent: React.FC<IGeoStateDialogContentProps> = ({ immUrlSearchParams }) => {
+  const getParams = useGetCategoryParams(immUrlSearchParams);
 
   return (
     <div className="columns-sm">

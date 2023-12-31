@@ -1,13 +1,14 @@
+import { type ImmutableURLSearchParams } from 'immurl';
 import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
 import { Paginator } from './Paginator';
 import { SupplierResult } from './SupplierResult';
 import { lookupSuppliers } from './lookupSuppliers';
 
 export interface IResultsProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
-  const suppliers = lookupSuppliers(urlSearchParams);
+export const Results: React.FC<IResultsProps> = ({ immUrlSearchParams }) => {
+  const suppliers = lookupSuppliers(immUrlSearchParams);
 
   const firstRecord = suppliers?.[0] ?? { numResults: 0, rowNumber: 0 };
   const numResults = firstRecord.numResults;
@@ -15,30 +16,34 @@ export const Results: React.FC<IResultsProps> = ({ urlSearchParams }) => {
 
   return (
     <section className="flex w-full flex-col gap-6 md:w-8/12">
-      <ResultsHeader urlSearchParams={urlSearchParams} numResults={numResults} />
+      <ResultsHeader immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
 
-      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} />
+      <Paginator immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
 
       <div className="border-y border-black/10 dark:border-white/10">
-        <ol key={urlSearchParams.toString()} start={startRow} className="divide-y divide-black/10 dark:divide-white/10">
+        <ol
+          key={immUrlSearchParams.toString()}
+          start={startRow}
+          className="divide-y divide-black/10 dark:divide-white/10"
+        >
           {(suppliers ?? []).map((supplier) => (
-            <SupplierResult key={supplier.id} supplier={supplier} urlSearchParams={urlSearchParams} />
+            <SupplierResult key={supplier.id} supplier={supplier} immUrlSearchParams={immUrlSearchParams} />
           ))}
         </ol>
       </div>
 
-      <Paginator urlSearchParams={urlSearchParams} numResults={numResults} />
+      <Paginator immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
     </section>
   );
 };
 
 interface IResultsHeaderProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
   numResults: number;
 }
-const ResultsHeader: React.FC<IResultsHeaderProps> = ({ urlSearchParams, numResults }) => {
-  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
-  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+const ResultsHeader: React.FC<IResultsHeaderProps> = ({ immUrlSearchParams, numResults }) => {
+  const offset = Number(immUrlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
 
   return (
     <header>

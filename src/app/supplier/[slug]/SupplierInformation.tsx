@@ -6,6 +6,7 @@ import {
   PhoneArrowUpRightIcon,
   PhoneIcon,
 } from '@heroicons/react/16/solid';
+import { ImmutableURLSearchParams } from 'immurl';
 import { compact } from 'lodash';
 import Link from 'next/link';
 import { Button } from '~/components/catalyst/button';
@@ -76,7 +77,9 @@ export const SupplierInformation = ({ supplier }: { supplier: IGeoSupplier }) =>
 
 const SupplierAddress: React.FC<{ supplier: IGeoSupplier }> = ({ supplier }) => {
   const supplierLink = getSupplierLink(supplier);
-  const stateUrlSearchParams = useGetStateParams(new URLSearchParams())(supplier.StateSlug);
+
+  const immUrlSearchParams = new ImmutableURLSearchParams();
+  const stateUrlSearchParams = useGetStateParams(immUrlSearchParams)(supplier.StateSlug);
   const cityUrlSearchParams = useGetCityParams(stateUrlSearchParams)(supplier.CitySlug);
   const zipUrlSearchParams = useGetZipParams(cityUrlSearchParams)(supplier.zip);
 

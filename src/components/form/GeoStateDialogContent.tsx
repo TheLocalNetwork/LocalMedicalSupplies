@@ -1,4 +1,5 @@
 'use server';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { LinkButton } from '~/components/form/LinkButton';
 import { getParamsUrl, useGetStateParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
@@ -26,10 +27,10 @@ const statesStatementSql = sql`
 const results = db.prepare(statesStatementSql).all() as IZipState[];
 
 export interface IGeoStateDialogContentProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const GeoStateDialogContent: React.FC<IGeoStateDialogContentProps> = ({ urlSearchParams }) => {
-  const getParams = useGetStateParams(urlSearchParams);
+export const GeoStateDialogContent: React.FC<IGeoStateDialogContentProps> = ({ immUrlSearchParams }) => {
+  const getParams = useGetStateParams(immUrlSearchParams);
 
   return (
     <div className="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4">

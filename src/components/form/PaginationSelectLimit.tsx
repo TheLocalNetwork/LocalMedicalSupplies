@@ -1,4 +1,5 @@
 'use client';
+import { ImmutableURLSearchParams } from 'immurl';
 import { Field, Label } from '~/components/catalyst/fieldset';
 import { Listbox, ListboxLabel, ListboxOption } from '~/components/catalyst/listbox';
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
@@ -8,10 +9,10 @@ export interface IPaginationSelectLimitProps {
   urlSearchString: string;
 }
 export const PaginationSelectLimit: React.FC<IPaginationSelectLimitProps> = ({ urlSearchString }) => {
-  const urlSearchParams = new URLSearchParams(urlSearchString);
-  const urlValue = urlSearchParams.get('limit');
+  const immUrlSearchParams = new ImmutableURLSearchParams(urlSearchString);
+  const urlValue = immUrlSearchParams.get('limit');
   const defaultValue = urlValue ? urlValue : DEFAULT_LIMIT.toString();
-  const setLimit = useSetLimit(urlSearchParams);
+  const setLimit = useSetLimit(immUrlSearchParams);
 
   return (
     <>

@@ -1,4 +1,5 @@
-import { compact, uniq } from 'lodash';
+import { type ImmutableURLSearchParams } from 'immurl';
+import { uniq } from 'lodash';
 import {
   Pagination,
   PaginationGap,
@@ -8,25 +9,20 @@ import {
   PaginationPrevious,
 } from '~/components/catalyst/pagination';
 import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
+import { getParamsUrl, useGetOffsetParams } from '~/components/form/urlParams';
 
 interface Paginator {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
   numResults: number;
 }
-export const Paginator: React.FC<Paginator> = ({ numResults, urlSearchParams }) => {
-  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
-  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+export const Paginator: React.FC<Paginator> = ({ numResults, immUrlSearchParams }) => {
+  const offset = Number(immUrlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+  const getOffsetParams = useGetOffsetParams(immUrlSearchParams);
 
   const getHref = (offset: number) => {
-    const proposedUrlSearchParams = new URLSearchParams(urlSearchParams);
-
-    if (offset === 0) {
-      proposedUrlSearchParams.delete('offset');
-    } else {
-      proposedUrlSearchParams.set('offset', offset.toString());
-    }
-
-    return compact([`/`, proposedUrlSearchParams.toString()]).join(`?`);
+    const proposedUrlSearchParams = getOffsetParams(offset.toString());
+    return getParamsUrl(proposedUrlSearchParams);
   };
 
   const { pageNumbers, currentPage } = generatePagesList(offset, limit, numResults);

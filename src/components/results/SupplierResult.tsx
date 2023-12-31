@@ -1,6 +1,7 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
+import { type ImmutableURLSearchParams } from 'immurl';
 import Link from 'next/link';
 import { Badge } from '~/components/catalyst/badge';
 import { getParamsUrl, useGetCityParams, useGetStateParams, useGetZipParams } from '~/components/form/urlParams';
@@ -9,9 +10,9 @@ import { type IGeoSupplierResults } from './lookupSuppliers';
 
 export interface ISupplierResultProps {
   supplier: IGeoSupplierResults;
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier, urlSearchParams }) => {
+export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier, immUrlSearchParams }) => {
   const supplierLink = getSupplierLink(supplier);
 
   return (
@@ -29,7 +30,7 @@ export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier, urlSe
           {supplier.practice_name}
         </Link>
 
-        <SupplierAddress supplier={supplier} urlSearchParams={urlSearchParams} className="" />
+        <SupplierAddress supplier={supplier} immUrlSearchParams={immUrlSearchParams} className="" />
         <SupplierBadges supplier={supplier} className="" />
       </div>
       <div className="hidden shrink sm:block">
@@ -43,11 +44,11 @@ export const SupplierResult: React.FC<ISupplierResultProps> = ({ supplier, urlSe
 
 interface ISupplierAddressProps extends React.ComponentPropsWithoutRef<'div'> {
   supplier: IGeoSupplierResults;
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-const SupplierAddress: React.FC<ISupplierAddressProps> = ({ supplier, urlSearchParams, className, ...attrs }) => {
+const SupplierAddress: React.FC<ISupplierAddressProps> = ({ supplier, immUrlSearchParams, className, ...attrs }) => {
   const supplierLink = getSupplierLink(supplier);
-  const stateUrlSearchParams = useGetStateParams(urlSearchParams)(supplier.StateSlug);
+  const stateUrlSearchParams = useGetStateParams(immUrlSearchParams)(supplier.StateSlug);
   const cityUrlSearchParams = useGetCityParams(stateUrlSearchParams)(supplier.CitySlug);
   const zipUrlSearchParams = useGetZipParams(cityUrlSearchParams)(supplier.zip);
 

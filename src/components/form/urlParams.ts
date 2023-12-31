@@ -1,11 +1,26 @@
+import { type ImmutableURLSearchParams } from 'immurl';
 import { isEmpty, isNaN, isNil } from 'lodash';
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
 
-export type TFnSetUrlParam = (input: string | null) => URLSearchParams;
-export type TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => TFnSetUrlParam;
+export type TFnSetUrlParam = (input: string | null) => ImmutableURLSearchParams;
+export type TFnGetUrlParamHook = (inSearchParams: ImmutableURLSearchParams) => TFnSetUrlParam;
 
-export const getParamsUrl = (urlSearchParams: URLSearchParams) => {
-  return [`/`, urlSearchParams.toString()].join(`?`);
+export const getParamsUrl = (immUrlSearchParams: ImmutableURLSearchParams) => {
+  return [`/`, immUrlSearchParams.sort().toString()].join(`?`);
+};
+
+export const useGetSimpleParams = (key: string, immUrlSearchParams: ImmutableURLSearchParams) => {
+  const fn = (value: string | null) => {
+    if (isValidSimpleParam(value)) {
+      immUrlSearchParams = immUrlSearchParams.set(key, value);
+    } else {
+      immUrlSearchParams = immUrlSearchParams.delete(key);
+    }
+
+    return immUrlSearchParams.delete('offset').sort();
+  };
+
+  return fn;
 };
 
 /**
@@ -17,64 +32,43 @@ export const isValidSimpleParam = (value: string | null | undefined): value is s
   return !(isNil(value) || isEmpty(value));
 };
 
-export const useGetStateParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetStateParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidSimpleParam(value)) {
-      outSearchParams.set('state', value);
+      immUrlSearchParams = immUrlSearchParams.set('state', value);
     } else {
-      outSearchParams.delete('state');
+      immUrlSearchParams = immUrlSearchParams.delete('state');
     }
 
-    outSearchParams.delete('county');
-    outSearchParams.delete('city');
-    outSearchParams.delete('zip');
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.delete('county').delete('city').delete('zip').delete('offset').sort();
   };
 
   return fn;
 };
 
-export const useGetCountyParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetCountyParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidSimpleParam(value)) {
-      outSearchParams.set('county', value);
-      outSearchParams.delete('city');
-      outSearchParams.delete('zip');
+      immUrlSearchParams = immUrlSearchParams.set('county', value).delete('city').delete('zip');
     } else {
-      outSearchParams.delete('county');
+      immUrlSearchParams = immUrlSearchParams.delete('county');
     }
 
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.delete('offset').sort();
   };
 
   return fn;
 };
 
-export const useGetCityParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetCityParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidSimpleParam(value)) {
-      outSearchParams.set('city', value);
-      outSearchParams.delete('zip');
+      immUrlSearchParams = immUrlSearchParams.set('city', value).delete('zip');
     } else {
-      outSearchParams.delete('city');
+      immUrlSearchParams = immUrlSearchParams.delete('city');
     }
 
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.delete('offset').sort();
   };
 
   return fn;
@@ -87,20 +81,15 @@ export const isValidZip = (value: string | null | undefined): value is string =>
   return zipRegex.test(value);
 };
 
-export const useGetZipParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetZipParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidZip(value)) {
-      outSearchParams.set('zip', value);
+      immUrlSearchParams = immUrlSearchParams.set('zip', value);
     } else {
-      outSearchParams.delete('zip');
+      immUrlSearchParams = immUrlSearchParams.delete('zip');
     }
 
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.delete('offset').sort();
   };
 
   return fn;
@@ -111,24 +100,36 @@ export const useGetZipParams: TFnGetUrlParamHook = (inSearchParams: URLSearchPar
  *
  */
 
-export const useGetCategoryParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
-  const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
+export const useGetCategoryParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('category', immUrlSearchParams);
 
-    if (isValidSimpleParam(value)) {
-      outSearchParams.set('category', value);
-    } else {
-      outSearchParams.delete('category');
-    }
+export const useGetManufacturerParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
+  const fn = useGetSimpleParams('manufacturer', immUrlSearchParams);
 
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+  const extendFn = (value: string | null) => {
+    return fn(value).delete('category');
   };
 
-  return fn;
+  return extendFn;
 };
+
+export const useGetProductParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('product', immUrlSearchParams);
+
+export const useGetBrandParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('brand', immUrlSearchParams);
+
+export const useGetSpecialityParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('speciality', immUrlSearchParams);
+
+export const useGetProviderTypeParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('providertype', immUrlSearchParams);
+
+export const useGetCbaParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('cba', immUrlSearchParams);
+
+export const useGetAssignmentParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useGetSimpleParams('assignment', immUrlSearchParams);
 
 /**
  * PAGINATION Params
@@ -145,20 +146,15 @@ export const isValidLimit = (value: string | null | undefined): value is string 
   return LIMIT_OPTIONS.includes(num);
 };
 
-export const useGetLimitParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetLimitParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidLimit(value)) {
-      outSearchParams.set('limit', value);
+      immUrlSearchParams = immUrlSearchParams.set('limit', value);
     } else {
-      outSearchParams.delete('limit');
+      immUrlSearchParams = immUrlSearchParams.delete('limit');
     }
 
-    outSearchParams.delete('offset');
-
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.delete('offset').sort();
   };
 
   return fn;
@@ -173,18 +169,15 @@ export const isValidOffset = (value: string | null | undefined): value is string
   return num > 0;
 };
 
-export const useGetOffsetParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+export const useGetOffsetParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    const outSearchParams = new URLSearchParams(inSearchParams);
-
     if (isValidOffset(value)) {
-      outSearchParams.set('limit', value);
+      immUrlSearchParams = immUrlSearchParams.set('limit', value);
     } else {
-      outSearchParams.delete('limit');
+      immUrlSearchParams = immUrlSearchParams.delete('limit');
     }
 
-    outSearchParams.sort();
-    return outSearchParams;
+    return immUrlSearchParams.sort();
   };
 
   return fn;

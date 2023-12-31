@@ -1,4 +1,5 @@
 'use server';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { compact } from 'lodash';
 import { LinkButton } from '~/components/form/LinkButton';
 import { getParamsUrl, useGetZipParams } from '~/components/form/urlParams';
@@ -7,12 +8,12 @@ import { sql } from '~/lib/string';
 import { type IZipCode } from '~/types/zip';
 
 export interface IGeoZipDialogContentProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const GeoZipDialogContent: React.FC<IGeoZipDialogContentProps> = ({ urlSearchParams }) => {
-  const state = urlSearchParams.get('state');
-  const county = urlSearchParams.get('county');
-  const city = urlSearchParams.get('city');
+export const GeoZipDialogContent: React.FC<IGeoZipDialogContentProps> = ({ immUrlSearchParams }) => {
+  const state = immUrlSearchParams.get('state');
+  const county = immUrlSearchParams.get('county');
+  const city = immUrlSearchParams.get('city');
   const binding = { state, county, city };
 
   const geoFilters = compact([
@@ -35,7 +36,7 @@ export const GeoZipDialogContent: React.FC<IGeoZipDialogContentProps> = ({ urlSe
   `;
 
   const results = db.prepare(zipStatementSql).all(binding) as IZipCode[];
-  const getParams = useGetZipParams(urlSearchParams);
+  const getParams = useGetZipParams(immUrlSearchParams);
 
   return (
     <div className="columns-[7em]">

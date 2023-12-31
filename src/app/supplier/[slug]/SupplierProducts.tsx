@@ -1,14 +1,21 @@
+import { ImmutableURLSearchParams } from 'immurl';
 import { groupBy, sortBy } from 'lodash';
 import { Link } from '~/components/catalyst/link';
 import { DescriptionListItem, DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { EmptyState } from '~/components/elements/EmptyState';
+import {
+  getParamsUrl,
+  useGetCityParams,
+  useGetManufacturerParams,
+  useGetProductParams,
+  useGetStateParams,
+} from '~/components/form/urlParams';
 import {
   getAllSupplierProduct,
   type IGetSupplierProductFilterResult,
 } from '~/lib/db/supplier-product/getAllSupplierProduct';
-import { getBrowseLink } from '~/lib/link/browse';
 import { type IGeoSupplier } from '~/types/Supplier';
 import { type IManufacturer } from '~/types/tables';
-import { EmptyState } from '../../../components/elements/EmptyState';
 
 interface ISupplierProductsProps {
   supplier: IGeoSupplier;
@@ -16,11 +23,15 @@ interface ISupplierProductsProps {
 export const SupplierProducts: React.FC<ISupplierProductsProps> = ({ supplier }) => {
   const products = getAllSupplierProduct({ provider_id: supplier.id });
 
+  const immUrlSearchParams = new ImmutableURLSearchParams();
+  const stateUrlParams = useGetStateParams(immUrlSearchParams)(supplier.StateSlug);
+  const cityUrlParams = useGetCityParams(stateUrlParams)(supplier.CitySlug);
+
   return (
     <DescriptionListSection id={'products'} title={`Products`}>
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
         {products?.length ? (
-          <SupplierProductsList products={products} />
+          <SupplierProductsResults browseUrlParams={cityUrlParams} products={products} />
         ) : (
           <EmptyState>No reported products</EmptyState>
         )}
@@ -29,57 +40,86 @@ export const SupplierProducts: React.FC<ISupplierProductsProps> = ({ supplier })
   );
 };
 
-interface ISupplierProductsListProps {
+interface ISupplierProductsResultsProps {
   products: IGetSupplierProductFilterResult[];
+  browseUrlParams: ImmutableURLSearchParams;
 }
-export const SupplierProductsList: React.FC<ISupplierProductsListProps> = ({ products }) => {
+export const SupplierProductsResults: React.FC<ISupplierProductsResultsProps> = ({ products, browseUrlParams }) => {
   const sorted = sortBy(products, ['manufacturer_slug', 'slug']);
   const grouped = groupBy(sorted, 'manufacturer_slug');
 
   return (
     <>
-      {Object.entries(grouped).map(([key, products]) => {
-        const { manufacturer_name, manufacturer_slug } = products[0] ?? {};
-        if (!manufacturer_slug) return null;
-
-        const href = getBrowseLink({ manfacturer: manufacturer_slug });
+      {Object.values(grouped).map((products) => {
+        const sampleProduct = products[0];
+        if (!sampleProduct) return null;
 
         return (
-          <DescriptionListItem
-            key={key}
-            term={
-              <Link className="hover:underline" href={href}>
-                {manufacturer_name}
-              </Link>
-            }
-            data={<SupplierProductsListProducts manufacturer_slug={manufacturer_slug} products={products} />}
+          <SupplierManufacturer
+            key={sampleProduct.manufacturer_slug}
+            manufacturer={sampleProduct}
+            products={products}
+            browseUrlParams={browseUrlParams}
           />
         );
       })}
     </>
   );
 };
-interface ISupplierProductsListProductsProps {
-  manufacturer_slug: IManufacturer['slug'];
+
+interface ISupplierManufacturerProps {
+  manufacturer: Pick<IManufacturer, 'name' | 'slug'>;
   products: IGetSupplierProductFilterResult[];
+  browseUrlParams: ImmutableURLSearchParams;
 }
-export const SupplierProductsListProducts: React.FC<ISupplierProductsListProductsProps> = ({
+export const SupplierManufacturer: React.FC<ISupplierManufacturerProps> = ({
+  manufacturer,
   products,
-  manufacturer_slug,
+  browseUrlParams,
 }) => {
+  const manufacturerUrlParams = useGetManufacturerParams(browseUrlParams)(manufacturer.slug);
+  const href = getParamsUrl(manufacturerUrlParams);
+
+  return (
+    <DescriptionListItem
+      term={
+        <Link className="hover:underline" href={href}>
+          {manufacturer.name}
+        </Link>
+      }
+      data={<SupplierProductsList manufacturerUrlParams={manufacturerUrlParams} products={products} />}
+    />
+  );
+};
+
+interface ISupplierProductsListProps {
+  products: IGetSupplierProductFilterResult[];
+  manufacturerUrlParams: ImmutableURLSearchParams;
+}
+export const SupplierProductsList: React.FC<ISupplierProductsListProps> = ({ products, manufacturerUrlParams }) => {
   return (
     <ol>
       {products.map((product) => {
-        const href = getBrowseLink({ manfacturer: manufacturer_slug, product: product.slug });
-
-        return (
-          <li key={product.id}>
-            <Link className="hover:underline" href={href}>
-              {product.name}
-            </Link>
-          </li>
-        );
+        return <SupplierProductItem key={product.id} product={product} manufacturerUrlParams={manufacturerUrlParams} />;
       })}
     </ol>
+  );
+};
+
+interface ISupplierProductItemProps {
+  product: IGetSupplierProductFilterResult;
+  manufacturerUrlParams: ImmutableURLSearchParams;
+}
+
+export const SupplierProductItem: React.FC<ISupplierProductItemProps> = ({ product, manufacturerUrlParams }) => {
+  const productUrlParams = useGetProductParams(manufacturerUrlParams)(product.slug);
+  const href = getParamsUrl(productUrlParams);
+
+  return (
+    <li>
+      <Link className="hover:underline" href={href}>
+        {product.name}
+      </Link>
+    </li>
   );
 };

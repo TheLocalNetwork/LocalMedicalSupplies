@@ -1,4 +1,5 @@
 'use server';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { LinkButton } from '~/components/form/LinkButton';
 import { getParamsUrl, useGetCountyParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
@@ -26,11 +27,11 @@ const countyStatementSql = sql`
 `;
 
 export interface IGeoCountyDialogContentProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const GeoCountyDialogContent: React.FC<IGeoCountyDialogContentProps> = ({ urlSearchParams }) => {
-  const results = db.prepare(countyStatementSql).all({ state: urlSearchParams.get('state') }) as IZipCounty[];
-  const getParams = useGetCountyParams(urlSearchParams);
+export const GeoCountyDialogContent: React.FC<IGeoCountyDialogContentProps> = ({ immUrlSearchParams }) => {
+  const results = db.prepare(countyStatementSql).all({ state: immUrlSearchParams.get('state') }) as IZipCounty[];
+  const getParams = useGetCountyParams(immUrlSearchParams);
 
   return (
     <div className="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4">

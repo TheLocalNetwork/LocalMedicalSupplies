@@ -1,4 +1,5 @@
 'use server';
+import { type ImmutableURLSearchParams } from 'immurl';
 import { LinkButton } from '~/components/form/LinkButton';
 import { getParamsUrl, useGetCityParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
@@ -6,11 +7,11 @@ import { sql } from '~/lib/string';
 import { type IZipCity } from '~/types/zip';
 
 export interface IGeoCityDialogContentProps {
-  urlSearchParams: URLSearchParams;
+  immUrlSearchParams: ImmutableURLSearchParams;
 }
-export const GeoCityDialogContent: React.FC<IGeoCityDialogContentProps> = ({ urlSearchParams }) => {
-  const state = urlSearchParams.get('state');
-  const county = urlSearchParams.get('county');
+export const GeoCityDialogContent: React.FC<IGeoCityDialogContentProps> = ({ immUrlSearchParams }) => {
+  const state = immUrlSearchParams.get('state');
+  const county = immUrlSearchParams.get('county');
   const binding = { state, county };
 
   const cityStatementSql = sql`
@@ -35,7 +36,7 @@ export const GeoCityDialogContent: React.FC<IGeoCityDialogContentProps> = ({ url
   `;
 
   const results = db.prepare(cityStatementSql).all(binding) as IZipCity[];
-  const getParams = useGetCityParams(urlSearchParams);
+  const getParams = useGetCityParams(immUrlSearchParams);
 
   return (
     <div className="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4">

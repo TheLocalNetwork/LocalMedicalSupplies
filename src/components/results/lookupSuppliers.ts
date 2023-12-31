@@ -1,3 +1,4 @@
+import { type ImmutableURLSearchParams } from 'immurl';
 import { compact, isEmpty } from 'lodash';
 import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
 import { db } from '~/lib/db/db';
@@ -10,13 +11,13 @@ export interface IGeoSupplierResults extends IGeoSupplier {
   numResults: number;
   rowNumber: number;
 }
-export const lookupSuppliers = (urlSearchParams: URLSearchParams): ILookupResults => {
-  const offset = Number(urlSearchParams.get('offset') ?? DEFAULT_OFFSET);
-  const limit = Number(urlSearchParams.get('limit') ?? DEFAULT_LIMIT);
-  const state = urlSearchParams.get('state');
-  const county = urlSearchParams.get('county');
-  const city = urlSearchParams.get('city');
-  const zip = urlSearchParams.get('zip');
+export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): ILookupResults => {
+  const offset = Number(immUrlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+  const state = immUrlSearchParams.get('state');
+  const county = immUrlSearchParams.get('county');
+  const city = immUrlSearchParams.get('city');
+  const zip = immUrlSearchParams.get('zip');
 
   const binding = {
     limit,

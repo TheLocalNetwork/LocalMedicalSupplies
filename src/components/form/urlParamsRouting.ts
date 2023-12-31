@@ -1,12 +1,13 @@
+import { type ImmutableURLSearchParams } from 'immurl';
 import { useRouter } from 'next/navigation';
 import { getParamsUrl, useGetLimitParams, useGetStateParams, type TFnSetUrlParam } from '~/components/form/urlParams';
 
 const useSetParams = (
-  urlSearchParams: URLSearchParams,
-  useGetParams: (urlSearchParams: URLSearchParams) => TFnSetUrlParam
+  immUrlSearchParams: ImmutableURLSearchParams,
+  useGetParams: (immUrlSearchParams: ImmutableURLSearchParams) => TFnSetUrlParam
 ) => {
   const router = useRouter();
-  const getParams = useGetParams(urlSearchParams);
+  const getParams = useGetParams(immUrlSearchParams);
 
   const fn = (value: string | null) => {
     const params = getParams(value);
@@ -16,5 +17,7 @@ const useSetParams = (
   return fn;
 };
 
-export const useSetState = (urlSearchParams: URLSearchParams) => useSetParams(urlSearchParams, useGetStateParams);
-export const useSetLimit = (urlSearchParams: URLSearchParams) => useSetParams(urlSearchParams, useGetLimitParams);
+export const useSetState = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useSetParams(immUrlSearchParams, useGetStateParams);
+export const useSetLimit = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  useSetParams(immUrlSearchParams, useGetLimitParams);
