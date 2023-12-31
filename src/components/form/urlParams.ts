@@ -111,6 +111,25 @@ export const useGetZipParams: TFnGetUrlParamHook = (inSearchParams: URLSearchPar
  *
  */
 
+export const useGetCategoryParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
+  const fn = (value: string | null) => {
+    const outSearchParams = new URLSearchParams(inSearchParams);
+
+    if (isValidSimpleParam(value)) {
+      outSearchParams.set('category', value);
+    } else {
+      outSearchParams.delete('category');
+    }
+
+    outSearchParams.delete('offset');
+
+    outSearchParams.sort();
+    return outSearchParams;
+  };
+
+  return fn;
+};
+
 /**
  * PAGINATION Params
  *

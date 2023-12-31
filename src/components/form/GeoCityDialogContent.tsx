@@ -1,6 +1,6 @@
 'use server';
-import { Button } from '~/components/catalyst/button';
-import { useGetCityParams } from '~/components/form/urlParams';
+import { LinkButton } from '~/components/form/LinkButton';
+import { getParamsUrl, useGetCityParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
 import { type IZipCity } from '~/types/zip';
@@ -38,14 +38,15 @@ export const GeoCityDialogContent: React.FC<IGeoCityDialogContentProps> = ({ url
   const getParams = useGetCityParams(urlSearchParams);
 
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4">
       {results.map((city) => {
         const params = getParams(city.CitySlug);
+        const href = getParamsUrl(params);
 
         return (
-          <Button key={city.id} outline href={`/?${params.toString()}`}>
+          <LinkButton key={city.id} href={href}>
             <>{city.CityName}</>
-          </Button>
+          </LinkButton>
         );
       })}
     </div>

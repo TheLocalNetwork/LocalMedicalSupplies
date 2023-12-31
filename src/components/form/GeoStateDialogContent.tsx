@@ -1,6 +1,6 @@
 'use server';
-import { Button } from '~/components/catalyst/button';
-import { useGetStateParams } from '~/components/form/urlParams';
+import { LinkButton } from '~/components/form/LinkButton';
+import { getParamsUrl, useGetStateParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
 import { type IZipState } from '~/types/zip';
@@ -32,14 +32,15 @@ export const GeoStateDialogContent: React.FC<IGeoStateDialogContentProps> = ({ u
   const getParams = useGetStateParams(urlSearchParams);
 
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="columns-1 gap-2 sm:columns-2 md:columns-3 lg:columns-4">
       {results.map((state) => {
         const params = getParams(state.StateSlug);
+        const href = getParamsUrl(params);
 
         return (
-          <Button key={state.id} outline href={`/?${params.toString()}`}>
+          <LinkButton key={state.id} href={href}>
             <>{state.StateName}</>
-          </Button>
+          </LinkButton>
         );
       })}
     </div>

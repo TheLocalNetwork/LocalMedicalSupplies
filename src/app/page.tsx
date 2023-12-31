@@ -61,6 +61,10 @@ const createUrlSearchParamsFromFilterUrlParams = (filterUrlParams: IFilterUrlPar
    *
    */
 
+  if (isValidSimpleParam(filterUrlParams.category)) {
+    urlSearchParams.set('category', filterUrlParams.category);
+  }
+
   /**
    * PAGINATIoN PARAMS
    *

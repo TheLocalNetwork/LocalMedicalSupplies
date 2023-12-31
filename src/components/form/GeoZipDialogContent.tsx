@@ -1,7 +1,7 @@
 'use server';
 import { compact } from 'lodash';
-import { Button } from '~/components/catalyst/button';
-import { useGetZipParams } from '~/components/form/urlParams';
+import { LinkButton } from '~/components/form/LinkButton';
+import { getParamsUrl, useGetZipParams } from '~/components/form/urlParams';
 import { db } from '~/lib/db/db';
 import { sql } from '~/lib/string';
 import { type IZipCode } from '~/types/zip';
@@ -38,14 +38,15 @@ export const GeoZipDialogContent: React.FC<IGeoZipDialogContentProps> = ({ urlSe
   const getParams = useGetZipParams(urlSearchParams);
 
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="columns-[7em]">
       {results.map((zip) => {
         const params = getParams(zip.ZIPCode);
+        const href = getParamsUrl(params);
 
         return (
-          <Button key={zip.ZIPCode} outline href={`/?${params.toString()}`}>
+          <LinkButton key={zip.ZIPCode} href={href}>
             <>{zip.ZIPCode}</>
-          </Button>
+          </LinkButton>
         );
       })}
     </div>
