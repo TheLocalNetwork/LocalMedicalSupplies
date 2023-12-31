@@ -1,7 +1,7 @@
-import InformationCircleIcon from '@heroicons/react/16/solid/InformationCircleIcon';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { EmptyState } from '~/components/elements/EmptyState';
 import { List } from '~/components/elements/List';
 import { getAllSupplierSpeciality } from '~/lib/db/supplier-speciality/getAllSupplierSpeciality';
 import { getBrowseLink } from '~/lib/link/browse';
@@ -24,14 +24,7 @@ export const SupplierSpecialities = ({ supplier }: { supplier: IGeoSupplier }) =
   return (
     <DescriptionListSection id={'specialities'} title={`Specialities`}>
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        {specialities?.length ? (
-          <List items={listItems} />
-        ) : (
-          <p className="flex items-center gap-2">
-            <InformationCircleIcon className="inline-block size-6" />
-            <span>No reported specialities</span>
-          </p>
-        )}
+        {specialities?.length ? <List items={listItems} /> : <EmptyState>No reported specialities</EmptyState>}
       </div>
     </DescriptionListSection>
   );

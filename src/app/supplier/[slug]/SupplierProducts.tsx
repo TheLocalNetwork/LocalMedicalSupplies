@@ -1,4 +1,3 @@
-import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import { groupBy, sortBy } from 'lodash';
 import { Link } from '~/components/catalyst/link';
 import { DescriptionListItem, DescriptionListSection } from '~/components/elements/DescriptionListSection';
@@ -9,6 +8,7 @@ import {
 import { getBrowseLink } from '~/lib/link/browse';
 import { type IGeoSupplier } from '~/types/Supplier';
 import { type IManufacturer } from '~/types/tables';
+import { EmptyState } from '../../../components/elements/EmptyState';
 
 interface ISupplierProductsProps {
   supplier: IGeoSupplier;
@@ -22,10 +22,7 @@ export const SupplierProducts: React.FC<ISupplierProductsProps> = ({ supplier })
         {products?.length ? (
           <SupplierProductsList products={products} />
         ) : (
-          <p className="flex items-center gap-2">
-            <InformationCircleIcon className="inline-block size-6" />
-            <span>No reported products</span>
-          </p>
+          <EmptyState>No reported products</EmptyState>
         )}
       </div>
     </DescriptionListSection>

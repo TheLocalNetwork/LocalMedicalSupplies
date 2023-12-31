@@ -1,7 +1,7 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
-import InformationCircleIcon from '@heroicons/react/20/solid/esm/InformationCircleIcon';
 import { sortBy } from 'lodash';
 import { DescriptionListSection } from '~/components/elements/DescriptionListSection';
+import { EmptyState } from '~/components/elements/EmptyState';
 import { List } from '~/components/elements/List';
 import { getAllSupplierProviderType } from '~/lib/db/supplier-providertype/getAllSupplierProviderType';
 import { getBrowseLink } from '~/lib/link/browse';
@@ -24,14 +24,7 @@ export const SupplierProviderTypes = ({ supplier }: { supplier: IGeoSupplier }) 
   return (
     <DescriptionListSection id={'provider_types'} title={`Provider Types`}>
       <div className="mt-6 border-t border-black/10 py-6 dark:border-white/10">
-        {providerTypes?.length ? (
-          <List items={listItems} />
-        ) : (
-          <p className="flex items-center gap-2">
-            <InformationCircleIcon className="inline-block size-6" />
-            <span>No reported provider types</span>
-          </p>
-        )}
+        {providerTypes?.length ? <List items={listItems} /> : <EmptyState>No reported provider types</EmptyState>}
       </div>
     </DescriptionListSection>
   );
