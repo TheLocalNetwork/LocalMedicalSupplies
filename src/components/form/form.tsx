@@ -5,6 +5,8 @@ import { GeoCountyDialog } from '~/components/form/GeoCountyDialog';
 import { GeoCountyDialogContent } from '~/components/form/GeoCountyDialogContent';
 import { GeoStateDialog } from '~/components/form/GeoStateDialog';
 import { GeoStateDialogContent } from '~/components/form/GeoStateDialogContent';
+import { GeoZipDialog } from '~/components/form/GeoZipDialog';
+import { GeoZipDialogContent } from '~/components/form/GeoZipDialogContent';
 import { isValidSimpleParam } from '~/components/form/urlParams';
 import { PaginationSelectLimit } from './PaginationSelectLimit';
 
@@ -34,6 +36,12 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
         <GeoCityDialog urlSearchString={urlSearchString}>
           <GeoCityDialogContent urlSearchParams={urlSearchParams} />
         </GeoCityDialog>
+      ) : null}
+
+      {isValidSimpleParam(state) ? (
+        <GeoZipDialog urlSearchString={urlSearchString}>
+          <GeoZipDialogContent urlSearchParams={urlSearchParams} />
+        </GeoZipDialog>
       ) : null}
 
       <PaginationSelectLimit urlSearchString={urlSearchString} />
