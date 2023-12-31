@@ -14,10 +14,14 @@ export interface IGeoSupplierResults extends IGeoSupplier {
 export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): ILookupResults => {
   const offset = Number(immUrlSearchParams.get('offset') ?? DEFAULT_OFFSET);
   const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+
   const state = immUrlSearchParams.get('state');
   const county = immUrlSearchParams.get('county');
   const city = immUrlSearchParams.get('city');
   const zip = immUrlSearchParams.get('zip');
+
+  const manufacturer = immUrlSearchParams.get('manufacturer');
+  const product = immUrlSearchParams.get('product');
 
   const binding = {
     limit,
@@ -26,15 +30,48 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
     county,
     city,
     zip,
+    manufacturer,
+    product,
   };
 
-  const filters = compact([
-    state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null,
-    county && !isEmpty(county) ? `ZIP_COUNTY.CountySlug = :county` : null,
-    city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null,
-    zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null,
-  ]);
+  const stateFilter = state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null;
+  const countyFilter = county && !isEmpty(county) ? `ZIP_COUNTY.CountySlug = :county` : null;
+  const cityFilter = city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null;
+  const zipFilter = zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null;
+  const manufacturerFilter =
+    manufacturer && !product && !isEmpty(manufacturer)
+      ? sql`
+          SUPPLIER.id IN (
+            SELECT
+              SUPPLIER_PRODUCT.provider_id
+            FROM
+              SUPPLIER_PRODUCT
+              INNER JOIN PRODUCT ON PRODUCT.id = SUPPLIER_PRODUCT.product_id
+              INNER JOIN MANUFACTURER ON MANUFACTURER.id = PRODUCT.manufacturer_id
+            WHERE
+              MANUFACTURER.slug = :manufacturer
+          )
+        `
+      : null;
 
+  const productFilter =
+    manufacturer && product && !isEmpty(product)
+      ? sql`
+          SUPPLIER.id IN (
+            SELECT
+              SUPPLIER_PRODUCT.provider_id
+            FROM
+              SUPPLIER_PRODUCT
+              INNER JOIN PRODUCT ON PRODUCT.id = SUPPLIER_PRODUCT.product_id
+              INNER JOIN MANUFACTURER ON MANUFACTURER.id = PRODUCT.manufacturer_id
+            WHERE
+              MANUFACTURER.slug = :manufacturer
+              AND PRODUCT.slug = :product
+          )
+        `
+      : null;
+
+  const filters = compact([stateFilter, countyFilter, cityFilter, zipFilter, manufacturerFilter, productFilter]);
   const whereClause = filters.length > 0 ? [`\nWHERE`, filters.join('\nAND\n')].join(`\n`) : '';
 
   const statement = db.prepare(sql`

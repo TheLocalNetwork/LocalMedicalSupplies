@@ -54,10 +54,15 @@ export const SupplierProductsResults: React.FC<ISupplierProductsResultsProps> = 
         const sampleProduct = products[0];
         if (!sampleProduct) return null;
 
+        const manufacturer = {
+          name: sampleProduct.manufacturer_name,
+          slug: sampleProduct.manufacturer_slug,
+        };
+
         return (
           <SupplierManufacturer
             key={sampleProduct.manufacturer_slug}
-            manufacturer={sampleProduct}
+            manufacturer={manufacturer}
             products={products}
             browseUrlParams={browseUrlParams}
           />
