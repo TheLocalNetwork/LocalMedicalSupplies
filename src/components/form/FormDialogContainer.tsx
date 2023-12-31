@@ -4,47 +4,43 @@ import { useState } from 'react';
 import { Button } from '~/components/catalyst/button';
 import { Dialog, DialogActions, DialogBody, DialogTitle } from '~/components/catalyst/dialog';
 import { Field, Label } from '~/components/catalyst/fieldset';
-import { getParamsUrl, useGetCityParams } from '~/components/form/urlParams';
 
-export interface ICityDialogProps extends React.PropsWithChildren {
-  urlSearchString: string;
+export interface IFormDialogContainer extends React.PropsWithChildren {
+  label: string;
+  unsetHref: string;
+  currentValue: string | null;
 }
-export const GeoCityDialog: React.FC<ICityDialogProps> = ({ urlSearchString, children }) => {
-  const urlSearchParams = new URLSearchParams(urlSearchString);
-  const city = urlSearchParams.get('city');
-
-  const noCityParams = useGetCityParams(urlSearchParams)(null);
-  const noCityHref = getParamsUrl(noCityParams);
-
+export const FormDialogContainer: React.FC<IFormDialogContainer> = ({ label, currentValue, unsetHref, children }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const fakedName = (city ?? '').split('-').join(' ');
+  const fakedName = (currentValue ?? '').split('-').join(' ');
 
   return (
     <Field>
-      <Label>City</Label>
+      <Label>{label}</Label>
       <div data-slot="control">
         <div className="flex w-full items-center justify-between gap-1">
           <Button
             type="button"
-            className="w-full max-w-full cursor-pointer justify-between overflow-hidden  capitalize"
+            className="w-full max-w-full cursor-pointer justify-between overflow-hidden"
             outline
             onClick={() => setIsOpen(true)}
-            title="Select a city"
+            title={`Select a ${label}`}
           >
             <div className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left">
-              {city ? <>{fakedName}</> : <>Select a City</>}
+              {currentValue ? <span className="capitalize">{fakedName}</span> : <>Select a {label}</>}
             </div>
             <ArrowTopRightOnSquareIcon />
           </Button>
-          {city ? (
-            <Button type="button" outline href={noCityHref} title="Remove city selection">
+
+          {currentValue ? (
+            <Button type="button" outline href={unsetHref} title={`Remove ${label} Selection`}>
               <XMarkIcon />
             </Button>
           ) : null}
         </div>
+
         <Dialog open={isOpen} onClose={setIsOpen} size="5xl">
-          <DialogTitle>Select a City</DialogTitle>
+          <DialogTitle>Select a {label}</DialogTitle>
           <DialogBody>{children}</DialogBody>
           <DialogActions>
             <Button plain onClick={() => setIsOpen(false)}>

@@ -1,13 +1,19 @@
+import clsx from 'clsx';
+import { type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { Button } from '~/components/catalyst/button';
-import { GeoCityDialog } from '~/components/form/GeoCityDialog';
+import { FormDialogContainer } from '~/components/form/FormDialogContainer';
 import { GeoCityDialogContent } from '~/components/form/GeoCityDialogContent';
-import { GeoCountyDialog } from '~/components/form/GeoCountyDialog';
 import { GeoCountyDialogContent } from '~/components/form/GeoCountyDialogContent';
-import { GeoStateDialog } from '~/components/form/GeoStateDialog';
 import { GeoStateDialogContent } from '~/components/form/GeoStateDialogContent';
-import { GeoZipDialog } from '~/components/form/GeoZipDialog';
 import { GeoZipDialogContent } from '~/components/form/GeoZipDialogContent';
-import { isValidSimpleParam } from '~/components/form/urlParams';
+import {
+  getParamsUrl,
+  isValidSimpleParam,
+  useGetCityParams,
+  useGetCountyParams,
+  useGetStateParams,
+  useGetZipParams,
+} from '~/components/form/urlParams';
 import { PaginationSelectLimit } from './PaginationSelectLimit';
 
 export interface IFormProps {
@@ -17,39 +23,70 @@ export const Form: React.FC<IFormProps> = ({ urlSearchParams }) => {
   const urlSearchString = urlSearchParams.toString(); // must serialize before passing to a client-side component
 
   const state = urlSearchParams.get('state');
+  const county = urlSearchParams.get('county');
+  const city = urlSearchParams.get('city');
+  const zip = urlSearchParams.get('zip');
+
+  const unsetStateHref = getParamsUrl(useGetStateParams(urlSearchParams)(null));
+  const unsetCountyHref = getParamsUrl(useGetCountyParams(urlSearchParams)(null));
+  const unsetCityHref = getParamsUrl(useGetCityParams(urlSearchParams)(null));
+  const unsetZipHref = getParamsUrl(useGetZipParams(urlSearchParams)(null));
 
   return (
     <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
-      <h1>Search Filters</h1>
+      <header>
+        <h1 className="font-semibold">Filter Options</h1>
+      </header>
 
-      <GeoStateDialog urlSearchString={urlSearchString}>
-        <GeoStateDialogContent urlSearchParams={urlSearchParams} />
-      </GeoStateDialog>
+      <FormSection title={`Location Filters`}>
+        <FormDialogContainer label={'State'} currentValue={urlSearchParams.get('state')} unsetHref={unsetStateHref}>
+          <GeoStateDialogContent urlSearchParams={urlSearchParams} />
+        </FormDialogContainer>
 
-      {isValidSimpleParam(state) ? (
-        <GeoCountyDialog urlSearchString={urlSearchString}>
-          <GeoCountyDialogContent urlSearchParams={urlSearchParams} />
-        </GeoCountyDialog>
-      ) : null}
+        {isValidSimpleParam(state) ? (
+          <FormDialogContainer label={'County or Parish'} currentValue={county} unsetHref={unsetCountyHref}>
+            <GeoCountyDialogContent urlSearchParams={urlSearchParams} />
+          </FormDialogContainer>
+        ) : null}
 
-      {isValidSimpleParam(state) ? (
-        <GeoCityDialog urlSearchString={urlSearchString}>
-          <GeoCityDialogContent urlSearchParams={urlSearchParams} />
-        </GeoCityDialog>
-      ) : null}
+        {isValidSimpleParam(state) ? (
+          <FormDialogContainer label={'City'} currentValue={city} unsetHref={unsetCityHref}>
+            <GeoCityDialogContent urlSearchParams={urlSearchParams} />
+          </FormDialogContainer>
+        ) : null}
 
-      {isValidSimpleParam(state) ? (
-        <GeoZipDialog urlSearchString={urlSearchString}>
-          <GeoZipDialogContent urlSearchParams={urlSearchParams} />
-        </GeoZipDialog>
-      ) : null}
+        {isValidSimpleParam(state) ? (
+          <FormDialogContainer label={'Zip Code'} currentValue={zip} unsetHref={unsetZipHref}>
+            <GeoZipDialogContent urlSearchParams={urlSearchParams} />
+          </FormDialogContainer>
+        ) : null}
+      </FormSection>
 
-      <PaginationSelectLimit urlSearchString={urlSearchString} />
+      <FormSection title={`Supplier Characteristics`}></FormSection>
+
+      <FormSection title={`Result Options`}>
+        <PaginationSelectLimit urlSearchString={urlSearchString} />
+      </FormSection>
 
       <Button outline href={'/'}>
         <span className="hidden sm:block">{`Remove All Filters`}</span>
         <span className="block sm:hidden">{`Clear`}</span>
       </Button>
     </section>
+  );
+};
+
+interface ISectionHeaderProps extends PropsWithChildren, Omit<ComponentPropsWithoutRef<'div'>, 'title'> {
+  title: React.ReactNode;
+}
+const FormSection: React.FC<ISectionHeaderProps> = ({ title, className, children, ...attrs }) => {
+  return (
+    <div {...attrs} className={clsx('my-3 flex flex-col gap-3', className)}>
+      <header>
+        <h1 className="text-xs font-bold opacity-60">{title}</h1>
+      </header>
+
+      {children}
+    </div>
   );
 };

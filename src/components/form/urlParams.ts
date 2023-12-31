@@ -2,6 +2,7 @@ import { isEmpty, isNaN, isNil } from 'lodash';
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
 
 export type TFnSetUrlParam = (input: string | null) => URLSearchParams;
+export type TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => TFnSetUrlParam;
 
 export const getParamsUrl = (urlSearchParams: URLSearchParams) => {
   return [`/`, urlSearchParams.toString()].join(`?`);
@@ -16,7 +17,7 @@ export const isValidSimpleParam = (value: string | null | undefined): value is s
   return !(isNil(value) || isEmpty(value));
 };
 
-export const useGetStateParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetStateParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
@@ -38,7 +39,7 @@ export const useGetStateParams = (inSearchParams: URLSearchParams): TFnSetUrlPar
   return fn;
 };
 
-export const useGetCountyParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetCountyParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
@@ -59,7 +60,7 @@ export const useGetCountyParams = (inSearchParams: URLSearchParams): TFnSetUrlPa
   return fn;
 };
 
-export const useGetCityParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetCityParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
@@ -86,7 +87,7 @@ export const isValidZip = (value: string | null | undefined): value is string =>
   return zipRegex.test(value);
 };
 
-export const useGetZipParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetZipParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
@@ -125,7 +126,7 @@ export const isValidLimit = (value: string | null | undefined): value is string 
   return LIMIT_OPTIONS.includes(num);
 };
 
-export const useGetLimitParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetLimitParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
@@ -153,7 +154,7 @@ export const isValidOffset = (value: string | null | undefined): value is string
   return num > 0;
 };
 
-export const useGetOffsetParams = (inSearchParams: URLSearchParams): TFnSetUrlParam => {
+export const useGetOffsetParams: TFnGetUrlParamHook = (inSearchParams: URLSearchParams) => {
   const fn = (value: string | null) => {
     const outSearchParams = new URLSearchParams(inSearchParams);
 
