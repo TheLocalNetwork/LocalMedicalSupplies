@@ -39,5 +39,3 @@ next-env.d.ts
 .data/
 data/
 ref/
-*.sqlite-shm
-*.sqlite-wal
