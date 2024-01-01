@@ -22,7 +22,7 @@ export interface ISupplierUrlParams extends Record<string, string> {
 
 export interface IPaginationUrlParams extends Record<string, string> {
   limit?: string;
-  offset?: string;
+  page?: string;
 }
 
 export type IFilterUrlParams = IGeoUrlParams & IPaginationUrlParams & ISupplierUrlParams;

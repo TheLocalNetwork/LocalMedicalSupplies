@@ -17,7 +17,7 @@ export const useGetSimpleParams = (key: string, immUrlSearchParams: ImmutableURL
       immUrlSearchParams = immUrlSearchParams.delete(key);
     }
 
-    return immUrlSearchParams.delete('offset').sort();
+    return immUrlSearchParams.delete('page').sort();
   };
 
   return fn;
@@ -40,7 +40,7 @@ export const useGetStateParams: TFnGetUrlParamHook = (immUrlSearchParams: Immuta
       immUrlSearchParams = immUrlSearchParams.delete('state');
     }
 
-    return immUrlSearchParams.delete('county').delete('city').delete('zip').delete('offset').sort();
+    return immUrlSearchParams.delete('county').delete('city').delete('zip').delete('page').sort();
   };
 
   return fn;
@@ -54,7 +54,7 @@ export const useGetCountyParams: TFnGetUrlParamHook = (immUrlSearchParams: Immut
       immUrlSearchParams = immUrlSearchParams.delete('county');
     }
 
-    return immUrlSearchParams.delete('offset').sort();
+    return immUrlSearchParams.delete('page').sort();
   };
 
   return fn;
@@ -89,7 +89,7 @@ export const useGetZipParams: TFnGetUrlParamHook = (immUrlSearchParams: Immutabl
       immUrlSearchParams = immUrlSearchParams.delete('zip');
     }
 
-    return immUrlSearchParams.delete('offset').sort();
+    return immUrlSearchParams.delete('page').sort();
   };
 
   return fn;
@@ -154,13 +154,13 @@ export const useGetLimitParams: TFnGetUrlParamHook = (immUrlSearchParams: Immuta
       immUrlSearchParams = immUrlSearchParams.delete('limit');
     }
 
-    return immUrlSearchParams.delete('offset').sort();
+    return immUrlSearchParams.delete('page').sort();
   };
 
   return fn;
 };
 
-export const isValidOffset = (value: string | null | undefined): value is string => {
+export const isValidNumber = (value: string | null | undefined): value is string => {
   if (!isValidSimpleParam(value)) return false;
 
   const num = parseInt(value, 10);
@@ -169,12 +169,12 @@ export const isValidOffset = (value: string | null | undefined): value is string
   return num > 0;
 };
 
-export const useGetOffsetParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
+export const useGetPageParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
-    if (isValidOffset(value)) {
-      immUrlSearchParams = immUrlSearchParams.set('offset', value);
+    if (isValidNumber(value)) {
+      immUrlSearchParams = immUrlSearchParams.set('page', value);
     } else {
-      immUrlSearchParams = immUrlSearchParams.delete('offset');
+      immUrlSearchParams = immUrlSearchParams.delete('page');
     }
 
     return immUrlSearchParams.sort();

@@ -5,7 +5,7 @@ import {
   type ISupplierUrlParams,
 } from '~/types/filters';
 
-export const DEFAULT_OFFSET = 0 as const;
+export const DEFAULT_PAGE = 1 as const;
 
 export const DEFAULT_LIMIT = 50 as const;
 export const LIMIT_OPTIONS: number[] = [10, 20, 50, 100] as const;
@@ -30,7 +30,7 @@ export const emptySupplierUrlParams: ISupplierUrlParams = {
 
 export const emptyPaginationUrlParams: IPaginationUrlParams = {
   limit: '',
-  offset: '',
+  page: '',
 };
 
 export const emptyFilterUrlParams: IFilterUrlParams = {

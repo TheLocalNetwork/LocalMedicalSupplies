@@ -2,7 +2,7 @@ import { ImmutableURLSearchParams } from 'immurl';
 import { type Metadata } from 'next';
 import { Card } from '~/components/elements/Card';
 import { Form } from '~/components/form/form';
-import { isValidLimit, isValidOffset, isValidSimpleParam, isValidZip } from '~/components/form/urlParams';
+import { isValidLimit, isValidNumber, isValidSimpleParam, isValidZip } from '~/components/form/urlParams';
 import { Results } from '~/components/results/results';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
 import { type IFilterUrlParams } from '~/types/filters';
@@ -75,7 +75,7 @@ const createUrlSearchParamsFromFilterUrlParams = (filterUrlParams: IFilterUrlPar
   }
 
   /**
-   * PAGINATIoN PARAMS
+   * PAGINATION PARAMS
    *
    */
 
@@ -83,8 +83,8 @@ const createUrlSearchParamsFromFilterUrlParams = (filterUrlParams: IFilterUrlPar
     immUrlSearchParams = immUrlSearchParams.set('limit', filterUrlParams.limit);
   }
 
-  if (isValidOffset(filterUrlParams.offset)) {
-    immUrlSearchParams = immUrlSearchParams.set('offset', filterUrlParams.offset);
+  if (isValidNumber(filterUrlParams.page)) {
+    immUrlSearchParams = immUrlSearchParams.set('page', filterUrlParams.page);
   }
 
   return immUrlSearchParams;
