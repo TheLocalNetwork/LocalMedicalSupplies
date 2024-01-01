@@ -4,6 +4,7 @@ import { readFileSync } from 'fs-extra';
 import { chunk } from 'lodash';
 import path from 'node:path';
 import { db } from '~/lib/db/db';
+import { sql } from '~/lib/string';
 
 type TZipColumn = keyof typeof zipTableSchema;
 
@@ -32,7 +33,12 @@ const main = () => {
 
 const insertStagingData = (fields: TZipColumn[], csvData: string[]) => {
   const fieldParams = fields.map(() => '?').join();
-  const insertStatement = db.prepare(`INSERT INTO "${STAGING_TABLE_NAME}" VALUES (${fieldParams});`);
+  const insertStatement = db.prepare(sql`
+    INSERT INTO
+      "${STAGING_TABLE_NAME}"
+    VALUES
+      (${fieldParams});
+  `);
 
   const insertManytoStaging = insertMany(insertStatement);
 

@@ -1,5 +1,5 @@
 import { db } from '~/lib/db/db';
-import { slugify } from '~/lib/string';
+import { slugify, sql } from '~/lib/string';
 import { type ISupplierCSV } from '~/scripts/csv/types/Supplier';
 import { boolTrueFalse } from '~/scripts/sql';
 import { type ISupplier } from '~/types/Supplier';
@@ -123,7 +123,12 @@ FROM
       'is_contracted_for_cba',
     ];
     const params = fields.map((field) => `@${field}`);
-    const insertSupplier = db.prepare(`INSERT INTO SUPPLIER (${fields.join()}) VALUES (${params.join(',')});`);
+    const insertSupplier = db.prepare(sql`
+      INSERT INTO
+        SUPPLIER (${fields.join()})
+      VALUES
+        (${params.join(',')});
+    `);
 
     for (const supplier of suppliersStaging) {
       const zip = supplier.practicezip9code.substring(0, 5);
