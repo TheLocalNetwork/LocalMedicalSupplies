@@ -43,7 +43,12 @@ export const FormDialogContainer: React.FC<IFormDialogContainer> = ({ label, cur
           <DialogTitle>Select a {label}</DialogTitle>
           <DialogBody>{children}</DialogBody>
           <DialogActions>
-            <Button plain onClick={() => setIsOpen(false)}>
+            {currentValue ? (
+              <Button color="red" href={unsetHref}>
+                Remove
+              </Button>
+            ) : null}
+            <Button color={'dark/zinc'} onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
           </DialogActions>

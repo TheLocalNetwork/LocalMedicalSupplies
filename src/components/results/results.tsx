@@ -1,5 +1,5 @@
 import { type ImmutableURLSearchParams } from 'immurl';
-import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '~/components/form/consts';
+import { DEFAULT_LIMIT, DEFAULT_PAGE } from '~/components/form/consts';
 import { Paginator } from './Paginator';
 import { SupplierResult } from './SupplierResult';
 import { lookupSuppliers } from './lookupSuppliers';
@@ -42,8 +42,9 @@ interface IResultsHeaderProps {
   numResults: number;
 }
 const ResultsHeader: React.FC<IResultsHeaderProps> = ({ immUrlSearchParams, numResults }) => {
-  const offset = Number(immUrlSearchParams.get('offset') ?? DEFAULT_OFFSET);
+  const page = Number(immUrlSearchParams.get('page') ?? DEFAULT_PAGE);
   const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
+  const offset = (page - 1) * limit;
 
   return (
     <header>

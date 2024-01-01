@@ -21,8 +21,11 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
   const city = immUrlSearchParams.get('city');
   const zip = immUrlSearchParams.get('zip');
 
+  const category = immUrlSearchParams.get('category');
   const manufacturer = immUrlSearchParams.get('manufacturer');
   const product = immUrlSearchParams.get('product');
+  const providertype = immUrlSearchParams.get('providertype');
+  const speciality = immUrlSearchParams.get('speciality');
 
   const binding = {
     page,
@@ -32,14 +35,63 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
     county,
     city,
     zip,
+    category,
     manufacturer,
     product,
+    providertype,
+    speciality,
   };
 
   const stateFilter = state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null;
   const countyFilter = county && !isEmpty(county) ? `ZIP_COUNTY.CountySlug = :county` : null;
   const cityFilter = city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null;
   const zipFilter = zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null;
+
+  const categoryFilter =
+    category && !isEmpty(category)
+      ? sql`
+          SUPPLIER.id IN (
+            SELECT
+              SUPPLIER_SUPPLY.provider_id
+            FROM
+              SUPPLIER_SUPPLY
+              INNER JOIN SUPPLY ON SUPPLY.id = SUPPLIER_SUPPLY.supply_id
+            WHERE
+              SUPPLY.slug = :category
+          )
+        `
+      : null;
+
+  const specialityFilter =
+    speciality && !isEmpty(speciality)
+      ? sql`
+          SUPPLIER.id IN (
+            SELECT
+              SUPPLIER_SPECIALITY.provider_id
+            FROM
+              SUPPLIER_SPECIALITY
+              INNER JOIN SPECIALITY ON SPECIALITY.id = SUPPLIER_SPECIALITY.SPECIALITY_id
+            WHERE
+              SPECIALITY.slug = :speciality
+          )
+        `
+      : null;
+
+  const providertypeFilter =
+    providertype && !isEmpty(providertype)
+      ? sql`
+          SUPPLIER.id IN (
+            SELECT
+              SUPPLIER_PROVIDERTYPE.provider_id
+            FROM
+              SUPPLIER_PROVIDERTYPE
+              INNER JOIN PROVIDERTYPE ON PROVIDERTYPE.id = SUPPLIER_PROVIDERTYPE.providertype_id
+            WHERE
+              PROVIDERTYPE.slug = :providertype
+          )
+        `
+      : null;
+
   const manufacturerFilter =
     manufacturer && !product && !isEmpty(manufacturer)
       ? sql`
@@ -73,7 +125,17 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
         `
       : null;
 
-  const filters = compact([stateFilter, countyFilter, cityFilter, zipFilter, manufacturerFilter, productFilter]);
+  const filters = compact([
+    stateFilter,
+    countyFilter,
+    cityFilter,
+    zipFilter,
+    categoryFilter,
+    manufacturerFilter,
+    productFilter,
+    providertypeFilter,
+    specialityFilter,
+  ]);
   const whereClause = filters.length > 0 ? [`\nWHERE`, filters.join('\nAND\n')].join(`\n`) : '';
 
   const statement = db.prepare(sql`

@@ -107,7 +107,7 @@ export const useGetManufacturerParams: TFnGetUrlParamHook = (immUrlSearchParams:
   const fn = useGetSimpleParams('manufacturer', immUrlSearchParams);
 
   const extendFn = (value: string | null) => {
-    return fn(value).delete('category');
+    return fn(value).delete('product').sort();
   };
 
   return extendFn;
@@ -115,6 +115,7 @@ export const useGetManufacturerParams: TFnGetUrlParamHook = (immUrlSearchParams:
 
 export const useGetProductParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
   useGetSimpleParams('product', immUrlSearchParams);
+
 
 export const useGetBrandParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
   useGetSimpleParams('brand', immUrlSearchParams);
