@@ -8,6 +8,12 @@ CREATE INDEX IX_PROVIDERTYPE_idx_slug ON PROVIDERTYPE (slug);
 
 CREATE INDEX IX_SPECIALITY_slug ON SPECIALITY (slug);
 
+CREATE INDEX IX_SUPPLIER_accepts_assignment__zip ON SUPPLIER (accepts_assignment, zip);
+
+CREATE INDEX IX_SUPPLIER_is_contracted_for_cba ON SUPPLIER (is_contracted_for_cba);
+
+CREATE INDEX IX_SUPPLIER_is_contracted_for_cba__accepts_assignment ON SUPPLIER (is_contracted_for_cba, accepts_assignment);
+
 CREATE INDEX IX_SUPPLIER_PRODUCT_product_id ON SUPPLIER_PRODUCT (product_id);
 
 CREATE INDEX IX_SUPPLIER_PROVIDERTYPE_providertype_id ON SUPPLIER_PROVIDERTYPE (providertype_id);
@@ -19,6 +25,8 @@ CREATE INDEX IX_SUPPLIER_SUPPLY_provider_id__supply_id ON SUPPLIER_SUPPLY (provi
 CREATE INDEX IX_SUPPLIER_SUPPLY_supply_id ON SUPPLIER_SUPPLY (supply_id);
 
 CREATE INDEX IX_SUPPLIER_zip ON SUPPLIER (zip);
+
+CREATE INDEX IX_SUPPLIER_zip__is_contracted_for_cba__accepts_assignment ON SUPPLIER (zip, is_contracted_for_cba, accepts_assignment);
 
 CREATE INDEX IX_SUPPLIER_zip__practice_name ON SUPPLIER (zip, practice_name);
 

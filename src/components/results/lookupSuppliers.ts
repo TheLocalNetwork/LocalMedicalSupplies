@@ -26,6 +26,8 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
   const product = immUrlSearchParams.get('product');
   const providertype = immUrlSearchParams.get('providertype');
   const speciality = immUrlSearchParams.get('speciality');
+  const cba = immUrlSearchParams.get('cba');
+  const assignment = immUrlSearchParams.get('assignment');
 
   const binding = {
     page,
@@ -40,12 +42,17 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
     product,
     providertype,
     speciality,
+    cba: cba === 'yes' ? 1 : 0,
+    assignment: assignment === 'yes' ? 1 : 0,
   };
 
   const stateFilter = state && !isEmpty(state) ? `ZIP_STATE.StateSlug = :state` : null;
   const countyFilter = county && !isEmpty(county) ? `ZIP_COUNTY.CountySlug = :county` : null;
   const cityFilter = city && !isEmpty(city) ? `ZIP_City.CitySlug = :city` : null;
   const zipFilter = zip && !isEmpty(zip) ? `SUPPLIER.zip = :zip` : null;
+  const cbaFilter = cba !== null && !isEmpty(cba) ? `SUPPLIER.is_contracted_for_cba = :cba` : null;
+  const assignmentFilter =
+    assignment !== null && !isEmpty(assignment) ? `SUPPLIER.accepts_assignment = :assignment` : null;
 
   const categoryFilter =
     category && !isEmpty(category)
@@ -135,6 +142,8 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
     productFilter,
     providertypeFilter,
     specialityFilter,
+    cbaFilter,
+    assignmentFilter,
   ]);
   const whereClause = filters.length > 0 ? [`\nWHERE`, filters.join('\nAND\n')].join(`\n`) : '';
 

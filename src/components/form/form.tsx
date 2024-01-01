@@ -11,6 +11,7 @@ import { SupplierCategoryDialogContent } from '~/components/form/SupplierCategor
 import { SupplierManufacturerDialogContent } from '~/components/form/SupplierManufacturerContent';
 import { SupplierProductDialogContent } from '~/components/form/SupplierProductContent';
 import { SupplierProviderTypeDialogContent } from '~/components/form/SupplierProviderTypeContent';
+import { SupplierSelectCba } from '~/components/form/SupplierSelectCBA';
 import { SupplierSpecialityDialogContent } from '~/components/form/SupplierSpecialityContent';
 import {
   getParamsUrl,
@@ -26,6 +27,7 @@ import {
   useGetZipParams,
 } from '~/components/form/urlParams';
 import { PaginationSelectLimit } from './PaginationSelectLimit';
+import { SupplierSelectAssignment } from '~/components/form/SupplierSelectAssignment';
 
 export interface IFormProps {
   immUrlSearchParams: ImmutableURLSearchParams;
@@ -111,6 +113,9 @@ export const Form: React.FC<IFormProps> = ({ immUrlSearchParams }) => {
         <FormDialogContainer label={'Speciality'} currentValue={speciality} unsetHref={unsetSpecialityHref}>
           <SupplierSpecialityDialogContent immUrlSearchParams={immUrlSearchParams} />
         </FormDialogContainer>
+
+        <SupplierSelectCba urlSearchString={urlSearchString} />
+        <SupplierSelectAssignment urlSearchString={urlSearchString} />
       </FormSection>
 
       <FormSection title={`Result Options`}>

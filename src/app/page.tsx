@@ -82,6 +82,14 @@ const createUrlSearchParamsFromFilterUrlParams = (filterUrlParams: IFilterUrlPar
     immUrlSearchParams = immUrlSearchParams.set('speciality', filterUrlParams.speciality);
   }
 
+  if (isValidSimpleParam(filterUrlParams.cba)) {
+    immUrlSearchParams = immUrlSearchParams.set('cba', filterUrlParams.cba);
+  }
+
+  if (isValidSimpleParam(filterUrlParams.assignment)) {
+    immUrlSearchParams = immUrlSearchParams.set('assignment', filterUrlParams.assignment);
+  }
+
   /**
    * PAGINATION PARAMS
    *
