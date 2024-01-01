@@ -1,3 +1,7 @@
+CREATE INDEX IX_MANUFACTURER_slug ON MANUFACTURER (slug);
+
+CREATE INDEX IX_PRODUCT_manufacturer_id ON PRODUCT (manufacturer_id);
+
 CREATE INDEX IX_PRODUCT_slug__manufacturer_id ON PRODUCT (slug, manufacturer_id);
 
 CREATE INDEX IX_SUPPLIER_PRODUCT_product_id ON SUPPLIER_PRODUCT (product_id);
