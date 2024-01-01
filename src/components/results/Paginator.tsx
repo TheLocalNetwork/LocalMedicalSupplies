@@ -27,25 +27,30 @@ export const Paginator: React.FC<Paginator> = ({ numResults, immUrlSearchParams 
 
   const { pageNumbers, currentPage } = generatePagesList(offset, limit, numResults);
 
+  const prevPageHref = offset > 0 ? getHref(offset - limit) : null;
+  const nextPageHref = offset + limit < numResults ? getHref(offset + limit) : null;
+
   return (
     <Pagination>
-      <PaginationPrevious href={offset > 0 ? getHref(offset - limit) : null} />
+      <PaginationPrevious href={prevPageHref} />
       <PaginationList>
         <div className="flex items-center justify-between gap-2">
           {pageNumbers.map((page, ixPage) => {
-            if (page === undefined) {
-              return <PaginationGap key={ixPage} />;
-            }
+            if (page === undefined) return <PaginationGap key={ixPage} />;
+
+            const pageOffset = (page - 1) * limit;
+            const pageHref = getHref(pageOffset);
+            const isCurrent = currentPage === page;
 
             return (
-              <PaginationPage key={ixPage} href={getHref((page - 1) * limit)} current={currentPage === page}>
+              <PaginationPage key={ixPage} href={pageHref} current={isCurrent}>
                 {page.toLocaleString()}
               </PaginationPage>
             );
           })}
         </div>
       </PaginationList>
-      <PaginationNext href={offset + limit < numResults ? getHref(offset + limit) : null} />
+      <PaginationNext href={nextPageHref} />
     </Pagination>
   );
 };

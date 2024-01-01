@@ -172,9 +172,9 @@ export const isValidOffset = (value: string | null | undefined): value is string
 export const useGetOffsetParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) => {
   const fn = (value: string | null) => {
     if (isValidOffset(value)) {
-      immUrlSearchParams = immUrlSearchParams.set('limit', value);
+      immUrlSearchParams = immUrlSearchParams.set('offset', value);
     } else {
-      immUrlSearchParams = immUrlSearchParams.delete('limit');
+      immUrlSearchParams = immUrlSearchParams.delete('offset');
     }
 
     return immUrlSearchParams.sort();
