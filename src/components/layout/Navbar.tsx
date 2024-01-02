@@ -8,14 +8,14 @@ export const Navbar = () => {
         <div className="flex flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 px-2 lg:px-0">
             <div className=" flex-shrink-0">
-              <Link href="/">
+              <a href="/" target="_top">
                 <img src={'/icon.svg'} alt={'Local Medical Supplies Logo'} className="size-8 drop-shadow-md" />
-              </Link>
+              </a>
             </div>
             <div className="hidden text-xl font-light opacity-70 md:flex md:text-2xl lg:text-3xl">
-              <Link className="hover:underline" href="/">
+              <a className="hover:underline" href="/" target="_top">
                 Local Medical Supplies
-              </Link>
+              </a>
             </div>
           </div>
 
