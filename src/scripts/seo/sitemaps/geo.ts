@@ -70,6 +70,10 @@ const zipcodesByStateStatement = db.prepare(sql`
     ZIP_ZIPCODE.ZIPCode
 `);
 
+const escapeUrl = (str: string) => str.replaceAll('&', '&amp;');
+const getSitemapUrl = (immUrlSearchParams: ImmutableURLSearchParams) =>
+  escapeUrl(getParamsUrl(immUrlSearchParams, true));
+
 export const generateGeoStateSitemaps = (inSitemapIndexItems: string[]) => {
   let sitemapIndexItems = [...inSitemapIndexItems];
 
@@ -94,7 +98,7 @@ export const generateGeoStateSitemaps = (inSitemapIndexItems: string[]) => {
 
     const citiesSitemapMeta: MetadataRoute.Sitemap = cities.map((city) => {
       const cityUrlParams = stateUrlParams.set('city', city.CitySlug);
-      const cityUrl = getParamsUrl(cityUrlParams, true);
+      const cityUrl = getSitemapUrl(cityUrlParams);
 
       return {
         url: cityUrl,
@@ -109,7 +113,7 @@ export const generateGeoStateSitemaps = (inSitemapIndexItems: string[]) => {
 
     const countiesSitemapMeta: MetadataRoute.Sitemap = counties.map((county) => {
       const countyUrlParams = stateUrlParams.set('county', county.CountySlug);
-      const countyUrl = getParamsUrl(countyUrlParams, true);
+      const countyUrl = getSitemapUrl(countyUrlParams);
 
       return {
         url: countyUrl,
@@ -124,7 +128,7 @@ export const generateGeoStateSitemaps = (inSitemapIndexItems: string[]) => {
 
     const zipcodesSitemapMeta: MetadataRoute.Sitemap = zipcodes.map((zip) => {
       const zipUrlParams = stateUrlParams.set('zip', zip.ZIPCode);
-      const zipUrl = getParamsUrl(zipUrlParams, true);
+      const zipUrl = getSitemapUrl(zipUrlParams);
 
       return {
         url: zipUrl,
