@@ -26,9 +26,15 @@ export const Results: React.FC<IResultsProps> = ({ immUrlSearchParams }) => {
           start={startRow}
           className="divide-y divide-black/10 dark:divide-white/10"
         >
-          {(suppliers ?? []).map((supplier) => (
-            <SupplierResult key={supplier.id} supplier={supplier} immUrlSearchParams={immUrlSearchParams} />
-          ))}
+          {suppliers?.length ? (
+            <>
+              {suppliers.map((supplier) => (
+                <SupplierResult key={supplier.id} supplier={supplier} immUrlSearchParams={immUrlSearchParams} />
+              ))}
+            </>
+          ) : (
+            <h1 className="my-8 p-4 text-5xl">No results</h1>
+          )}
         </ol>
       </div>
 

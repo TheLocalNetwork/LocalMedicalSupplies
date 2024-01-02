@@ -1,7 +1,7 @@
-import { isNil } from 'lodash';
+import { compact, isNil, uniq } from 'lodash';
 import { type Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { CANONICAL_DOMAIN_NAME, CANONICAL_SITE_NAME } from '~/lib/const';
+import { CANONICAL_SITE_NAME } from '~/lib/const';
 import { getSupplierGeo } from '~/lib/db/supplier/getSupplierGeo';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { SupplierHeader } from './SupplierHeader';
@@ -59,9 +59,12 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const supplier = await getSupplierFromSlug(slug);
   if (isNil(supplier)) return {};
 
+  const names = compact(uniq([supplier.practice_name, supplier.business_name]));
+  const title = [...names, CANONICAL_SITE_NAME].join(' — ');
+
   return {
-    title: `${supplier.practice_name} — ${CANONICAL_SITE_NAME}`,
-    description: `Learn about ${supplier.practice_name} in ${supplier.CityName}, ${supplier.StateName}, at ${CANONICAL_DOMAIN_NAME}`,
+    title,
+    description: `Learn about ${names.join(', ')}, in ${supplier.CityName}, ${supplier.StateName}`,
     alternates: {
       canonical: getSupplierLink(supplier, true),
     },
