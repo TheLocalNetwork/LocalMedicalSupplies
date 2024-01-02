@@ -1,12 +1,14 @@
 import { type ImmutableURLSearchParams } from 'immurl';
-import { isEmpty, isNaN, isNil } from 'lodash';
+import { compact, isEmpty, isNaN, isNil } from 'lodash';
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
+import { CANONICAL_DOMAIN_NAME } from '~/lib/const';
 
 export type TFnSetUrlParam = (input: string | null) => ImmutableURLSearchParams;
 export type TFnGetUrlParamHook = (inSearchParams: ImmutableURLSearchParams) => TFnSetUrlParam;
 
-export const getParamsUrl = (immUrlSearchParams: ImmutableURLSearchParams) => {
-  return [`/`, immUrlSearchParams.sort().toString()].join(`?`);
+export const getParamsUrl = (immUrlSearchParams: ImmutableURLSearchParams, includeDomain = false) => {
+  const pathName = `${includeDomain ? CANONICAL_DOMAIN_NAME : ''}/`;
+  return compact([pathName, immUrlSearchParams.sort().toString()]).join(`?`);
 };
 
 export const useGetSimpleParams = (key: string, immUrlSearchParams: ImmutableURLSearchParams) => {
@@ -115,7 +117,6 @@ export const useGetManufacturerParams: TFnGetUrlParamHook = (immUrlSearchParams:
 
 export const useGetProductParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
   useGetSimpleParams('product', immUrlSearchParams);
-
 
 export const useGetBrandParams: TFnGetUrlParamHook = (immUrlSearchParams: ImmutableURLSearchParams) =>
   useGetSimpleParams('brand', immUrlSearchParams);

@@ -5,7 +5,12 @@ import { CANONICAL_DOMAIN_NAME } from '~/lib/const';
 import { db } from '~/lib/db/db';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { sql } from '~/lib/string';
-import { dbLastModified, generateSitemapXml, sitemapFolder } from '~/scripts/seo/sitemaps/sitemaps';
+import {
+  dbLastModified,
+  generateSitemapXml,
+  sitemapFolder,
+  type TSitemapChangeFrequency,
+} from '~/scripts/seo/sitemaps/sitemaps';
 import { type ISupplier } from '~/types/Supplier';
 import { type IZipState } from '~/types/zip';
 
@@ -27,25 +32,31 @@ const suppliersByStateStatement = db.prepare(sql`
     INNER JOIN ZIP_ZIPCODE ON SUPPLIER.zip = ZIP_ZIPCODE.ZIPCode
     INNER JOIN ZIP_STATE ON ZIP_ZIPCODE.StateID = ZIP_STATE.id
   WHERE
-    ZIP_STATE.StateSlug = @StateSlug
+    ZIP_STATE.StateSlug = :StateSlug
   ORDER BY
     SUPPLIER.id
 `);
 
-export const generateSupplierStateSitemaps = (sitemapIndexItems: string[]) => {
+export const generateSupplierStateSitemaps = (inSitemapIndexItems: string[]) => {
+  let sitemapIndexItems = [...inSitemapIndexItems];
+
   for (const { StateSlug } of supplierStates) {
     const suppliers = suppliersByStateStatement.all({ StateSlug }) as ISupplier[];
-    const suppliersSitemapMeta = suppliers.map((supplier) => ({
+    const suppliersSitemapMeta: MetadataRoute.Sitemap = suppliers.map((supplier) => ({
       url: getSupplierLink(supplier, true),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as TSitemapChangeFrequency,
       lastModified: dbLastModified,
       priority: 1,
-    })) as MetadataRoute.Sitemap;
+    }));
 
     const fileName = `${StateSlug}.xml`;
     const filePath = path.resolve(sitemapFolder, 'suppliers', fileName);
     const sitemapXml = generateSitemapXml(suppliersSitemapMeta);
-    sitemapIndexItems.push(`${CANONICAL_DOMAIN_NAME}/sitemaps/suppliers/${fileName}`);
     outputFileSync(filePath, sitemapXml);
+
+    const sitemapUrl = `${CANONICAL_DOMAIN_NAME}/sitemaps/suppliers/${fileName}`;
+    sitemapIndexItems = sitemapIndexItems.concat(sitemapUrl);
   }
+
+  return sitemapIndexItems;
 };

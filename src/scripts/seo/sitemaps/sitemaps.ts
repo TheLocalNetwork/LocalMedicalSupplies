@@ -3,9 +3,12 @@ import { compact, isDate } from 'lodash';
 import { type MetadataRoute } from 'next';
 import path from 'node:path';
 import { dbPath } from '~/lib/db/db';
+import { generateGeoStateSitemaps } from '~/scripts/seo/sitemaps/geo';
 import { generateSupplierStateSitemaps } from '~/scripts/seo/sitemaps/suppliers';
 
-const sitemapIndexItems: string[] = [];
+export type TSitemapChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+
+let sitemapIndexItemsCollector: string[] = [];
 
 export const dbLastModified = new Date(statSync(dbPath).mtime).toISOString();
 export const publicFolder = path.resolve(process.cwd(), 'public');
@@ -30,7 +33,7 @@ export const generateSitemapXml = (sitemapsMetadata: MetadataRoute.Sitemap) => {
   ].join('\n');
 };
 
-export const generateSitemapIndexXml = () => {
+export const generateSitemapIndexXml = (sitemapIndexItems: string[]) => {
   const indexXml = [
     `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
     ...sitemapIndexItems.map((indexItem) => `<sitemap><loc>${indexItem}</loc></sitemap>`),
@@ -43,5 +46,8 @@ export const generateSitemapIndexXml = () => {
 };
 
 removeSync(sitemapFolder);
-generateSupplierStateSitemaps(sitemapIndexItems);
-generateSitemapIndexXml();
+
+sitemapIndexItemsCollector = generateSupplierStateSitemaps(sitemapIndexItemsCollector);
+sitemapIndexItemsCollector = generateGeoStateSitemaps(sitemapIndexItemsCollector);
+
+generateSitemapIndexXml(sitemapIndexItemsCollector);
