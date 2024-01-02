@@ -5,9 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        disallow: '/',
+        allow: '/',
       },
     ],
-    sitemap: `/sitemaps/index.xml`,
+    sitemap: `https://local-medical-supplies.com/sitemaps/index.xml`,
   };
 }
