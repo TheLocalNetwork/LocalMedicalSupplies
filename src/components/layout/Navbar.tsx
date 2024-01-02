@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ThemeSwitcher from '~/components/layout/ThemeSwitcher';
 
 export const Navbar = () => {
