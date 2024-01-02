@@ -19,7 +19,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
-RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN
+ARG SENTRY_AUTH_TOKEN
+ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
 
 # Install node modules
 COPY --link package-lock.json package.json ./
@@ -28,10 +29,12 @@ RUN npm ci --no-fund --no-audit
 # Copy application code
 COPY --link . .
 
+ARG SENTRY_AUTH_TOKEN
+ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+
 # Set production environment
 ENV NODE_ENV="production"
 ENV NEXT_TELEMETRY_DISABLED 1
-RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN
 
 # Build application
 RUN npm run build
