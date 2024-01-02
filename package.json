@@ -31,6 +31,7 @@
   "dependencies": {
     "@headlessui/react": "^2.0.0-alpha.3",
     "@heroicons/react": "^2.1.1",
+    "@sentry/nextjs": "^7.91.0",
     "@tailwindcss/forms": "^0.5.7",
     "@types/better-sqlite3": "^7.6.8",
     "@types/fs-extra": "^11.0.4",
