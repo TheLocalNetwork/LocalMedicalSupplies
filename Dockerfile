@@ -9,6 +9,11 @@ LABEL fly_launch_runtime="Next.js"
 # Next.js app lives here
 WORKDIR /app
 
+ARG SENTRY_AUTH_TOKEN
+ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+RUN echo ${SENTRY_AUTH_TOKEN}
+
+
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -21,6 +26,7 @@ RUN apt-get update -qq && \
 
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+RUN echo ${SENTRY_AUTH_TOKEN}
 
 # Install node modules
 COPY --link package-lock.json package.json ./
@@ -31,6 +37,7 @@ COPY --link . .
 
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+RUN echo ${SENTRY_AUTH_TOKEN}
 
 # Set production environment
 ENV NODE_ENV="production"
