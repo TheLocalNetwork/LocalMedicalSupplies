@@ -188,10 +188,10 @@ export const lookupSuppliers = (immUrlSearchParams: ImmutableURLSearchParams): I
       :offset;
   `);
 
-  // eslint-disable-next-line no-console
-  console.info(statement.source);
-  // eslint-disable-next-line no-console
-  console.info(binding);
+  // // eslint-disable-next-line no-console
+  // console.info(statement.source);
+  // // eslint-disable-next-line no-console
+  // console.info(binding);
 
   return statement.all(binding) as ILookupResults;
 };
