@@ -16,6 +16,7 @@ const nextConfigWithSentry = withSentryConfig(
     silent: true,
     org: 'the-local-network-75',
     project: 'localmedicalsupplies',
+    authToken: process.env.SENTRY_AUTH_TOKEN,
   },
   {
     // For all available options, see:
