@@ -20,7 +20,10 @@ export default function HomePage(props: IProps) {
   const immUrlSearchParams = createUrlSearchParamsFromFilterUrlParams(searchParams);
 
   // eslint-disable-next-line no-console
-  console.info({ searchParams, immUrlSearchParams });
+  console.info(immUrlSearchParams.toString());
+
+  // // eslint-disable-next-line no-console
+  // console.info({ searchParams, immUrlSearchParams });
 
   return (
     <article key={immUrlSearchParams.toString()} className={'flex flex-col gap-12'}>
