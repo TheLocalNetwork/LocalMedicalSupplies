@@ -6,6 +6,9 @@
 app = "localmedicalsupplies"
 primary_region = "ord"
 
+[deploy]
+  strategy = "canary"
+
 [build]
 
 [[mounts]]
@@ -25,3 +28,4 @@ primary_region = "ord"
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 1024
+
