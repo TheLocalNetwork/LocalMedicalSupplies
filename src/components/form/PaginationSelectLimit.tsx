@@ -23,7 +23,7 @@ export const PaginationSelectLimit: React.FC<IPaginationSelectLimitProps> = ({ u
             const isSelected = limit.toString() === urlValue || (urlValue === null && limit === DEFAULT_LIMIT);
 
             return (
-              <FilterButtonGroupItem key={limit} href={href} isSelected={isSelected}>
+              <FilterButtonGroupItem key={limit} href={href} isSelected={isSelected} rel="noindex nofollow">
                 {limit}
               </FilterButtonGroupItem>
             );
