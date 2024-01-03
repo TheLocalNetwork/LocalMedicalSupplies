@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import { Footer } from '~/components/layout/Footer';
 import { Navbar } from '~/components/layout/Navbar';
 import Provider from '~/components/layout/Provider';
@@ -29,6 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
         <script dangerouslySetInnerHTML={{ __html: themeLoaderScript }} />
+        <Script
+          async
+          strategy="beforeInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2680194687384513"
+        ></Script>
       </head>
       <body
         className={clsx([
