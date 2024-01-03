@@ -6,9 +6,6 @@
 app = "localmedicalsupplies"
 primary_region = "ord"
 
-[deploy]
-  strategy = "canary"
-
 [build]
 
 [http_service]
