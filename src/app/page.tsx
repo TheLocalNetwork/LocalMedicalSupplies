@@ -28,9 +28,9 @@ export default function HomePage(props: IProps) {
   return (
     <article key={immUrlSearchParams.toString()} className={'flex flex-col gap-12'}>
       <Card>
-        <div className="flex flex-col items-start gap-8 md:flex-row">
-          <Form immUrlSearchParams={immUrlSearchParams} />
+        <div className="flex flex-col items-between gap-8 md:flex-row">
           <Results immUrlSearchParams={immUrlSearchParams} />
+          <Form immUrlSearchParams={immUrlSearchParams} />
         </div>
       </Card>
     </article>

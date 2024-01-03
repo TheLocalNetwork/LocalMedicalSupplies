@@ -11,6 +11,7 @@ import { SupplierCategoryDialogContent } from '~/components/form/SupplierCategor
 import { SupplierManufacturerDialogContent } from '~/components/form/SupplierManufacturerContent';
 import { SupplierProductDialogContent } from '~/components/form/SupplierProductContent';
 import { SupplierProviderTypeDialogContent } from '~/components/form/SupplierProviderTypeContent';
+import { SupplierSelectAssignment } from '~/components/form/SupplierSelectAssignment';
 import { SupplierSelectCba } from '~/components/form/SupplierSelectCBA';
 import { SupplierSpecialityDialogContent } from '~/components/form/SupplierSpecialityContent';
 import {
@@ -27,7 +28,6 @@ import {
   useGetZipParams,
 } from '~/components/form/urlParams';
 import { PaginationSelectLimit } from './PaginationSelectLimit';
-import { SupplierSelectAssignment } from '~/components/form/SupplierSelectAssignment';
 
 export interface IFormProps {
   immUrlSearchParams: ImmutableURLSearchParams;
@@ -58,7 +58,7 @@ export const Form: React.FC<IFormProps> = ({ immUrlSearchParams }) => {
   const unsetSpecialityHref = getParamsUrl(useGetSpecialityParams(immUrlSearchParams)(null));
 
   return (
-    <section className="flex w-full shrink-0 flex-col gap-4 md:w-3/12">
+    <section className="order-1 flex w-full shrink-0 flex-col gap-4 md:w-3/12">
       <header>
         <h1 className="font-semibold">Filter Options</h1>
       </header>

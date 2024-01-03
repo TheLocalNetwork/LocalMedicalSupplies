@@ -15,7 +15,7 @@ export const Results: React.FC<IResultsProps> = ({ immUrlSearchParams }) => {
   const startRow = firstRecord.rowNumber;
 
   return (
-    <section className="flex w-full flex-col gap-6 md:w-8/12">
+    <section className="order-2 flex w-full flex-col gap-6 md:w-9/12">
       <ResultsHeader immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
 
       <Paginator immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
