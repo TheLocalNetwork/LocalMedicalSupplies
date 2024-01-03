@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/*?*limit=',
+        disallow: '/*?limit=',
       },
     ],
     sitemap: `https://local-medical-supplies.com/sitemaps/index.xml`,
