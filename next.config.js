@@ -1,8 +1,12 @@
 const { withSentryConfig } = require('@sentry/nextjs');
+const stateRedirects = require('./src/config/state-redirects');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'standalone',
+  async redirects() {
+    return stateRedirects;
+  },
 };
 
 // Injected content via Sentry wizard below
