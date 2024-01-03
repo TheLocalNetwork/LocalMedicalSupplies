@@ -13,8 +13,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: |
-          flyctl deploy --remote-only \
-          --strategy canary
+          flyctl deploy \
+          --remote-only \
+          --strategy canary \
           --build-arg SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
