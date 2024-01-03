@@ -17,11 +17,11 @@ const links = [
 
 export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier }) => {
   return (
-    <div className="relative isolate overflow-hidden  bg-zinc-500 py-24 text-zinc-50 sm:py-24">
+    <div className="relative isolate overflow-hidden  bg-teal-800 py-24 text-zinc-50 sm:py-24">
       <img
         src="/bg/pawel-czerwinski-ERcQ81KaX9g-unsplash.jpg"
         alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-right opacity-50 md:object-center"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-right opacity-10 md:object-center"
       />
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
