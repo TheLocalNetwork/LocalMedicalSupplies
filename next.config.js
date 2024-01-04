@@ -35,9 +35,9 @@ const nextConfigWithSentry = withSentryConfig(
     // transpileClientSDK: false,
 
     // // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
-    tunnelRoute: '/monitoring',
     enableTracing: false,
-    tracesSampleRate: 0,
+    // tunnelRoute: '/monitoring',
+    // tracesSampleRate: 0,
 
     // // Hides source maps from generated client bundles
     // hideSourceMaps: true,
