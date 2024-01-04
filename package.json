@@ -1,6 +1,6 @@
 {
   "name": "local-medical-supplies",
-  "version": "2024.1.30",
+  "version": "2024.1.31",
   "private": true,
   "scripts": {
     "dev": "next dev",
