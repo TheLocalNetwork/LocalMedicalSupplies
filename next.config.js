@@ -36,6 +36,7 @@ const nextConfigWithSentry = withSentryConfig(
 
     // // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
     tunnelRoute: '/monitoring',
+    enableTracing: false,
     tracesSampleRate: 0,
 
     // // Hides source maps from generated client bundles
