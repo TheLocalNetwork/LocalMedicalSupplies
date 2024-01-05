@@ -3,10 +3,10 @@ const stateRedirects = require('./config/state-redirects');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'standalone',
   async redirects() {
     return stateRedirects;
   },
+  output: 'standalone',
 };
 
 // Injected content via Sentry wizard below
