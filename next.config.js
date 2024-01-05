@@ -4,7 +4,15 @@ const stateRedirects = require('./config/state-redirects');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
-    return stateRedirects;
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.local-medical-supplies.com' }],
+        destination: 'https://local-medical-supplies.com/:path*',
+        permanent: true,
+      },
+      ...stateRedirects,
+    ];
   },
   output: 'standalone',
 };
