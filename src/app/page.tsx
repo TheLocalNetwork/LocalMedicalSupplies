@@ -19,8 +19,8 @@ export default function HomePage(props: IProps) {
   const { searchParams } = props;
   const immUrlSearchParams = createUrlSearchParamsFromFilterUrlParams(searchParams);
 
-  // eslint-disable-next-line no-console
-  console.info(immUrlSearchParams.toString());
+  // // eslint-disable-next-line no-console
+  // console.info(immUrlSearchParams.toString());
 
   // // eslint-disable-next-line no-console
   // console.info({ searchParams, immUrlSearchParams });

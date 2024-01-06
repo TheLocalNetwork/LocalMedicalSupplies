@@ -34,8 +34,8 @@ interface IProps {
 export default async function SupplierPage({ params }: IProps) {
   const { slug } = params;
 
-  // eslint-disable-next-line no-console
-  console.info({ slug });
+  // // eslint-disable-next-line no-console
+  // console.info({ slug });
 
   const supplier = await getSupplierFromSlug(slug);
   if (isNil(supplier)) return notFound();
