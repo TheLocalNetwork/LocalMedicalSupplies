@@ -8,6 +8,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: '/*?limit=',
       },
+      {
+        userAgent: [`AhrefsBot`, `SemrushBot`, `MJ12bot`, `dotbot`, `rogerbot`],
+        disallow: '/',
+      },
     ],
     sitemap: `https://local-medical-supplies.com/sitemaps/index.xml`,
   };
