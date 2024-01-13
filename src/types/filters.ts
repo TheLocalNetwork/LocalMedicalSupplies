@@ -10,6 +10,8 @@ export interface IGeoUrlParams extends Record<string, string> {
   zip?: IZipCode['ZIPCode'];
 }
 
+export type IGeoUrlParamsKey = keyof IGeoUrlParams;
+
 export interface ISupplierUrlParams extends Record<string, string> {
   category?: ISupply['slug'];
   providertype?: IProviderType['slug'];
@@ -19,10 +21,13 @@ export interface ISupplierUrlParams extends Record<string, string> {
   cba?: string;
   assignment?: string;
 }
+export type ISupplierUrlParamsKey = keyof ISupplierUrlParams;
 
 export interface IPaginationUrlParams extends Record<string, string> {
   limit?: string;
   page?: string;
 }
+export type IPaginationUrlParamsKey = keyof IPaginationUrlParams;
 
 export type IFilterUrlParams = IGeoUrlParams & IPaginationUrlParams & ISupplierUrlParams;
+export type IFilterUrlParamsKey = IGeoUrlParamsKey | ISupplierUrlParamsKey | IPaginationUrlParamsKey;
