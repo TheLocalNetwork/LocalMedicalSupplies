@@ -1,6 +1,6 @@
 import { type ImmutableURLSearchParams } from 'immurl';
-import { DEFAULT_LIMIT, DEFAULT_PAGE } from '~/components/form/consts';
 import { Paginator } from './Paginator';
+import { ResultsHeader } from './ResultsHeader';
 import { SupplierResult } from './SupplierResult';
 import { lookupSuppliers } from './lookupSuppliers';
 
@@ -40,35 +40,5 @@ export const Results: React.FC<IResultsProps> = ({ immUrlSearchParams }) => {
 
       <Paginator immUrlSearchParams={immUrlSearchParams} numResults={numResults} />
     </section>
-  );
-};
-
-interface IResultsHeaderProps {
-  immUrlSearchParams: ImmutableURLSearchParams;
-  numResults: number;
-}
-const ResultsHeader: React.FC<IResultsHeaderProps> = ({ immUrlSearchParams, numResults }) => {
-  const page = Number(immUrlSearchParams.get('page') ?? DEFAULT_PAGE);
-  const limit = Number(immUrlSearchParams.get('limit') ?? DEFAULT_LIMIT);
-  const offset = (page - 1) * limit;
-
-  return (
-    <header>
-      {numResults ? (
-        <h1>
-          {`Displaying`}
-          {` `}
-          <code>{(offset + 1).toLocaleString()}</code>
-          {` – `}
-          <code>{Math.min(numResults, offset + limit).toLocaleString()}</code>
-          {` of `}
-          <code>{numResults.toLocaleString()}</code>
-          {` `}
-          {`results`}
-        </h1>
-      ) : (
-        <h1>No Results</h1>
-      )}
-    </header>
   );
 };
