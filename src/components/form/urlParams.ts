@@ -2,6 +2,7 @@ import { type ImmutableURLSearchParams } from 'immurl';
 import { compact, isEmpty, isNaN, isNil } from 'lodash';
 import { DEFAULT_LIMIT, LIMIT_OPTIONS } from '~/components/form/consts';
 import { CANONICAL_DOMAIN_NAME } from '~/lib/const';
+import { type IFilterUrlParamsKey } from '~/types/filters';
 
 export type TFnSetUrlParam = (input: string | null) => ImmutableURLSearchParams;
 export type TFnGetUrlParamHook = (inSearchParams: ImmutableURLSearchParams) => TFnSetUrlParam;
@@ -23,6 +24,33 @@ export const useGetSimpleParams = (key: string, immUrlSearchParams: ImmutableURL
   };
 
   return fn;
+};
+
+export const useGetParamByParamName = (name: IFilterUrlParamsKey, immUrlSearchParams: ImmutableURLSearchParams) => {
+  const dict: Record<IFilterUrlParamsKey, TFnGetUrlParamHook> = {
+    state: useGetStateParams,
+    county: useGetCountyParams,
+    city: useGetCityParams,
+    zip: useGetZipParams,
+    category: useGetCategoryParams,
+    manufacturer: useGetManufacturerParams,
+    product: useGetProductParams,
+    brand: useGetBrandParams,
+    speciality: useGetSpecialityParams,
+    providertype: useGetProviderTypeParams,
+    cba: useGetCbaParams,
+    assignment: useGetAssignmentParams,
+    limit: useGetLimitParams,
+    page: useGetPageParams,
+  };
+
+  const hook = dict[name];
+
+  if (!hook) {
+    throw new Error(`useGetParamByParamName: Unknown param name: ${name}`);
+  }
+
+  return hook(immUrlSearchParams);
 };
 
 /**
