@@ -1,7 +1,7 @@
 'use server';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { type PropsWithChildren } from 'react';
+import { Link } from '~/components/catalyst/link';
 
 interface ILinkButtonProps extends PropsWithChildren {
   href: string;
