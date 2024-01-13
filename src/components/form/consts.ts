@@ -13,8 +13,8 @@ export const MAX_LIMIT = 100 as const;
 
 export const emptyGeoUrlParams: IGeoUrlParams = {
   state: '',
-  city: '',
   county: '',
+  city: '',
   zip: '',
 };
 
