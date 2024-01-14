@@ -11,7 +11,7 @@ export const Navbar = () => {
                 <img src={'/icon.svg'} alt={'Local Medical Supplies Logo'} className="size-8 drop-shadow-md" />
               </a>
             </div>
-            <div className="hidden text-xl font-light opacity-70 md:flex md:text-2xl lg:text-3xl">
+            <div className="text-center text-sm font-light opacity-70 sm:flex sm:text-2xl lg:text-3xl">
               <a className="hover:underline" href="/" target="_top">
                 Local Medical Supplies
               </a>
