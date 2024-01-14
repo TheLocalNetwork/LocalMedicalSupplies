@@ -1,3 +1,5 @@
+import { ImmutableURLSearchParams } from 'immurl';
+import { getParamsUrl } from '~/components/form/urlParams';
 import { getSupplierLink } from '~/lib/link/supplier';
 import { type IGeoSupplier } from '~/types/Supplier';
 
@@ -5,9 +7,71 @@ interface IJsonLDProps {
   supplier: IGeoSupplier;
 }
 export const SupplierJsonLD: React.FC<IJsonLDProps> = ({ supplier }) => {
+  const structuredData = [getOrgranizationJsonLD(supplier), getBreadcrumbJsonLD(supplier)];
+
+  return (
+    <>
+      {structuredData.map((jsonLd) => (
+        <script
+          key={jsonLd['@type']}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      ))}
+    </>
+  );
+};
+
+const getBreadcrumbJsonLD = (supplier: IGeoSupplier) => {
+  const immUrlSearchParams = new ImmutableURLSearchParams();
+  const stateUrlSearchParams = immUrlSearchParams.set('state', supplier.StateSlug);
+  const cityUrlSearchParams = stateUrlSearchParams.set('city', supplier.CitySlug);
+  const zipUrlSearchParams = cityUrlSearchParams.set('zip', supplier.zip);
+
+  const stateLink = getParamsUrl(stateUrlSearchParams, true);
+  const cityLink = getParamsUrl(cityUrlSearchParams, true);
+  const zipLink = getParamsUrl(zipUrlSearchParams, true);
+
+  const items = [
+    {
+      item: {
+        '@type': 'State',
+        '@id': stateLink,
+        'name': supplier.StateName,
+      },
+    },
+    {
+      item: {
+        '@type': 'City',
+        '@id': cityLink,
+        'name': supplier.CityName,
+      },
+    },
+    {
+      item: {
+        '@type': 'Place',
+        '@id': zipLink,
+        'name': supplier.zip,
+      },
+    },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'name': 'Location',
+    'itemListElement': items.map((item, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      ...item,
+    })),
+  };
+};
+
+const getOrgranizationJsonLD = (supplier: IGeoSupplier) => {
   // const offerCatalog = getOfferCatalog(supplier);
 
-  const jsonLd = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     'name': supplier.practice_name,
@@ -25,7 +89,6 @@ export const SupplierJsonLD: React.FC<IJsonLDProps> = ({ supplier }) => {
     },
     // 'hasOfferCatalog': offerCatalog,
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />;
 };
 
 // export const getOfferCatalog = (supplier: ISupplier) => {
