@@ -25,7 +25,7 @@
     "zip:sql": "npm run tsnode -- ./src/scripts/zip/sql.ts",
     "zip:update": "npm run zip:load && npm run zip:sql",
     "typecheck": "tsc --noEmit",
-    "tunnel": "npx localtunnel --port 3000",
+    "tunnel": "bore local 3000 --to bore.pub",
     "test": "npm run typecheck && npm run lint"
   },
   "dependencies": {
