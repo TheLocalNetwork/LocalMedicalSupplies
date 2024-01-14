@@ -2,7 +2,8 @@ import { ImmutableURLSearchParams } from 'immurl';
 import { capitalize, compact, isNil } from 'lodash';
 import { type Metadata } from 'next';
 import { Card } from '~/components/elements/Card';
-import { Form } from '~/components/form/form';
+import { Form } from '~/components/form/Form';
+import { FormContainer } from '~/components/form/FormContainer';
 import { isValidLimit, isValidNumber, isValidSimpleParam, isValidZip } from '~/components/form/urlParams';
 import { Results } from '~/components/results/results';
 import { CANONICAL_SITE_NAME } from '~/lib/const';
@@ -28,9 +29,11 @@ export default function HomePage(props: IProps) {
   return (
     <article key={immUrlSearchParams.toString()} className={'flex flex-col gap-12'}>
       <Card>
-        <div className="flex flex-col items-between gap-8 md:flex-row">
+        <div className="items-between flex flex-col gap-8 md:flex-row">
           <Results immUrlSearchParams={immUrlSearchParams} />
-          <Form immUrlSearchParams={immUrlSearchParams} />
+          <FormContainer>
+            <Form urlSearchString={immUrlSearchParams.toString()} />
+          </FormContainer>
         </div>
       </Card>
     </article>

@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ' mx-auto flex min-h-screen flex-col gap-6',
           'bg-zinc-50 dark:bg-zinc-900',
           'text-zinc-600 dark:text-zinc-300',
-          'text-base/6  sm:text-sm/6',
+          'text-base/6 sm:text-sm/6',
         ])}
       >
         <Provider>

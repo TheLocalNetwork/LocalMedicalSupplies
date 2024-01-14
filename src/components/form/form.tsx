@@ -1,5 +1,6 @@
+'use server';
 import clsx from 'clsx';
-import { type ImmutableURLSearchParams } from 'immurl';
+import { ImmutableURLSearchParams } from 'immurl';
 import { type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { Button } from '~/components/catalyst/button';
 import { FormDialogContainer } from '~/components/form/FormDialogContainer';
@@ -30,10 +31,10 @@ import {
 import { PaginationSelectLimit } from './PaginationSelectLimit';
 
 export interface IFormProps {
-  immUrlSearchParams: ImmutableURLSearchParams;
+  urlSearchString: string;
 }
-export const Form: React.FC<IFormProps> = ({ immUrlSearchParams }) => {
-  const urlSearchString = immUrlSearchParams.toString(); // must serialize before passing to a client-side component
+export const Form: React.FC<IFormProps> = ({ urlSearchString }) => {
+  const immUrlSearchParams = new ImmutableURLSearchParams(urlSearchString);
 
   const state = immUrlSearchParams.get('state');
   const county = immUrlSearchParams.get('county');
@@ -58,7 +59,7 @@ export const Form: React.FC<IFormProps> = ({ immUrlSearchParams }) => {
   const unsetSpecialityHref = getParamsUrl(useGetSpecialityParams(immUrlSearchParams)(null));
 
   return (
-    <section className="order-1 flex w-full shrink-0 flex-col gap-4 md:w-3/12">
+    <section>
       <header>
         <h1 className="font-semibold">Filter Options</h1>
       </header>
