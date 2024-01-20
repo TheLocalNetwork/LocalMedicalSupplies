@@ -19,3 +19,45 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+  notify_start:
+    name: 'Notify Start'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification - Start
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{ EVENT_PAYLOAD.repository.full_name }} deploy starting'
+
+  notify_success:
+    needs:
+      - notify_start
+      - deploy
+    name: 'Notify Success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Discord notification - Success
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{ EVENT_PAYLOAD.repository.full_name }} deploy successful'
+
+  notify_failure:
+    if: ${{ failure() }}
+    needs:
+      - notify_start
+      - deploy
+    name: 'Notify Failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Discord notification - Failure
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: '{{ EVENT_PAYLOAD.repository.full_name }} deploy failed'
