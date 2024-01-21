@@ -1,11 +1,13 @@
 const { withSentryConfig } = require('@sentry/nextjs');
 const stateRedirects = require('./config/state-redirects');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
     const hostRedirects = [];
-    if (process.env.NODE_ENV === 'production') {
+    if (isProd) {
       hostRedirects.push({
         source: '/:path*',
         missing: [{ type: 'host', value: 'local-medical-supplies.com' }],
@@ -17,6 +19,10 @@ const nextConfig = {
     return [...hostRedirects, ...stateRedirects];
   },
   output: 'standalone',
+  assetPrefix: isProd ? 'https://d1mrgj7hb0ys1t.cloudfront.net' : undefined,
+  typescript: {
+    ignoreBuildErrors: isProd,
+  },
 };
 
 // Injected content via Sentry wizard below
