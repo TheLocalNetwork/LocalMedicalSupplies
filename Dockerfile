@@ -20,7 +20,9 @@ FROM base as build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3 awscli
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+
+RUN python -m pip install awscli
 
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
