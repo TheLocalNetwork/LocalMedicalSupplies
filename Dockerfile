@@ -11,8 +11,6 @@ WORKDIR /app
 
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
-RUN echo ${SENTRY_AUTH_TOKEN}
-
 
 
 # Throw-away build stage to reduce size of final image
