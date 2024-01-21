@@ -19,7 +19,7 @@ const nextConfig = {
     return [...hostRedirects, ...stateRedirects];
   },
   output: 'standalone',
-  assetPrefix: isProd ? 'https://d1mrgj7hb0ys1t.cloudfront.net' : undefined,
+  // assetPrefix: isProd ? 'https://d1mrgj7hb0ys1t.cloudfront.net' : undefined,
   typescript: {
     ignoreBuildErrors: isProd,
   },

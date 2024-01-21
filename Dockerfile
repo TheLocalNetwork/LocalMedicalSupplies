@@ -20,9 +20,13 @@ FROM base as build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y \
+        build-essential \
+        node-gyp \
+        pkg-config \
+        python-is-python3 \
 
-RUN python -m pip install awscli
+# RUN python -m pip install awscli
 
 ARG SENTRY_AUTH_TOKEN
 ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
@@ -56,13 +60,13 @@ COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/public ./public
 COPY --from=build /app/.next/static ./.next/static
 
-ARG AWS_ACCESS_KEY_ID
-ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
-ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+# ARG AWS_ACCESS_KEY_ID
+# ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+# ARG AWS_SECRET_ACCESS_KEY
+# ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
-RUN aws s3 sync /app/public/ s3://static.local-medical-supplies
-RUN aws s3 sync /app/.next/static s3://static.local-medical-supplies/.next/static
+# RUN aws s3 sync /app/public/ s3://static.local-medical-supplies
+# RUN aws s3 sync /app/.next/static s3://static.local-medical-supplies/.next/static
 
 
 ARG SENTRY_AUTH_TOKEN
