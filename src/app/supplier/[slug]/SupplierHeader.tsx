@@ -1,6 +1,8 @@
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
+import Image from 'next/image';
 import Link from 'next/link';
 import { getSupplierLink } from '~/lib/link/supplier';
+import headerBackground from './pawel-czerwinski-ERcQ81KaX9g-unsplash.min.jpg';
 import { type IGeoSupplier } from '~/types/Supplier';
 
 export interface ISupplierHeaderProps {
@@ -18,10 +20,10 @@ const links = [
 export const SupplierHeader: React.FC<ISupplierHeaderProps> = ({ supplier }) => {
   return (
     <div className="relative isolate overflow-hidden  bg-teal-800 py-24 text-zinc-50 sm:py-24">
-      <img
-        src="/bg/pawel-czerwinski-ERcQ81KaX9g-unsplash.jpg"
-        alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-right opacity-10 md:object-center"
+      <Image
+        src={headerBackground}
+        alt="header background"
+        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-10 md:object-center"
       />
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
